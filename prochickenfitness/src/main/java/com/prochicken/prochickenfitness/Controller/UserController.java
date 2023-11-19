@@ -1,9 +1,12 @@
 package com.prochicken.prochickenfitness.Controller;
 
 import com.prochicken.prochickenfitness.DTO.UserDTO;
+import com.prochicken.prochickenfitness.DTO.UserIngredientDTO;
 import com.prochicken.prochickenfitness.Service.UserService;
 import com.prochicken.prochickenfitness.Transfer.UserTransfer;
+import com.prochicken.prochickenfitness.entity.IngredientEntity;
 import com.prochicken.prochickenfitness.entity.UserEntity;
+import com.prochicken.prochickenfitness.repository.IngredientRepository;
 import com.prochicken.prochickenfitness.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,13 +27,15 @@ public class UserController {
 
     private UserService userService;
 
+    private IngredientRepository ingredientRepository;
+
     @Autowired
-    public UserController(UserRepository userRepository,
-                          UserService userService) {
+    public UserController(UserRepository userRepository, UserService userService,
+                          IngredientRepository ingredientRepository) {
         this.userRepository = userRepository;
         this.userService = userService;
+        this.ingredientRepository = ingredientRepository;
     }
-
 
     @GetMapping("/")
     public List<UserEntity> getUsers(){
@@ -59,4 +65,16 @@ public class UserController {
         return ResponseEntity.ok(userDTO);
     }
 
+    @PutMapping("/update/ingredient")
+    public ResponseEntity<?> addIngredient(@RequestBody(required = false)UserIngredientDTO userIngredientDTO){
+        List<IngredientEntity> ingredients = new ArrayList<>();
+        for (Integer ingrId: userIngredientDTO.getIngredients()) {
+            ingredients.add(ingredientRepository.findById(ingrId).get());
+        }
+
+        UserEntity userEntity = userRepository.findByUsername(userIngredientDTO.getUsername()).get();
+        userEntity.setIngredients(ingredients);
+        userRepository.save(userEntity);
+        return ResponseEntity.ok(userIngredientDTO);
+    }
 }
