@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Unfavorite food</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      background-color: #C8FFE0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    #search-bar-left {
+      margin-bottom: 20px;
+      background-color: #33BBC5;
+      border-radius: 10px;
+    }
+
+    #output-textbox {
+      height: 150px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 10px;
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .checkbox-column {
+      column-count: 2;
+    }
+
+    #left-side {
+        border-right: 2px solid #85E6C5; /* Vertical line between left and right sides */
+        padding-right: 20px; /* Add padding to separate the line from the content */
+      }
+
+    #left-side h4,
+    #right-side h4 {
+        border-radius: 10px;
+        background-color: #85E6C5;
+
+    }
+
+    @media (max-width: 768px) {
+      #left-side, #right-side {
+        margin: 10px 0;
+        
+      }
+
+      #left-side {
+        border-right: none; /* Remove border for small screens */
+        padding-right: 0; /* Remove padding for small screens */
+      }
+
+
+      .checkbox-column {
+        column-count: 1;
+      }
+    }
+
+    .input-group input {
+        border: 2px solid #33BBC5;
+        background-color: #daf7e7;
+        border-radius: 10px;
+    }
+    #output-textbox {
+        border: 2px solid #33BBC5;
+        background-color: #daf7e7;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <!-- Left Side with Checklist and Search Bar -->
+    <div class="col-md-6" id="left-side">
+      <h4 class="mb-4 text-center mr-2 ml-2 py-3 text-white">Unfavorite Ingredient</h4>
+      <div class="input-group mb-3" id="search-bar-left">
+        <input type="text" class="form-control" placeholder="Search item..." oninput="filterChecklistLeft()">
+        <div class="input-group-append">
+          <button class="btn text-white" type="button">Search</button>
+        </div>
+      </div>
+      <div class="checkbox-column" id="left-checklist">
+        <!-- Checklist items will be dynamically added here -->
+        <div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="item1">
+                <label class="custom-control-label" for="item1">Gà</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="item2">
+                <label class="custom-control-label" for="item2">Thịt heo</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="item3">
+                <label class="custom-control-label" for="item3">Thịt bò</label>
+            </div>
+        </div>
+  
+        <!-- Second Column of Checklist Items -->
+        <div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="item4">
+                <label class="custom-control-label" for="item4">Bông cải xanh</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="item5">
+                <label class="custom-control-label" for="item5">Cà rốt</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="item6">
+                <label class="custom-control-label" for="item6">Đậu Hà Lan</label>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side with Textbox for Checked Items -->
+    <div class="col-md-6" id="right-side">
+      <h4 class="mb-4 text-center mr-2 ml-2 py-3  text-white">Chosen ingredient</h4>
+      <textarea id="output-textbox" readonly></textarea>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // JavaScript to handle checking items, updating the right side, and searching
+    $(document).ready(function() {
+      $('input[type="checkbox"]').change(function() {
+        updateCheckedItems();
+      });
+  
+      function updateCheckedItems() {
+        var outputTextbox = $('#output-textbox');
+        outputTextbox.val('');
+        
+        $('input[type="checkbox"]:checked').each(function(index) {
+          var itemText = $('label[for="' + $(this).attr('id') + '"]').text();
+          outputTextbox.val(outputTextbox.val() + itemText);
+  
+          // Append a comma and space after each item, except the last one
+          if (index < $('input[type="checkbox"]:checked').length - 1) {
+            outputTextbox.val(outputTextbox.val() + ', ');
+          }
+        });
+      }
+  
+      // Function to filter checklist items based on input for the left side
+      window.filterChecklistLeft = function() {
+        var input = document.getElementById('search-bar-left').getElementsByTagName('input')[0];
+        var checklist = document.getElementById('left-checklist');
+        
+        var items = checklist.getElementsByClassName('custom-control');
+        for (var i = 0; i < items.length; i++) {
+          var text = items[i].getElementsByTagName('label')[0].innerText.toLowerCase();
+          var searchText = input.value.toLowerCase();
+  
+          if (text.indexOf(searchText) > -1) {
+            items[i].style.display = '';
+          } else {
+            items[i].style.display = 'none';
+          }
+        }
+      };
+    });
+  </script>
+
+</body>
+</html>
