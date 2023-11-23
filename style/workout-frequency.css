@@ -1,0 +1,42 @@
+.custom-range {
+    width: 100%; /* Adjust the width as needed */
+    margin: 0 auto;
+    border: 2px solid #33BBC5;
+    background-color: #daf7e7;
+    border-radius: 10px;
+}
+
+.range-labels {
+    display: flex;
+    justify-content:space-between;
+    padding-top: 10px;
+}
+
+.range-labels span {
+
+    /* margin-right: '20px'; */
+    text-align: center;
+}
+
+#workout-frequency .btn {
+    border: 2px solid #33BBC5;
+    background-color: #daf7e7;
+    border-radius: 10px;
+}
+
+input[type="range"]::-ms-thumb {
+    background-color: #33BBC5;
+}
+
+input[type="range"]::-moz-range-thumb {
+    background-color: #33BBC5;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    background-color: #33BBC5;
+}
+
+#workout-frequency h4 {
+    border-radius: 10px;
+    background-color: #85E6C5;
+}
