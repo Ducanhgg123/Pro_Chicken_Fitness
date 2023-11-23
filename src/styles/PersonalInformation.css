@@ -1,0 +1,110 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.container .form1,
+.container .form2,
+.container .form3 {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #c8ffe0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.progress-bar-container {
+  margin-bottom: 20px;
+  transition: all 2s;
+}
+
+.form-container {
+  padding: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-container {
+  margin-top: 20px;
+}
+
+#search-bar-left {
+  margin-bottom: 20px;
+  background-color: #33bbc5;
+  border-radius: 10px;
+}
+
+#output-textbox {
+  height: 150px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.checkbox-column {
+  column-count: 2;
+}
+
+#left-side {
+  border-right: 2px solid #85e6c5; /* Vertical line between left and right sides */
+  padding-right: 20px; /* Add padding to separate the line from the content */
+}
+
+#left-side h4,
+#right-side h4 {
+  border-radius: 10px;
+  background-color: #85e6c5;
+}
+
+@media (max-width: 768px) {
+  #left-side,
+  #right-side {
+    margin: 10px 0;
+  }
+
+  #left-side {
+    border-right: none; /* Remove border for small screens */
+    padding-right: 0; /* Remove padding for small screens */
+  }
+
+  .checkbox-column {
+    column-count: 1;
+  }
+}
+
+.input-group input {
+  border: 2px solid #33bbc5;
+  background-color: #daf7e7;
+  border-radius: 10px;
+}
+#output-textbox {
+  border: 2px solid #33bbc5;
+  background-color: #daf7e7;
+}
+
+.custom-control-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  margin-right: 5px;
+  outline: none;
+  cursor: pointer;
+}
+.favorite {
+  background-color: #333;
+}
+.unfavorite {
+  background-color: red;
+}
+.custom-control-input .empty {
+  background-color: white;
+}
