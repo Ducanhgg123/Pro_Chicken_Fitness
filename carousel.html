@@ -5,104 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
   <title>Bootstrap Progress with Forms</title>
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-
-    .container #form1,
-    .container #form2,
-    .container #form3 {
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      background-color: #C8FFE0;
-      border-radius: 8px;
-      padding: 20px;
-      margin-top: 20px;
-    }
-
-    .form-container {
-      padding: 20px;
-      border: 1px solid #ced4da;
-      border-radius: 8px;
-      background-color: #ffffff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-container {
-      margin-top: 20px;
-    }
-
-    #search-bar-left {
-      margin-bottom: 20px;
-      background-color: #33BBC5;
-      border-radius: 10px;
-    }
-
-    #output-textbox {
-      height: 150px;
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ced4da;
-      border-radius: 10px;
-      font-family: 'Arial', sans-serif;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .checkbox-column {
-      column-count: 2;
-    }
-
-    #left-side {
-        border-right: 2px solid #85E6C5; /* Vertical line between left and right sides */
-        padding-right: 20px; /* Add padding to separate the line from the content */
-      }
-
-    #left-side h4,
-    #right-side h4 {
-        border-radius: 10px;
-        background-color: #85E6C5;
-
-    }
-
-    @media (max-width: 768px) {
-      #left-side, #right-side {
-        margin: 10px 0;
-        
-      }
-
-      #left-side {
-        border-right: none; /* Remove border for small screens */
-        padding-right: 0; /* Remove padding for small screens */
-      }
-
-
-      .checkbox-column {
-        column-count: 1;
-      }
-    }
-
-    .input-group input {
-        border: 2px solid #33BBC5;
-        background-color: #daf7e7;
-        border-radius: 10px;
-    }
-    #output-textbox {
-        border: 2px solid #33BBC5;
-        background-color: #daf7e7;
-    }
-
-    header {
-      background-color: #C8FFE0;
-    }
-
-    .progress-bar {
-      background-color: #33BBC5;
-    }
-
-    
-  </style>
-  <link rel="stylesheet" href="./style/workout-frequency.css">
+  <link rel="stylesheet" href="./style/carousel.css">
 </head>
 <body>
 
@@ -257,44 +160,44 @@
           <h3>Workout Frequency</h3>
           <!-- Your Form 3 Fields Here -->
           <div class="container" id="workout-frequency">
-          <h4 class="mb-4 text-center mr-2 ml-2 py-3 text-white">Days per Week</h2>
-          <input type="range" class="form-range custom-range" min="0" max="7" id="customRange">
-          <div class="range-labels">
-            <div>0</div>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
+            <h4 class="mb-4 text-center mr-2 ml-2 py-3 text-white">Days per Week</h4>
+            <input type="range" class="form-range custom-range" min="0" max="7" id="customRange">
+            <div class="range-labels">
+              <div>0</div>
+              <div>1</div>
+              <div>2</div>
+              <div>3</div>
+              <div>4</div>
+              <div>5</div>
+              <div>6</div>
+              <div>7</div>
+            </div>
+
+            <h4 class="mb-4 text-center py-3 text-white">Days Available</h4>
+
+            <div class="btn-group d-flex justify-content-around" role="group" aria-label="Basic checkbox toggle button group">
+              <input type="checkbox" class="btn-check" id="btncheck-hai" autocomplete="off">
+              <label class="btn" for="btncheck1">Monday</label>
+            
+              <input type="checkbox" class="btn-check" id="btncheck-ba" autocomplete="off">
+              <label class="btn" for="btncheck1">Tuesday</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck-tu" autocomplete="off">
+              <label class="btn" for="btncheck1">Wednesday</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck-nam" autocomplete="off">
+              <label class="btn" for="btncheck1">Thursday</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck-sau" autocomplete="off">
+              <label class="btn" for="btncheck1">Friday</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck-bay" autocomplete="off">
+              <label class="btn" for="btncheck1">Saturday</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck-chunhat" autocomplete="off">
+              <label class="btn" for="btncheck1">Sunday</label>
+            </div>
           </div>
-
-          <h4 class="mb-4 text-center py-3 text-white">Days Available</h2>
-
-          <div class="btn-group d-flex justify-content-around" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" class="btn-check" id="btncheck-hai" autocomplete="off">
-            <label class="btn" for="btncheck1">Monday</label>
-          
-            <input type="checkbox" class="btn-check" id="btncheck-ba" autocomplete="off">
-            <label class="btn" for="btncheck1">Tuesday</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck-tu" autocomplete="off">
-            <label class="btn" for="btncheck1">Wednesday</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck-nam" autocomplete="off">
-            <label class="btn" for="btncheck1">Thursday</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck-sau" autocomplete="off">
-            <label class="btn" for="btncheck1">Friday</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck-bay" autocomplete="off">
-            <label class="btn" for="btncheck1">Saturday</label>
-
-            <input type="checkbox" class="btn-check" id="btncheck-chunhat" autocomplete="off">
-            <label class="btn" for="btncheck1">Sunday</label>
-          </div>
-        </div>
           <div class="btn-container">
             <button type="button" class="btn btn-secondary" onclick="previousForm(2)">Previous</button>
             <button type="submit" class="btn btn-success">Submit</button>
