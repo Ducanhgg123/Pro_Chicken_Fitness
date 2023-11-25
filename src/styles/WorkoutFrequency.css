@@ -1,20 +1,55 @@
+.custom-range {
+  width: 100%;
+  margin: 0 auto;
+  border: 2px solid #33bbc5;
+  background-color: #daf7e7;
+  border-radius: 10px;
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.range-labels span {
+  /* margin-right: '20px'; */
+  text-align: center;
+}
+
+#workout-frequency .btn {
+  border: 2px solid #33bbc5;
+  background-color: #daf7e7;
+  border-radius: 10px;
+}
+
+input[type="range"]::-ms-thumb {
+  background-color: #33bbc5;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background-color: #33bbc5;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background-color: #33bbc5;
+}
+
+#workout-frequency h4 {
+  border-radius: 10px;
+  background-color: #85e6c5;
+}
+
 body {
   background-color: #f8f9fa;
 }
 
-.container .form1,
-.container .form2,
 .container .form3 {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   background-color: #c8ffe0;
   border-radius: 8px;
   padding: 20px;
   margin-top: 20px;
-}
-
-.progress-bar-container {
-  margin-bottom: 20px;
-  transition: all 2s;
 }
 
 .form-container {
@@ -83,24 +118,10 @@ body {
   background-color: #daf7e7;
 }
 
-.custom-control-input {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #333;
-  border-radius: 4px;
-  margin-right: 5px;
-  outline: none;
-  cursor: pointer;
+header {
+  background-color: #c8ffe0;
 }
-.favorite {
-  background-color: #333;
-}
-.unfavorite {
-  background-color: red;
-}
-.custom-control-input .empty {
-  background-color: white;
+
+.progress-bar {
+  background-color: #33bbc5;
 }

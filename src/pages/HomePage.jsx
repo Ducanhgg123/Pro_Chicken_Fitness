@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
+import Header from "../components/Header";
 
 function HomePage() {
-  const user = useSelector((state) => state.user);
-  console.log(user);
-  return <div>HomePage</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default HomePage;

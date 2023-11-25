@@ -24,13 +24,18 @@ function Login() {
     formData.append("username", "ducanh");
     formData.append("avatar", selectedFile);
     axios
-      .post("http://localhost:8080/api/user/update/avatar", formData, {
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWNhbmgiLCJleHAiOjE3MDA0NjMyNTksImlhdCI6MTcwMDQyNzI1OX0.hOopXQ48HyOYRtfCyWtXRC9JdKuKInIh5iwrApN7CSQ`,
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-        },
-      })
+      .post(
+        "http://localhost:8080/api/authentication/login",
+        {
+          username: "ducanh",
+          password: "hello",
+        }
+        // {
+        //   headers: {
+        //     Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWNhbmgiLCJleHAiOjE3MDA5MjEwODUsImlhdCI6MTcwMDg4NTA4NX0.qTsxoY68m3nMxsPGyLyQ8gRJervlaeesYQvUFEUrZzE`,
+        //   },
+        // }
+      )
       .then((res) => console.log(res));
   };
   return (

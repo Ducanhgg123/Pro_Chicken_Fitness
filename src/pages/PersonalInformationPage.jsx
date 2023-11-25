@@ -7,6 +7,8 @@ import {
   removeFavoriteIngredient,
   removeUnfavoriteIngredient,
 } from "../redux/ingredientsSlice";
+import WorkoutFrequencyForm from "../components/WorkoutFrequencyForm";
+import ReviewInformationForm from "../components/personal-forms/ReviewInformationForm";
 
 const IngredientItem = ({ isFavoriteForm, item, idx }) => {
   const dispatch = useDispatch();
@@ -35,6 +37,7 @@ const IngredientItem = ({ isFavoriteForm, item, idx }) => {
     </div>
   );
 };
+
 const FavoriteFoodForm = () => {
   const [form, setForm] = useState(1);
   const nextForm = () => {
@@ -59,13 +62,13 @@ const FavoriteFoodForm = () => {
         );
       case 3:
         return (
-          <Form3
+          <WorkoutFrequencyForm
+            nextForm={nextForm}
             previousForm={previousForm}
-            handleFormSubmit={handleFormSubmit}
           />
         );
       default:
-        return null;
+        return <ReviewInformationForm previousForm={previousForm} />;
     }
   };
 
@@ -79,7 +82,7 @@ const FavoriteFoodForm = () => {
               <div
                 className="progress-bar"
                 role="progressbar"
-                style={{ width: `${form * 33}%` }}
+                style={{ width: `${form * 25}%` }}
               ></div>
             </div>
           </div>
@@ -224,12 +227,30 @@ const UnfavoriteForm = ({ nextForm, previousForm }) => {
 };
 
 const Form3 = ({ previousForm, handleFormSubmit }) => {
-  // State and logic for Form 3
-
+  const { favoriteIngredients, unfavoriteIngredients } = useSelector(
+    (state) => state.ingredients
+  );
   return (
     <form onSubmit={handleFormSubmit}>
-      {/* Form 3 JSX */}
-      {/* ... */}
+      <h1 className="text-center">Review your information</h1>
+      <div className="row">
+        <div className="col-md-6">
+          <h3>Favorite Ingredients</h3>
+          <ul>
+            {favoriteIngredients?.map((ingredient) => (
+              <li key={`favorite-${ingredient}`}>{ingredient}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="col-md-6">
+          <h3>Unfavorite Ingredients</h3>
+          <ul>
+            {unfavoriteIngredients?.map((ingredient) => (
+              <li key={`unfavorite-${ingredient}`}>{ingredient}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
       <div className="btn-container">
         <button
           type="button"

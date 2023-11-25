@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const ingredientsSlice = createSlice({
-  name: "user",
+  name: "ingredients",
   initialState,
   reducers: {
     addFavoriteIngredient: (state, { payload }) => {
