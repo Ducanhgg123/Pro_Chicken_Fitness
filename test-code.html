@@ -1,74 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <title>Blog Item (Bootstrap 5)</title>
 
-<head>
-  <title>Title</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+      #newsfeed-blog-item .card-footer button {
+        border: none;
+      }
 
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
-</head>
-
-<body>
-  <header>
-    <!-- place navbar here -->
-  </header>
-  <main>
-    
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs justify-content-center nav-justified" id="navId" role="tablist">
-      <li class="nav-item">
-        <a href="#tab1Id" class="nav-link active" data-bs-toggle="tab" aria-current="page">NewsFeed</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a href="#tab5Id" class="nav-link" data-bs-toggle="tab">Coach</a>
-      </li>
-    </ul>
-    <ul class="nav nav-tabs justify-content-">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Separated link</a></li>
-        </ul>
-      </li>
-    </ul>
-    
-    <!-- Tab panes -->
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
-      <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
-      <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
-      <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
-      <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
+      #newsfeed-blog-item .card-body hr {
+        height: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--Blog-->
+    <div class="container mt-5" id="newsfeed-blog-item">
+      <div class="card col-md-6 mx-auto">
+        <div class="card-header">
+          <div class="d-flex align-items-center">
+            <img
+              src="./image/pro-chicken-logo.jpg"
+              alt="Profile Picture"
+              class="rounded-circle me-2"
+              style="width: 40px; height: 40px"
+            />
+            <div>
+              <h6 class="mb-0">Blogger Name</h6>
+              <time class="text-muted">Posted 3 hours ago</time>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Blog content goes here. This can include text, images, and other
+            media.
+          </p>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+            aliquid tenetur fugiat sunt odit cumque distinctio, doloremque illum
+            enim eum quisquam eveniet assumenda, velit ullam omnis in adipisci
+            iure id!
+          </p>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+            aliquid tenetur fugiat sunt odit cumque distinctio, doloremque illum
+            enim eum quisquam eveniet assumenda, velit ullam omnis in adipisci
+            iure id!
+          </p>
+          <hr />
+          <div class="text-center">
+            <img
+              src="./image/pro-chicken-logo.jpg"
+              alt="Blog Image"
+              style="width: 400px; height: 400px"
+            />
+          </div>
+        </div>
+        <div
+          class="card-footer d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <button type="button" class="btn btn-outline-secondary">
+              <i class="bi bi-hand-thumbs-up-fill"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary">
+              <i class="bi bi-chat-left-dots-fill"></i>
+            </button>
+          </div>
+          <div>
+            <span class="text-muted me-2">10 Likes</span>
+            <span class="text-muted">5 Comments</span>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <!-- (Optional) - Place this js code after initializing bootstrap.min.js or bootstrap.bundle.min.js -->
-    <script>
-      var triggerEl = document.querySelector('#navId a')
-      bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
-    </script>
-    
 
-  </main>
-  <footer>
-    <!-- place footer here -->
-  </footer>
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"></script>
+  </body>
 </html>

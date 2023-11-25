@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HomePage</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <style>
+      .dropdown .btn {
+        background-color: transparent;
+        border: none;
+      }
+
+      .dropdown .btn:active {
+        background-color: transparent;
+        border: none;
+      }
+
+      .dropdown .btn:hover {
+        background-color: transparent;
+        border: none;
+      }
+
+      .dropdown img {
+        width: 50px;
+        height: 50px;
+      }
+
+      #navbar-brand img {
+        width: 70px;
+        height: 70px;
+      }
+
+      #navbar-brand {
+        background-color: transparents;
+      }
+
+      .navbar {
+        position: fixed;
+        width: 100%;
+      }
+
+      #newsfeed-blog-item .card-footer button {
+        border: none;
+      }
+
+      #newsfeed-blog-item .card-body hr {
+        height: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <!-- place navbar here -->
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-light justify-content-center mt-0 mb-0"
+      >
+        <a href="#" id="navbar-brand">
+          <img
+            src="./image/pro-chicken-logo.jpg"
+            alt="anh-ga-con-de-thuong-xiu"
+            border="0"
+          />
+        </a>
+        <!-- Nav tabs -->
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="newsfeed-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#newsfeed"
+                type="button"
+                role="tab"
+                aria-controls="newsfeed"
+                aria-selected="true"
+              >
+                Newsfeed
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="coach-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#coach"
+                type="button"
+                role="tab"
+                aria-controls="coach"
+                aria-selected="false"
+              >
+                Coach
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="newsfeed"
+              role="tabpanel"
+              aria-labelledby="newsfeed-tab"
+            ></div>
+            <div
+              class="tab-pane fade"
+              id="coach"
+              role="tabpanel"
+              aria-labelledby="coach-tab"
+            ></div>
+          </div>
+        </div>
+        <!---Logo-->
+        <div class="dropdown ml-auto">
+          <button
+            class="btn btn-secondary"
+            type="button"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/147/147140.png"
+              alt="Avatar"
+              border="0"
+            />
+          </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="dropdownMenuButton"
+          >
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Log out</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!--Nav bar-->
+
+      <!--Newsfeed content-->
+      <!--Blog-->
+      <div class="container mt-5" id="newsfeed-blog-item">
+        <div class="card col-md-6 mx-auto">
+          <div class="card-header">
+            <div class="d-flex align-items-center">
+              <img
+                src="./image/pro-chicken-logo.jpg"
+                alt="Profile Picture"
+                class="rounded-circle me-2"
+                style="width: 40px; height: 40px"
+              />
+              <div>
+                <h6 class="mb-0">Blogger Name</h6>
+                <time class="text-muted">Posted 3 hours ago</time>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Blog content goes here. This can include text, images, and other
+              media.
+            </p>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+              aliquid tenetur fugiat sunt odit cumque distinctio, doloremque
+              illum enim eum quisquam eveniet assumenda, velit ullam omnis in
+              adipisci iure id!
+            </p>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+              aliquid tenetur fugiat sunt odit cumque distinctio, doloremque
+              illum enim eum quisquam eveniet assumenda, velit ullam omnis in
+              adipisci iure id!
+            </p>
+            <hr />
+            <div class="text-center">
+              <img
+                src="./image/pro-chicken-logo.jpg"
+                alt="Blog Image"
+                style="width: 400px; height: 400px"
+              />
+            </div>
+          </div>
+          <div
+            class="card-footer d-flex justify-content-between align-items-center"
+          >
+            <div>
+              <button type="button" class="btn btn-outline-secondary">
+                <i class="bi bi-hand-thumbs-up-fill"></i>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <i class="bi bi-chat-left-dots-fill"></i>
+              </button>
+            </div>
+            <div>
+              <span class="text-muted me-2">10 Likes</span>
+              <span class="text-muted">5 Comments</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Coach content-->
+    </main>
+    <footer>
+      <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
