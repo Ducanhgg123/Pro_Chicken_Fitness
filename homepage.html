@@ -47,13 +47,13 @@
       }
 
       #navbar-brand {
-        background-color: transparents;
+        background-color: transparent;
       }
 
-      .navbar {
+      /* .navbar {
         position: fixed;
         width: 100%;
-      }
+      } */
 
       #newsfeed-blog-item .card-footer button {
         border: none;
@@ -62,11 +62,16 @@
       #newsfeed-blog-item .card-body hr {
         height: 2px;
       }
+
+      main {
+        position: relative;
+        top: 100px;
+      }
     </style>
   </head>
 
   <body>
-    <header>
+    <header class="fixed-top">
       <!-- place navbar here -->
       <nav
         class="navbar navbar-expand-lg navbar-light bg-light justify-content-center mt-0 mb-0"
@@ -159,6 +164,189 @@
 
       <!--Newsfeed content-->
       <!--Blog-->
+      <div class="container mt-5" id="newsfeed-blog-item">
+        <div class="card col-md-6 mx-auto">
+          <div class="card-header">
+            <div class="d-flex align-items-center">
+              <img
+                src="./image/pro-chicken-logo.jpg"
+                alt="Profile Picture"
+                class="rounded-circle me-2"
+                style="width: 40px; height: 40px"
+              />
+              <div>
+                <h6 class="mb-0">Blogger Name</h6>
+                <time class="text-muted">Posted 3 hours ago</time>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Blog content goes here. This can include text, images, and other
+              media.
+            </p>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+              aliquid tenetur fugiat sunt odit cumque distinctio, doloremque
+              illum enim eum quisquam eveniet assumenda, velit ullam omnis in
+              adipisci iure id!
+            </p>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+              aliquid tenetur fugiat sunt odit cumque distinctio, doloremque
+              illum enim eum quisquam eveniet assumenda, velit ullam omnis in
+              adipisci iure id!
+            </p>
+            <hr />
+            <div class="text-center">
+              <img
+                src="./image/pro-chicken-logo.jpg"
+                alt="Blog Image"
+                style="width: 400px; height: 400px"
+              />
+            </div>
+          </div>
+          <div
+            class="card-footer d-flex justify-content-between align-items-center"
+          >
+            <div>
+              <button type="button" class="btn btn-outline-secondary">
+                <i class="bi bi-hand-thumbs-up-fill"></i>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <i class="bi bi-chat-left-dots-fill"></i>
+              </button>
+            </div>
+            <div>
+              <span class="text-muted me-2">10 Likes</span>
+              <span class="text-muted">5 Comments</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-5" id="newsfeed-blog-item">
+        <div class="card col-md-6 mx-auto">
+          <div class="card-header">
+            <div class="d-flex align-items-center">
+              <img
+                src="./image/pro-chicken-logo.jpg"
+                alt="Profile Picture"
+                class="rounded-circle me-2"
+                style="width: 40px; height: 40px"
+              />
+              <div>
+                <h6 class="mb-0">Blogger Name</h6>
+                <time class="text-muted">Posted 3 hours ago</time>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Blog content goes here. This can include text, images, and other
+              media.
+            </p>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+              aliquid tenetur fugiat sunt odit cumque distinctio, doloremque
+              illum enim eum quisquam eveniet assumenda, velit ullam omnis in
+              adipisci iure id!
+            </p>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+              aliquid tenetur fugiat sunt odit cumque distinctio, doloremque
+              illum enim eum quisquam eveniet assumenda, velit ullam omnis in
+              adipisci iure id!
+            </p>
+            <hr />
+            <div class="text-center">
+              <img
+                src="./image/pro-chicken-logo.jpg"
+                alt="Blog Image"
+                style="width: 400px; height: 400px"
+              />
+            </div>
+          </div>
+          <div
+            class="card-footer d-flex justify-content-between align-items-center"
+          >
+            <div>
+              <button type="button" class="btn btn-outline-secondary">
+                <i class="bi bi-hand-thumbs-up-fill"></i>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <i class="bi bi-chat-left-dots-fill"></i>
+              </button>
+            </div>
+            <div>
+              <span class="text-muted me-2">10 Likes</span>
+              <span class="text-muted">5 Comments</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-5" id="newsfeed-blog-item">
+        <div class="card col-md-6 mx-auto">
+          <div class="card-header">
+            <div class="d-flex align-items-center">
+              <img
+                src="./image/pro-chicken-logo.jpg"
+                alt="Profile Picture"
+                class="rounded-circle me-2"
+                style="width: 40px; height: 40px"
+              />
+              <div>
+                <h6 class="mb-0">Blogger Name</h6>
+                <time class="text-muted">Posted 3 hours ago</time>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Blog content goes here. This can include text, images, and other
+              media.
+            </p>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+              aliquid tenetur fugiat sunt odit cumque distinctio, doloremque
+              illum enim eum quisquam eveniet assumenda, velit ullam omnis in
+              adipisci iure id!
+            </p>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+              aliquid tenetur fugiat sunt odit cumque distinctio, doloremque
+              illum enim eum quisquam eveniet assumenda, velit ullam omnis in
+              adipisci iure id!
+            </p>
+            <hr />
+            <div class="text-center">
+              <img
+                src="./image/pro-chicken-logo.jpg"
+                alt="Blog Image"
+                style="width: 400px; height: 400px"
+              />
+            </div>
+          </div>
+          <div
+            class="card-footer d-flex justify-content-between align-items-center"
+          >
+            <div>
+              <button type="button" class="btn btn-outline-secondary">
+                <i class="bi bi-hand-thumbs-up-fill"></i>
+              </button>
+              <button type="button" class="btn btn-outline-secondary">
+                <i class="bi bi-chat-left-dots-fill"></i>
+              </button>
+            </div>
+            <div>
+              <span class="text-muted me-2">10 Likes</span>
+              <span class="text-muted">5 Comments</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="container mt-5" id="newsfeed-blog-item">
         <div class="card col-md-6 mx-auto">
           <div class="card-header">
