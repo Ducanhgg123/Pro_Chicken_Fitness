@@ -1,47 +1,53 @@
+import { Link } from "react-router-dom";
+import "../styles/Header.css";
 function Header() {
   return (
     <header className="fixed-top">
       <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light justify-content-center mt-0 mb-0">
-        <a href="#" id="navbar-brand">
+        <Link to="/" id="navbar-brand">
           <img
             src="./image/pro-chicken-logo.jpg"
             alt="anh-ga-con-de-thuong-xiu"
             border="0"
           />
-        </a>
+        </Link>
         <div
           className="collapse navbar-collapse justify-content-center"
           id="navbarNav"
         >
           <ul className="navbar-nav nav-tabs" id="myTab" role="tablist">
             <li className="nav-item" role="presentation">
-              <button
-                className="nav-link active"
-                id="newsfeed-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#newsfeed"
-                type="button"
-                role="tab"
-                aria-controls="newsfeed"
-                aria-selected="true"
-              >
-                Newsfeed
-              </button>
+              <Link to="/">
+                <button
+                  className="nav-link active"
+                  id="newsfeed-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#newsfeed"
+                  type="button"
+                  role="tab"
+                  aria-controls="newsfeed"
+                  aria-selected="true"
+                >
+                  Newsfeed
+                </button>
+              </Link>
             </li>
-            <li className="nav-item" role="presentation">
-              <button
-                className="nav-link"
-                id="coach-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#coach"
-                type="button"
-                role="tab"
-                aria-controls="coach"
-                aria-selected="false"
-              >
-                Coach
-              </button>
-            </li>
+            <Link to="/coaches">
+              <li className="nav-item" role="presentation">
+                <button
+                  className="nav-link"
+                  id="coach-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#coach"
+                  type="button"
+                  role="tab"
+                  aria-controls="coach"
+                  aria-selected="false"
+                >
+                  Coach
+                </button>
+              </li>
+            </Link>
           </ul>
           <div className="tab-content" id="myTabContent">
             <div

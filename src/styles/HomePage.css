@@ -1,0 +1,46 @@
+.dropdown .btn {
+  background-color: transparent;
+  border: none;
+}
+
+.dropdown .btn:active {
+  background-color: transparent;
+  border: none;
+}
+
+.dropdown .btn:hover {
+  background-color: transparent;
+  border: none;
+}
+
+.dropdown img {
+  width: 50px;
+  height: 50px;
+}
+
+#navbar-brand img {
+  width: 70px;
+  height: 70px;
+}
+
+#navbar-brand {
+  background-color: transparent;
+}
+
+/* .navbar {
+    position: fixed;
+    width: 100%;
+  } */
+
+#newsfeed-blog-item .card-footer button {
+  border: none;
+}
+
+#newsfeed-blog-item .card-body hr {
+  height: 2px;
+}
+
+main {
+  position: relative;
+  top: 100px;
+}
