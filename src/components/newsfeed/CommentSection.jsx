@@ -25,8 +25,8 @@ function CommentSection() {
           <div className="">
             <h5 className="mt-0">John</h5>
             <p>
-              User 1's Comment: Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit.
+              User Comment: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit.
             </p>
           </div>
         </div>
@@ -40,8 +40,8 @@ function CommentSection() {
           <div className="">
             <h5 className="mt-0">John</h5>
             <p>
-              User 1's Comment: Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit.
+              User Comment: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit.
             </p>
           </div>
         </div>
