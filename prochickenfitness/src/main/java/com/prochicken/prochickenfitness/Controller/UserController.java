@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/user")
@@ -76,5 +77,16 @@ public class UserController {
         userEntity.setIngredients(ingredients);
         userRepository.save(userEntity);
         return ResponseEntity.ok(userIngredientDTO);
+    }
+
+    @PostMapping("/subcribe")
+    public UserDTO subcribeCoach(@RequestBody Map<String,String> api){
+        String username = api.get("username");
+        String coachName = api.get("coachName");
+        UserEntity user = userRepository.findByUsername(username).get();
+        UserEntity coach = userRepository.findByUsername(coachName).get();
+        user.setCoach(coach);
+        user = userRepository.save(user);
+        return UserTransfer.toDTO(user);
     }
 }

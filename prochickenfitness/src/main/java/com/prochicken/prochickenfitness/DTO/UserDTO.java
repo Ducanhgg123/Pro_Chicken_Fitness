@@ -24,4 +24,8 @@ public class UserDTO {
     private String gender;
 
     private Byte[] avatar;
+
+    private String description;
+    private Integer price;
+
 }
