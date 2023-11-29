@@ -16,6 +16,8 @@ public class UserTransfer {
         userDTO.setDateOfBirth(userEntity.getDateOfBirth());
         userDTO.setUsername(userEntity.getUsername());
         userDTO.setWorkoutFrequency(userEntity.getWorkoutFrequency());
+        userDTO.setDescription(userEntity.getDescription());
+        userDTO.setPrice(userEntity.getPrice());
         return userDTO;
     }
 
@@ -44,6 +46,8 @@ public class UserTransfer {
             userEntity.setWorkoutFrequency(0);
         }
         userEntity.setWorkoutFrequency(userDTO.getWorkoutFrequency());
+        userEntity.setDescription(userDTO.getDescription());
+        userEntity.setPrice(userDTO.getPrice());
         return userEntity;
     }
 
@@ -71,6 +75,8 @@ public class UserTransfer {
             userEntity.setWorkoutFrequency(0);
         }
         userEntity.setWorkoutFrequency(userDTO.getWorkoutFrequency());
+        userEntity.setDescription(userDTO.getDescription());
+        userEntity.setPrice(userDTO.getPrice());
         return userEntity;
     }
 }

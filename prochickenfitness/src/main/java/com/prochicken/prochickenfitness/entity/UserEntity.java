@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -71,5 +72,40 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
     private List<IngredientEntity> ingredients;
 
+    @Column(name = "description")
+    private String description;
 
+    @Column(name = "price")
+    private Integer price;
+
+    @OneToOne
+    @JoinColumn(name = "coach_id")
+    private UserEntity coach;
+
+    @OneToMany(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,
+            CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "user")
+    private List<PostEntity> posts;
+
+
+    public void addIngredient(IngredientEntity ingredient){
+        if (ingredients==null){
+            ingredients = new ArrayList<>();
+        }
+
+        ingredients.add(ingredient);
+    }
+
+    public void addRole(RoleEntity role){
+        if (roles==null){
+            roles = new ArrayList<>();
+        }
+        roles.add(role);
+    }
+
+    public void addPost(PostEntity postEntity){
+        if (posts==null){
+            posts = new ArrayList<>();
+        }
+        posts.add(postEntity);
+    }
 }

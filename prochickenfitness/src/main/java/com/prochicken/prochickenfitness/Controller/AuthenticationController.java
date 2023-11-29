@@ -80,7 +80,6 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterDTO registerDTO){
-        System.out.println(registerDTO.getUsername()+" "+registerDTO.getPassword());
         if (userRepository.existsByUsername(registerDTO.getUsername())){
             return new ResponseEntity<>(new RegisterResponseDTO(registerDTO.getUsername(),false), HttpStatus.BAD_REQUEST);
         }
