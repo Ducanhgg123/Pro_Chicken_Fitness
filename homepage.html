@@ -73,6 +73,7 @@
   <body>
     <header class="fixed-top">
       <!-- place navbar here -->
+      <!--Nav bar-->
       <nav
         class="navbar navbar-expand-lg navbar-light bg-light justify-content-center mt-0 mb-0"
       >
@@ -160,7 +161,98 @@
       </nav>
     </header>
     <main>
-      <!--Nav bar-->
+      <!--Self posting box-->
+      <div class="container mt-5" id="self-posting-box">
+        <div class="card col-md-6 mx-auto">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-auto me-0 ms-0 text-center pr">
+                <img
+                  src="./image/pro-chicken-logo.jpg"
+                  alt="Profile Picture"
+                  class="rounded-circle"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div class="col">
+                <button
+                  type="button"
+                  class="btn btn-primary w-100 text-start opacity-75 btn-secondary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#postModal"
+                >
+                  What's on your mind?
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="postModal"
+        tabindex="-1"
+        aria-labelledby="postModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="postModalLabel">Create a post</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-header">
+                  <div class="d-flex align-items-center">
+                    <img
+                      src="./image/pro-chicken-logo.jpg"
+                      alt="Profile Picture"
+                      class="rounded-circle"
+                      style="width: 50px; height: 50px"
+                    />
+                    <div>
+                      <h6 class="mb-0">Blogger name</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="mb-3">
+                      <textarea
+                        class="form-control"
+                        placeholder="What's on your mind?"
+                      ></textarea>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <label for="imageInput" class="btn btn-outline-primary">
+                          <i class="bi bi-image"></i> Add Image
+                        </label>
+                        <input
+                          type="file"
+                          id="imageInput"
+                          class="visually-hidden"
+                        />
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        Post
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!--Newsfeed content-->
       <!--Blog-->
