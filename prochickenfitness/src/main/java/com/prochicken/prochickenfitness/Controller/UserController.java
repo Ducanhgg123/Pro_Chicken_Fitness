@@ -39,8 +39,10 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public List<UserEntity> getUsers(){
-        return userRepository.findAll();
+    public List<UserDTO> getUsers(){
+        List<UserEntity> userEntities = userRepository.findAll();
+        List<UserDTO> userDTOS = userEntities.stream().map(e -> UserTransfer.toDTO(e)).toList();
+        return userDTOS;
     }
 
     @PostMapping("/update/avatar")
