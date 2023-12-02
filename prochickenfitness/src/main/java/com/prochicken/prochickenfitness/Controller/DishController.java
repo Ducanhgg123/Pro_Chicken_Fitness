@@ -59,7 +59,8 @@ public class DishController {
 
     @PutMapping("/")
     public DishDTO updateDish(@RequestBody(required = false) DishDTO dishDTO){
-        DishEntity dishEntity = dishRepository.save(DishTransfer.toEntity(dishDTO));
+        DishEntity dishEntity = dishRepository.findById(dishDTO.getId()).get();
+        dishEntity = dishRepository.save(DishTransfer.toEntity(dishDTO,dishEntity));
         return DishTransfer.toDTO(dishEntity);
     }
 
