@@ -1,42 +1,38 @@
 import { useState } from "react";
 import "./LoginPage.css";
-import axios from "axios";
-import { convertFileToBytes } from "../utilities/convertImageToByte";
+import AuthenticationService from "../api/services/AuthenticationService";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [user, setUser] = useState({ username: "", password: "" });
   const handleChange = (name, e) => {
     setUser({ ...user, [name]: e.target.value });
   };
+  const navigate = useNavigate();
 
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
     // Access the selected file from the input
     const file = e.target.files[0];
-    // setSelectedFile(convertFileToBytes(file).then((bytes) => bytes));
     setSelectedFile(file);
     console.log(file);
   };
   const handleSubmit = async () => {
-    if (!selectedFile) return;
-    const formData = new FormData();
-    formData.append("username", "ducanh");
-    formData.append("avatar", selectedFile);
-    axios
-      .post(
-        "http://localhost:8080/api/authentication/login",
-        {
-          username: "ducanh",
-          password: "hello",
-        }
-        // {
-        //   headers: {
-        //     Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWNhbmgiLCJleHAiOjE3MDA5MjEwODUsImlhdCI6MTcwMDg4NTA4NX0.qTsxoY68m3nMxsPGyLyQ8gRJervlaeesYQvUFEUrZzE`,
-        //   },
-        // }
-      )
-      .then((res) => console.log(res));
+    console.log("submit");
+    try {
+      const res = await AuthenticationService.login(
+        user.username,
+        user.password
+      );
+      if (res?.status == 200) {
+        sessionStorage.setItem("jwt-token", res.data.jwt);
+        console.log(res.data);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="container py-3">
@@ -70,11 +66,11 @@ function Login() {
                   onChange={(e) => handleChange("username", e)}
                 />
               </div>
-              <input
+              {/* <input
                 type="file"
                 accept="image/*" // Limit accepted file types to images
                 onChange={handleFileChange}
-              />
+              /> */}
               <div className="form-group">
                 <label>Password:</label>
                 <input
@@ -88,24 +84,19 @@ function Login() {
                 />
               </div>
 
-              <div id="signup" className="float-right mb-3">
-                <a href="signup.html">Sign Up</a>
-              </div>
-              <div id="forgotpassword" className="float-left mb-3">
-                <a href="passwordrecover.html">Forgot Password?</a>
-              </div>
-
-              <div className="container">
-                <button type="button" className="btn btn-block btn-primary">
-                  Login
-                </button>
+              <div className="">
                 <button
                   type="button"
+                  className="btn btn-primary w-100"
                   onClick={handleSubmit}
-                  className="btn gmail-btn"
                 >
-                  <i className="bi bi-google"></i> Login with Gmail
+                  Login
                 </button>
+
+                <div className="d-flex justify-content-between mt-3">
+                  <p className="text-gray">Dont have an account</p>
+                  <p className="">Sign up</p>
+                </div>
               </div>
             </form>
           </div>

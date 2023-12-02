@@ -1,7 +1,24 @@
+import { useEffect, useState } from "react";
 import CardCoach from "../components/CardCoach";
 import Header from "../components/Header";
+import CoachService from "../api/services/CoachService";
 
 function CoachesPage() {
+  const [coaches, setCoaches] = useState([]);
+  useEffect(() => {
+    const getCoaches = async () => {
+      try {
+        const res = await CoachService.getAllCoaches();
+        if (res?.status == 200) {
+          setCoaches(res.data);
+        }
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getCoaches();
+  }, []);
   return (
     <div>
       <Header />

@@ -5,7 +5,7 @@ const imgUrl =
   "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 function CardCoach() {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem", padding: 0 }}>
       <Card.Img variant="top" src={imgUrl} />{" "}
       <Card.Body>
         <Card.Title>Coach Name</Card.Title> {/* Replace with coach's name */}
