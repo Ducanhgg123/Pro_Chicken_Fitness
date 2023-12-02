@@ -1,0 +1,57 @@
+/* Add custom styles here */
+.chat-box {
+  background-color: #c8ffe0;
+  border: 2px solid black;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.chat-box-text {
+  height: 480px;
+  overflow-y: auto;
+  border: 2px solid black;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  background-color: #daf7e7;
+}
+.message {
+  margin-bottom: 10px;
+}
+.message .sender {
+  font-weight: bold;
+}
+.message .time {
+  font-size: 0.8em;
+  color: #777;
+  margin-left: 5px;
+}
+.user-message {
+  text-align: right;
+}
+
+.message-text {
+  background-color: #f8f9fa;
+  margin-right: 40px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.user-message-text {
+  text-align: left;
+  background-color: rgb(125, 225, 255);
+  margin-left: 40px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.chat-box .input-group input {
+  background-color: #daf7e7;
+}
+.chat-box .input-group button {
+  background-color: #0bd4d4;
+}
+
+.chat-box .input-group {
+  border: 2px solid black;
+  border-radius: 5px;
+}
