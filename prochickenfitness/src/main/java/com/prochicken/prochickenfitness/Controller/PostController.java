@@ -1,11 +1,15 @@
 package com.prochicken.prochickenfitness.Controller;
 
+import com.prochicken.prochickenfitness.DTO.CommentDTO;
 import com.prochicken.prochickenfitness.DTO.PostDTO;
 import com.prochicken.prochickenfitness.Service.PostService;
+import com.prochicken.prochickenfitness.Transfer.CommentTransfer;
 import com.prochicken.prochickenfitness.Transfer.PostTransfer;
 import com.prochicken.prochickenfitness.Util.ByteConverter;
+import com.prochicken.prochickenfitness.entity.CommentEntity;
 import com.prochicken.prochickenfitness.entity.PostEntity;
 import com.prochicken.prochickenfitness.entity.UserEntity;
+import com.prochicken.prochickenfitness.repository.CommentRepository;
 import com.prochicken.prochickenfitness.repository.PostRepository;
 import com.prochicken.prochickenfitness.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +28,15 @@ public class PostController {
 
     private PostService postService;
 
+    private CommentRepository commentRepository;
+
     @Autowired
-    public PostController(UserRepository userRepository, PostRepository postRepository, PostService postService) {
+    public PostController(UserRepository userRepository, PostRepository postRepository,
+                          PostService postService, CommentRepository commentRepository) {
         this.userRepository = userRepository;
         this.postRepository = postRepository;
         this.postService = postService;
+        this.commentRepository = commentRepository;
     }
 
     @GetMapping("/")
@@ -79,6 +87,11 @@ public class PostController {
     @DeleteMapping("/{id}")
     public PostDTO deletePost(@PathVariable(name = "id") int id){
         PostEntity postEntity = postRepository.findById(id).get();
+        for (CommentEntity comment:postEntity.getComments()){
+            comment.setPost(null);
+            comment.setCommentUser(null);
+            commentRepository.delete(comment);
+        }
         postRepository.delete(postEntity);
         return PostTransfer.toDTO(postEntity);
     }
@@ -90,4 +103,12 @@ public class PostController {
         postEntity = postRepository.save(postEntity);
         return PostTransfer.toDTO(postEntity);
     }
+
+    @GetMapping("/comment/{id}")
+    public List<CommentDTO> getPostComments(@PathVariable(name = "id") int id){
+        List<CommentEntity> commentEntities = commentRepository.findAllByPostId(id);
+        List<CommentDTO> commentDTOS = commentEntities.stream().map(e -> CommentTransfer.toDTO(e)).toList();
+        return commentDTOS;
+    }
+
 }

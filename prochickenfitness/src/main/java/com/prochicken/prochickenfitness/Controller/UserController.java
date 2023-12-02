@@ -1,11 +1,15 @@
 package com.prochicken.prochickenfitness.Controller;
 
+import com.prochicken.prochickenfitness.DTO.CommentDTO;
 import com.prochicken.prochickenfitness.DTO.UserDTO;
 import com.prochicken.prochickenfitness.DTO.UserIngredientDTO;
 import com.prochicken.prochickenfitness.Service.UserService;
+import com.prochicken.prochickenfitness.Transfer.CommentTransfer;
 import com.prochicken.prochickenfitness.Transfer.UserTransfer;
+import com.prochicken.prochickenfitness.entity.CommentEntity;
 import com.prochicken.prochickenfitness.entity.IngredientEntity;
 import com.prochicken.prochickenfitness.entity.UserEntity;
+import com.prochicken.prochickenfitness.repository.CommentRepository;
 import com.prochicken.prochickenfitness.repository.IngredientRepository;
 import com.prochicken.prochickenfitness.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +34,15 @@ public class UserController {
 
     private IngredientRepository ingredientRepository;
 
+    private CommentRepository commentRepository;
+
     @Autowired
     public UserController(UserRepository userRepository, UserService userService,
-                          IngredientRepository ingredientRepository) {
+                          IngredientRepository ingredientRepository, CommentRepository commentRepository) {
         this.userRepository = userRepository;
         this.userService = userService;
         this.ingredientRepository = ingredientRepository;
+        this.commentRepository = commentRepository;
     }
 
     @GetMapping("/")
@@ -90,5 +97,13 @@ public class UserController {
         user.setCoach(coach);
         user = userRepository.save(user);
         return UserTransfer.toDTO(user);
+    }
+
+    @GetMapping("/comment/{username}")
+    public List<CommentDTO> getUserComments(@PathVariable(name = "username") String username){
+        List<CommentEntity> commentEntities = commentRepository.findAllByUsername(username);
+        List<CommentDTO> commentDTOS = commentEntities.stream().map(e -> CommentTransfer.toDTO(e)).toList();
+        return commentDTOS;
+
     }
 }

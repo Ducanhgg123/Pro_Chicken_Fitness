@@ -42,6 +42,7 @@ public class CommentController {
         return CommentTransfer.toDTO(commentEntity);
     }
 
+
     @PostMapping("/")
     public CommentDTO createComment(@RequestBody  Map<String, Object> api){
         String content = (String) api.get("content");
@@ -52,6 +53,7 @@ public class CommentController {
         CommentEntity comment = new CommentEntity();
         comment.setContent(content);
         comment.setCommentUser(user);
+        comment.setPost(post);
         comment = commentRepository.save(comment);
         post.addComment(comment);
         postRepository.save(post);

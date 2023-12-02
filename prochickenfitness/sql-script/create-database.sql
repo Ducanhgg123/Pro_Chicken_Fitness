@@ -68,14 +68,10 @@ CREATE TABLE `comment`(
 	`id` int not null auto_increment,
     `content` text,
     `user_id` int,
+    `post_id` int,
     primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-CREATE TABLE `post_comment`(
-	`post_id` int not null,
-    `comment_id` int not null,
-    primary key (`post_id`,`comment_id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 CREATE TABLE `dish`(
 	`id` int not null auto_increment,
@@ -124,12 +120,10 @@ alter table `user_role`
 add foreign key (`user_id`) references `user`(`id`),
 add foreign key (`role_id`) references `role`(`id`); 
 
-alter table `post_comment`
-add foreign key (`post_id`) references `post`(`id`),
-add foreign key (`comment_id`) references `comment`(`id`);
 
 alter table `comment`
-add foreign key (`user_id`) references `user`(`id`);
+add foreign key (`user_id`) references `user`(`id`),
+add foreign key (`post_id`) references `post`(`id`);
 
 alter table `post`
 add foreign key (`user_id`) references `user`(`id`);

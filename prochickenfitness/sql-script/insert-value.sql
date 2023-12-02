@@ -51,19 +51,11 @@ values
 
 INSERT INTO `comment`
 values
-(1,'Great content!',1),
-(2,'This is so stupid, i hate it!',2),
-(3,'Don\'t mind that kid, keep up with the good work!',1),
-(4,'Who is kid you moron?',2),
-(5,'Love this thing',1);
-
-INSERT INTO `post_comment`
-values
-(1,1),
-(1,2),
-(1,3),
-(1,4),
-(2,5);
+(1,'Great content!',1,1),
+(2,'This is so stupid, i hate it!',2,1),
+(3,'Don\'t mind that kid, keep up with the good work!',1,1),
+(4,'Who is kid you moron?',2,1),
+(5,'Love this thing',1,2);
 
 INSERT INTO `dish`
 values
