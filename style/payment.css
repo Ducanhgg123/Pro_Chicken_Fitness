@@ -1,0 +1,14 @@
+body {
+  background-color: #c8d6e5;
+}
+
+#payment-form {
+  border: 2px solid #ccc;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#payment-form label {
+  font-weight: 500;
+}
