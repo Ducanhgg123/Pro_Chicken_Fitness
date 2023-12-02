@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="price">Price</label>
+              <input type="text" class="form-control text-danger font-weight-bold" id="price" value="$100" readonly>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="paymentMethod">Payment Method</label>
+              <div id="paymentMethodField">
+                <select class="form-control" id="paymentMethod" onchange="showSelected()">
+                  <option value="" disabled selected>Select payment method</option>
+                  <option value="creditCard">Credit Card</option>
+                  <option value="paypal">PayPal</option>
+                  <option value="bankTransfer">Bank Transfer</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" class="form-control" id="cardNumber" placeholder="Enter card number">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="expiryDate">Expiry Date</label>
+              <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="cvv">CVV</label>
+              <input type="text" class="form-control" id="cvv" placeholder="CVV">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cardHolder">Cardholder Name</label>
+            <input type="text" class="form-control" id="cardHolder" placeholder="Enter cardholder name">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Subcribe the coach</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function showSelected() {
+      var selectBox = document.getElementById("paymentMethod");
+      var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+      var selectedText = selectBox.options[selectBox.selectedIndex].text;
+
+      // Show the selected payment method
+      var paymentField = document.createElement("input");
+      paymentField.className = "form-control";
+      paymentField.value = selectedText;
+      paymentField.readOnly = true;
+      document.getElementById("paymentMethodField").innerHTML = "";
+      document.getElementById("paymentMethodField").appendChild(paymentField);
+    }
+  </script>
+</body>
+
+</html>
