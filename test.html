@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>User Information Form</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      margin-top: 50px;
+    }
+
+    h2 {
+      color: #007bff;
+    }
+
+    label {
+      font-weight: bold;
+      color: #495057;
+    }
+
+    input {
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2 class="mb-4">User Information Form</h2>
+  
+  <form>
+    <div class="form-group row">
+      <label for="firstName" class="col-sm-2 col-form-label">First Name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="firstName" name="firstName" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="lastName" class="col-sm-2 col-form-label">Last Name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="lastName" name="lastName" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="address" class="col-sm-2 col-form-label">Address:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="address" name="address" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="height" class="col-sm-2 col-form-label">Height (cm):</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="height" name="height" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="weight" class="col-sm-2 col-form-label">Weight (kg):</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="weight" name="weight" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="birthday" class="col-sm-2 col-form-label">Birthday:</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" id="birthday" name="birthday" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-10 offset-sm-2">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
