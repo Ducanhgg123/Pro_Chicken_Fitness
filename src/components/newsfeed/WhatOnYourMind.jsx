@@ -1,11 +1,38 @@
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
+import { useSelector } from "react-redux";
+import PostService from "../../api/services/PostService";
 
-function Example() {
+function WhatOnYourMind() {
+  const { username } = useSelector((state) => state.user);
+  const [content, setContent] = useState("");
   const [show, setShow] = useState(false);
-
+  const [selectedFile, setSelectedFile] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0]; // Get the selected file
+    setSelectedFile(file);
+  };
+
+  const handleSubmit = async () => {
+    const formData = new FormData();
+    if (!username) {
+      console.log("dont have user");
+      return;
+    }
+    formData.append("username", username);
+    formData.append("thumbnail", selectedFile);
+    formData.append("content", content);
+
+    try {
+      const res = await PostService.createPost(formData);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -30,7 +57,7 @@ function Example() {
                   className="btn btn-primary w-100 text-start opacity-75 btn-secondary"
                   onClick={handleShow}
                 >
-                  What's on your mind?
+                  What's on your mind, {username || ""}?
                 </button>
               </div>
             </div>
@@ -57,7 +84,7 @@ function Example() {
                     }}
                   />
                   <div>
-                    <h6 className="mb-0">Blogger name</h6>
+                    <h6 className="mb-0">Blogger {username}</h6>
                   </div>
                 </div>
               </div>
@@ -68,6 +95,8 @@ function Example() {
                       className="form-control"
                       style={{ height: "120px" }}
                       placeholder="What's on your mind?"
+                      value={content}
+                      onChange={(e) => setContent(e.target.value)}
                     ></textarea>
                   </div>
                   <div className="d-flex justify-content-between">
@@ -82,9 +111,14 @@ function Example() {
                         type="file"
                         id="imageInput"
                         className="visually-hidden"
+                        onChange={handleFileChange}
                       />
                     </div>
-                    <button type="submit" className="btn btn-primary">
+                    <button
+                      type="button"
+                      onClick={handleSubmit}
+                      className="btn btn-primary"
+                    >
                       Post
                     </button>
                   </div>
@@ -98,4 +132,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default WhatOnYourMind;

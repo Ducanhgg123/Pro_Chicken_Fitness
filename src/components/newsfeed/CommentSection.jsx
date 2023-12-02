@@ -1,4 +1,28 @@
-function CommentSection() {
+import { useSelector } from "react-redux";
+import CommentService from "../../api/services/CommentService";
+import { useState } from "react";
+import { Button } from "react-bootstrap";
+
+function CommentSection({ post }) {
+  const { username } = useSelector((state) => state.user);
+  const [content, setContent] = useState("");
+  const postComment = async () => {
+    try {
+      const res = await CommentService.createComment(
+        username,
+        post.id,
+        content
+      );
+      console.log(res);
+      if (res?.status == 200) {
+        setContent("");
+      } else {
+        alert("something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="p-2">
       <h5>Comments</h5>
@@ -7,11 +31,13 @@ function CommentSection() {
           <textarea
             className="form-control"
             placeholder="Type your comment here..."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <Button type="button" onClick={postComment} className="btn btn-primary">
           Comment
-        </button>
+        </Button>
       </form>
       {/* List of comments */}
       <div className="mt-4">
@@ -61,8 +87,6 @@ function CommentSection() {
           </div>
         </div>
       </div>
-
-      {/* Add more comments in a similar structure */}
     </div>
   );
 }

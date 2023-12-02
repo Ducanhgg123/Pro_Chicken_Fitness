@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./LoginPage.css";
 import AuthenticationService from "../api/services/AuthenticationService";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUsername } from "../redux/userSlice";
 
 function Login() {
   const [user, setUser] = useState({ username: "", password: "" });
@@ -9,7 +11,7 @@ function Login() {
     setUser({ ...user, [name]: e.target.value });
   };
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -25,9 +27,11 @@ function Login() {
         user.username,
         user.password
       );
+
       if (res?.status == 200) {
         sessionStorage.setItem("jwt-token", res.data.jwt);
         console.log(res.data);
+        dispatch(setUsername(user.username));
         navigate("/");
       }
     } catch (error) {
