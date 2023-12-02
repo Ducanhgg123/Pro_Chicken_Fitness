@@ -1,11 +1,13 @@
 package com.prochicken.prochickenfitness.Controller;
 
 import com.prochicken.prochickenfitness.DTO.CommentDTO;
+import com.prochicken.prochickenfitness.DTO.CommentWithUserDTO;
 import com.prochicken.prochickenfitness.DTO.PostDTO;
 import com.prochicken.prochickenfitness.Service.PostService;
 import com.prochicken.prochickenfitness.Transfer.CommentTransfer;
 import com.prochicken.prochickenfitness.Transfer.PostTransfer;
 import com.prochicken.prochickenfitness.Util.ByteConverter;
+import com.prochicken.prochickenfitness.Util.FileUtil;
 import com.prochicken.prochickenfitness.entity.CommentEntity;
 import com.prochicken.prochickenfitness.entity.PostEntity;
 import com.prochicken.prochickenfitness.entity.UserEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -105,9 +108,18 @@ public class PostController {
     }
 
     @GetMapping("/comment/{id}")
-    public List<CommentDTO> getPostComments(@PathVariable(name = "id") int id){
+    public List<CommentWithUserDTO> getPostComments(@PathVariable(name = "id") int id){
         List<CommentEntity> commentEntities = commentRepository.findAllByPostId(id);
-        List<CommentDTO> commentDTOS = commentEntities.stream().map(e -> CommentTransfer.toDTO(e)).toList();
+        List<CommentWithUserDTO> commentDTOS = new ArrayList<>();
+        for (CommentEntity commentEntity:commentEntities){
+            CommentWithUserDTO commentDTO = new CommentWithUserDTO();
+            commentDTO.setContent(commentEntity.getContent());
+            commentDTO.setId(commentEntity.getId());
+            UserEntity userEntity = commentEntity.getCommentUser();
+            commentDTO.setUsername(userEntity.getUsername());
+            commentDTO.setAvatar(FileUtil.decompressFile(userEntity.getAvatar()));
+            commentDTOS.add(commentDTO);
+        }
         return commentDTOS;
     }
 
