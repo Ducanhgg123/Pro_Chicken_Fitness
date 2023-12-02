@@ -1,3 +1,47 @@
+.custom-control {
+  border-radius: 40px;
+  background-color: white;
+  border-style: solid;
+  align-items: center;
+  margin-bottom: 2px;
+  height: 40px;
+  padding: 0;
+  border-width: 3px;
+  font-weight: bold;
+}
+
+.custom-control-input{
+  position: absolute;
+  opacity: 0;
+  width: 7vw;
+  height: 38px;
+  z-index: 10;
+}
+
+.custom-control label{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 0;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-control label img{
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  object-fit: scale-down;
+  z-index: 11;
+}
+
+.custom-control label :active{
+  transform: scale(10.0);
+  z-index: 100;
+}
+
 body {
   background-color: #f8f9fa;
 }
