@@ -1,5 +1,6 @@
 package com.prochicken.prochickenfitness.repository;
 
+import com.prochicken.prochickenfitness.entity.CalendarEntity;
 import com.prochicken.prochickenfitness.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,4 +17,5 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
 
     @Query("select u from UserEntity u join u.roles r where r.name='ROLE_COACH' ")
     List<UserEntity> findAllCoach();
+
 }

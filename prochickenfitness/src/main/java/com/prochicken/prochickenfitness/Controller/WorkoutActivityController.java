@@ -57,4 +57,11 @@ public class WorkoutActivityController {
         workoutActivityEntity = workoutActivityRepository.save(WorkoutActivityTransfer.toEntity(workoutActivityDTO,workoutActivityEntity));
         return WorkoutActivityTransfer.toDTO(workoutActivityEntity);
     }
+
+    @DeleteMapping("/{id}")
+    public WorkoutActivityDTO deleteWorkout(@PathVariable(name = "id") int id){
+        WorkoutActivityEntity workoutActivityEntity = workoutActivityRepository.findById(id).get();
+        workoutActivityRepository.delete(workoutActivityEntity);
+        return WorkoutActivityTransfer.toDTO(workoutActivityEntity);
+    }
 }

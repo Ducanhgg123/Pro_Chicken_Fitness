@@ -86,6 +86,9 @@ public class UserEntity {
             CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "user")
     private List<PostEntity> posts;
 
+    @OneToOne
+    @JoinColumn(name = "calendar_id")
+    private CalendarEntity calendar;
 
     public void addIngredient(IngredientEntity ingredient){
         if (ingredients==null){

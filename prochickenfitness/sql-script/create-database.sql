@@ -25,6 +25,7 @@ CREATE TABLE `user`(
     `description` text,
     `price` int default 0,
     `coach_id` int default null,
+    `calendar_id` int,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -88,15 +89,16 @@ CREATE TABLE `dish_ingredient`(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 CREATE TABLE `workout_activities`(
-	`id` int not null,
+	`id` int not null auto_increment,
     `name` varchar(256),
     `picture` mediumblob,
     primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 CREATE TABLE `daily_workout`(
-	`id` int not null,
+	`id` int not null auto_increment,
     `date_set` datetime,
+    `calendar_id` int,
     primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -110,6 +112,12 @@ CREATE TABLE `daily_activities`(
 	`daily_id` int not null,
     `activity_id` int not null,
     primary key (`daily_id`,`activity_id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+CREATE TABLE `calendar`(
+	`id` int not null auto_increment,
+    `generate_date` datetime,
+    primary key(`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 alter table `user_ingredient`
@@ -129,7 +137,8 @@ alter table `post`
 add foreign key (`user_id`) references `user`(`id`);
 
 alter table `user`
-add foreign key (`coach_id`) references `user`(`id`);
+add foreign key (`coach_id`) references `user`(`id`),
+add foreign key (`calendar_id`) references `calendar`(`id`);
 
 alter table `dish_ingredient`
 add foreign key (`dish_id`) references `dish`(`id`),
@@ -143,4 +152,6 @@ alter table `daily_activities`
 add foreign key (`daily_id`) references `daily_workout`(`id`),
 add foreign key (`activity_id`) references `workout_activities`(`id`);
 
+alter table `daily_workout` 
+add foreign key (`calendar_id`) references `calendar`(`id`);
 
