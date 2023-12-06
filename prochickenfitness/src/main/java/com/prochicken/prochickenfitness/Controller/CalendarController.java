@@ -124,22 +124,23 @@ public class CalendarController {
     public CalendarDTO generateCalendarForUser(@RequestBody Map<String,Object> api){
         String username = (String) api.get("username");
         int caloriesPerDay = (int) api.get("caloriesPerDay");
+
+//        Delete previous calendar
         UserEntity user = userRepository.findByUsername(username).get();
         CalendarEntity calendarEntity = calendarRepository.findByUsername(username);
         user.setCalendar(null);
-        calendarRepository.delete(calendarEntity);
-        System.out.println("Breakpoint nnn");
+        if (calendarEntity!=null){
+            calendarRepository.delete(calendarEntity);
+            userRepository.save(user);
+        }
 
-        System.out.println("Break point nnn1");
 
-        System.out.println("breakout nnnn2");
-        userRepository.save(user);
-        System.out.println("asfasadssda");
-
-        calendarEntity = calendarService.generateCalendar(caloriesPerDay,user.getWorkoutFrequency());
+//        Generate a new calendar for user
+        calendarEntity = calendarService.generateCalendar(caloriesPerDay,user);
         user.setCalendar(calendarEntity);
         userRepository.save(user);
 
+//        Return calendarDTO
         CalendarDTO calendarDTO = new CalendarDTO();
         calendarDTO.setId(calendarEntity.getId());
         calendarDTO.setGenerateDate(calendarEntity.getGenerateDate());
