@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Header.css";
+import { Dropdown } from "react-bootstrap";
 function Header() {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    sessionStorage.clear();
+    navigate("/login");
+  };
   return (
     <header className="fixed-top">
       <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light justify-content-center mt-0 mb-0">
@@ -64,37 +70,19 @@ function Header() {
             ></div>
           </div>
         </div>
-        <div className="dropdown ml-auto">
-          <button
-            className="btn btn-secondary"
-            type="button"
-            id="dropdownMenuButton"
-            data-bs-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/147/147140.png"
-              alt="Avatar"
-              border="0"
-            />
-          </button>
-          <ul
-            className="dropdown-menu dropdown-menu-end"
-            aria-labelledby="dropdownMenuButton"
-          >
-            <li>
-              <a className="dropdown-item" href="#">
-                Profile
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Log out
-              </a>
-            </li>
-          </ul>
-        </div>
+
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <img src="https://cdn-icons-png.flaticon.com/512/147/147140.png" />
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item as={Link} to="/profile">
+              Profile
+            </Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </nav>
     </header>
   );

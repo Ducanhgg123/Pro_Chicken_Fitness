@@ -1,55 +1,77 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/PersonalInformation.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addFavoriteIngredient,
-  addUnfavoriteIngredient,
-  removeFavoriteIngredient,
-  removeUnfavoriteIngredient,
+  addUserIngredient,
+  removeUserIngredient,
+  setFavoriteIngredients,
+  setUnfavoriteIngredients,
 } from "../redux/ingredientsSlice";
 import WorkoutFrequencyForm from "../components/WorkoutFrequencyForm";
 import ReviewInformationForm from "../components/personal-forms/ReviewInformationForm";
+import IngredientService from "../api/services/IngredientService";
 
-const IngredientItem = ({ isFavoriteForm, item, idx }) => {
+const IngredientItem = ({ item }) => {
+  const { userIngredients } = useSelector((state) => state.ingredients);
   const dispatch = useDispatch();
-  const payload = {
-    ingredient: item,
-    idx,
-  };
-  const handleIngredients = (e, payload) => {
+  const handleIngredients = (e) => {
+    const payload = {
+      foodId: item.id,
+    };
     if (e.target.checked) {
-      if (isFavoriteForm) dispatch(addFavoriteIngredient(payload));
-      else dispatch(addUnfavoriteIngredient(payload));
+      dispatch(addUserIngredient(payload));
     } else {
-      if (isFavoriteForm) dispatch(removeFavoriteIngredient(payload));
-      else dispatch(removeUnfavoriteIngredient(payload));
+      dispatch(removeUserIngredient(payload));
     }
   };
   return (
     <div className="custom-control custom-checkbox">
       <input
         type="checkbox"
-        className={`custom-control-input ${item.chosenState}`}
-        onChange={(e) => handleIngredients(e, payload)}
-        checked={item.chosenState !== "empty"}
+        className="custom-control-input"
+        onChange={(e) => handleIngredients(e)}
+        checked={userIngredients.includes(item?.id)}
       />
-      <label className="h6 custom-control-label">{item.food}</label>
+      <label className="h6 custom-control-label">{item?.name}</label>
     </div>
   );
 };
 
-const FavoriteFoodForm = () => {
+const PersonalInformationForm = () => {
   const [form, setForm] = useState(1);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const getFavoriteIngredients = async () => {
+      try {
+        const res = await IngredientService.getFavoriteIngredient();
+        if (res?.status == 200) {
+          dispatch(setFavoriteIngredients(res.data));
+        }
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const getUnfavoriteIngredients = async () => {
+      try {
+        const res = await IngredientService.getUnfavoriteIngredient();
+        if (res?.status == 200) {
+          dispatch(setUnfavoriteIngredients(res.data));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getFavoriteIngredients();
+    getUnfavoriteIngredients();
+  }, []);
+
   const nextForm = () => {
     setForm(form + 1);
   };
 
   const previousForm = () => {
     setForm(form - 1);
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
   };
 
   const renderForm = () => {
@@ -94,11 +116,8 @@ const FavoriteFoodForm = () => {
 };
 
 const FavoriteForm = ({ nextForm }) => {
-  // State and logic for Form 1
-  const { ingredients, favoriteIngredients } = useSelector(
-    (state) => state.ingredients
-  );
-
+  const { favoriteIngredients } = useSelector((state) => state.ingredients);
+  if (!favoriteIngredients) return null;
   return (
     <form className="form1">
       <div className="container">
@@ -121,13 +140,8 @@ const FavoriteForm = ({ nextForm }) => {
               </div>
             </div>
             <div className="checkbox-column" id="left-checklist">
-              {ingredients.map((item, idx) => (
-                <IngredientItem
-                  key={`favorite-${idx}`}
-                  idx={idx}
-                  item={item}
-                  isFavoriteForm={true}
-                />
+              {favoriteIngredients?.map((item) => (
+                <IngredientItem key={item?.id} item={item} />
               ))}
             </div>
           </div>
@@ -138,9 +152,9 @@ const FavoriteForm = ({ nextForm }) => {
               Chosen ingredient
             </h4>
             <ul>
-              {favoriteIngredients?.map((ingredient) => (
+              {/* {favoriteIngredients?.map((ingredient) => (
                 <li key={ingredient}>{ingredient}</li>
-              ))}
+              ))} */}
             </ul>
           </div>
         </div>
@@ -155,10 +169,7 @@ const FavoriteForm = ({ nextForm }) => {
 };
 
 const UnfavoriteForm = ({ nextForm, previousForm }) => {
-  // State and logic for Form 2
-  const { ingredients, unfavoriteIngredients } = useSelector(
-    (state) => state.ingredients
-  );
+  const { unfavoriteIngredients } = useSelector((state) => state.ingredients);
   return (
     <div className="form2" style={{ width: "100%" }}>
       <form>
@@ -182,15 +193,8 @@ const UnfavoriteForm = ({ nextForm, previousForm }) => {
               </div>
               <div className="checkbox-column" id="left-checklist">
                 <div>
-                  {ingredients?.map((item, idx) => {
-                    return (
-                      <IngredientItem
-                        isFavoriteForm={false}
-                        key={`unfavorite-${idx}`}
-                        item={item}
-                        idx={idx}
-                      />
-                    );
+                  {unfavoriteIngredients?.map((item) => {
+                    return <IngredientItem key={item?.id} item={item} />;
                   })}
                 </div>
               </div>
@@ -200,11 +204,6 @@ const UnfavoriteForm = ({ nextForm, previousForm }) => {
               <h4 className="mb-4 text-center mr-2 ml-2 py-3 text-white">
                 Unfavorite ingredient
               </h4>
-              <ul>
-                {unfavoriteIngredients?.map((ingredient) => (
-                  <li key={ingredient}>{ingredient}</li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
@@ -226,45 +225,4 @@ const UnfavoriteForm = ({ nextForm, previousForm }) => {
   );
 };
 
-const Form3 = ({ previousForm, handleFormSubmit }) => {
-  const { favoriteIngredients, unfavoriteIngredients } = useSelector(
-    (state) => state.ingredients
-  );
-  return (
-    <form onSubmit={handleFormSubmit}>
-      <h1 className="text-center">Review your information</h1>
-      <div className="row">
-        <div className="col-md-6">
-          <h3>Favorite Ingredients</h3>
-          <ul>
-            {favoriteIngredients?.map((ingredient) => (
-              <li key={`favorite-${ingredient}`}>{ingredient}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="col-md-6">
-          <h3>Unfavorite Ingredients</h3>
-          <ul>
-            {unfavoriteIngredients?.map((ingredient) => (
-              <li key={`unfavorite-${ingredient}`}>{ingredient}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className="btn-container">
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={previousForm}
-        >
-          Previous
-        </button>
-        <button type="submit" className="btn btn-success">
-          Submit
-        </button>
-      </div>
-    </form>
-  );
-};
-
-export default FavoriteFoodForm;
+export default PersonalInformationForm;

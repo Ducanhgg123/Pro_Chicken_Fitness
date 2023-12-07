@@ -15,7 +15,7 @@ const userPersistConfig = {
 const rootReducer = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
   ingredients: ingredientsReducer,
-  workout: frequencyWorkoutReducer,
+  workoutFrequency: frequencyWorkoutReducer,
 });
 
 export const store = configureStore({

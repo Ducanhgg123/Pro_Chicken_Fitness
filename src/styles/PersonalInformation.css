@@ -95,12 +95,11 @@ body {
   outline: none;
   cursor: pointer;
 }
-.favorite {
-  background-color: #333;
-}
-.unfavorite {
-  background-color: red;
-}
+
 .custom-control-input .empty {
   background-color: white;
+}
+
+.custom-control-input:checked {
+  background-color: #333;
 }

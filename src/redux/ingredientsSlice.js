@@ -1,48 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
-import ingredientsData from "../ingredients.json";
 const initialState = {
-  ingredients: ingredientsData,
   favoriteIngredients: [],
   unfavoriteIngredients: [],
+  userIngredients: [],
 };
 
 export const ingredientsSlice = createSlice({
   name: "ingredients",
   initialState,
   reducers: {
-    addFavoriteIngredient: (state, { payload }) => {
-      state.favoriteIngredients.push(payload.ingredient.food);
-      state.ingredients[payload.idx].chosenState = "favorite";
-      console.log("add favorite ingredient");
+    addUserIngredient: (state, { payload }) => {
+      state.userIngredients.push(payload.foodId);
+      console.log("add user ingredient");
     },
-    removeFavoriteIngredient: (state, { payload }) => {
-      state.favoriteIngredients = state.favoriteIngredients.filter(
-        (item) => item.food !== payload.ingredient.food
+    removeUserIngredient: (state, { payload }) => {
+      state.userIngredients = state.userIngredients.filter(
+        (item) => item !== payload.foodId
       );
-      console.log("remove favorite ingredient");
-      state.ingredients[payload.idx].chosenState = "empty";
+      console.log("remove user ingredient");
     },
-    addUnfavoriteIngredient: (state, { payload }) => {
-      state.unfavoriteIngredients.push(payload.ingredient.food);
-      console.log(payload);
-      state.ingredients[payload.idx].chosenState = "unfavorite";
+    setUnfavoriteIngredients: (state, { payload }) => {
+      state.unfavoriteIngredients = payload;
     },
-    removeUnfavoriteIngredient: (state, { payload }) => {
-      state.unfavoriteIngredients = state.unfavoriteIngredients.filter(
-        (item) => item.food !== payload.ingredient.food
-      );
-
-      state.ingredients[payload.idx].chosenState = "empty";
+    setFavoriteIngredients: (state, { payload }) => {
+      state.favoriteIngredients = payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
 export const {
-  addFavoriteIngredient,
-  addUnfavoriteIngredient,
-  removeFavoriteIngredient,
-  removeUnfavoriteIngredient,
+  addUserIngredient,
+  removeUserIngredient,
+  setUnfavoriteIngredients,
+  setFavoriteIngredients,
 } = ingredientsSlice.actions;
 
 export default ingredientsSlice.reducer;

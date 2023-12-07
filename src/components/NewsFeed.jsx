@@ -5,10 +5,23 @@ import PostService from "../api/services/PostService";
 
 function NewsFeed({ post }) {
   const [showComment, setShowComment] = useState(false);
+  const [comments, setComments] = useState([]);
   const [likeCount, setLikeCount] = useState(post?.likeCount || 0);
   const [thumbnail, setThumbnail] = useState(null);
-  const toggleShowComment = () => {
+
+  const toggleShowComment = async () => {
     setShowComment((showComment) => !showComment);
+    if (!showComment && comments.length == 0)
+      try {
+        const res = await PostService.getCommentsByPost(post.id);
+        console.log("comments", res);
+
+        if (res?.status == 200) {
+          setComments(res.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
   };
 
   const formattedDate = (dateString) => {
@@ -53,6 +66,7 @@ function NewsFeed({ post }) {
     }
     return "./image/pro-chicken-logo.jpg";
   };
+
   return (
     <div className="card col-md-6 mx-auto my-3">
       <div className="card-header">
@@ -108,7 +122,13 @@ function NewsFeed({ post }) {
           <div className="text-muted">5 Comments</div>
         </div>
       </div>
-      {showComment && <CommentSection post={post} />}
+      {showComment && (
+        <CommentSection
+          post={post}
+          comments={comments}
+          setComments={setComments}
+        />
+      )}
     </div>
   );
 }

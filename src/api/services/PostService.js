@@ -27,6 +27,15 @@ class PostService {
       return error;
     }
   };
+
+  getCommentsByPost = async (postId) => {
+    try {
+      const response = await AxiosInstance.get(`/post/comment/${postId}`);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  };
 }
 
 export default new PostService();

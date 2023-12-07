@@ -1,13 +1,54 @@
 import { useSelector } from "react-redux";
+import UserService from "../../api/services/UserService";
+import { useNavigate } from "react-router-dom";
 
 function ReviewInformationForm({ previousForm }) {
-  const { favoriteIngredients, unfavoriteIngredients } = useSelector(
-    (state) => state.ingredients
-  );
+  const { userIngredients, favoriteIngredients, unfavoriteIngredients } =
+    useSelector((state) => state.ingredients);
+  const { username } = useSelector((state) => state.user);
+  const userIngredientsSet = new Set(userIngredients);
+  const navigate = useNavigate();
+  const handleSubmit = async () => {
+    if (!username) {
+      alert("dont have username");
+      return;
+    }
+    try {
+      const res = await UserService.updateUserIngredient({
+        username,
+        ingredients: userIngredients,
+      });
+      if (res?.status == 200) {
+        navigate("/");
+      } else {
+        alert("something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const renderUserFavoriteIngredients = () => {
+    let favoriteFoodIds = [];
+    for (const ingredient of favoriteIngredients) {
+      if (userIngredientsSet.has(ingredient.id)) {
+        favoriteFoodIds.push(ingredient);
+      }
+    }
+    return favoriteFoodIds;
+  };
+
+  const renderUserUnFavoriteIngredients = () => {
+    let unfavoriteFoodIds = [];
+    for (const ingredient of unfavoriteIngredients) {
+      if (userIngredientsSet.has(ingredient.id))
+        unfavoriteFoodIds.push(ingredient);
+    }
+
+    return unfavoriteFoodIds;
+  };
   const { daysInWeek, daysPerWeek } = useSelector(
     (state) => state.workoutFrequency
   );
-  console.log(daysPerWeek);
   return (
     <div className="container">
       <h2 className="text-center">Review your personal information</h2>
@@ -15,12 +56,9 @@ function ReviewInformationForm({ previousForm }) {
         <div className="col-md-6">
           <h2>Favorite Ingredients</h2>
           <ol className="list-group list-group-numbered">
-            {favoriteIngredients.map((ingredient) => (
-              <button
-                className="list-group-item"
-                key={`unfavorite-${ingredient}`}
-              >
-                {ingredient}
+            {renderUserFavoriteIngredients()?.map((ingredient) => (
+              <button className="list-group-item" key={ingredient?.id}>
+                {ingredient?.name}
               </button>
             ))}
           </ol>
@@ -29,12 +67,9 @@ function ReviewInformationForm({ previousForm }) {
           <h2>Unfavorite Ingredients</h2>
 
           <ol className="list-group list-group-numbered">
-            {unfavoriteIngredients.map((ingredient) => (
-              <button
-                className="list-group-item"
-                key={`unfavorite-${ingredient}`}
-              >
-                {ingredient}
+            {renderUserUnFavoriteIngredients()?.map((ingredient) => (
+              <button className="list-group-item" key={ingredient?.id}>
+                {ingredient?.name}
               </button>
             ))}
           </ol>
@@ -63,7 +98,9 @@ function ReviewInformationForm({ previousForm }) {
         <button className="btn btn-secondary" onClick={previousForm}>
           Previous
         </button>
-        <button className="btn btn-primary">Submit data</button>
+        <button onClick={handleSubmit} className="btn btn-primary">
+          Submit data
+        </button>
       </div>
     </div>
   );
