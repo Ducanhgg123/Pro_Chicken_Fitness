@@ -8,6 +8,7 @@ import com.prochicken.prochickenfitness.Transfer.CommentTransfer;
 import com.prochicken.prochickenfitness.Transfer.UserTransfer;
 import com.prochicken.prochickenfitness.entity.CommentEntity;
 import com.prochicken.prochickenfitness.entity.IngredientEntity;
+import com.prochicken.prochickenfitness.entity.RoleEntity;
 import com.prochicken.prochickenfitness.entity.UserEntity;
 import com.prochicken.prochickenfitness.repository.CommentRepository;
 import com.prochicken.prochickenfitness.repository.IngredientRepository;
@@ -75,6 +76,11 @@ public class UserController {
 
         List<UserDTO> userDTOS = userEntities.stream().map(e -> UserTransfer.toDTO(e)).toList();
         return userDTOS;
+    }
+
+    @GetMapping("/roles/{username}")
+    public List<RoleEntity> getRole(@PathVariable(name = "username") String username){
+        return userRepository.findRoleOfUserByUsername(username);
     }
 
 
