@@ -25,4 +25,6 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
             " where u.username = :username and i.status = :status")
     Set<String> findIngredientsbyStatus(@Param("username") String username, Boolean status);
 
+    @Query("select u from UserEntity u join u.roles r where r.name = :role")
+    List<UserEntity> findUserByRoles_Name(@Param("role") String role);
 }

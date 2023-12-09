@@ -52,6 +52,32 @@ public class UserController {
         return userDTOS;
     }
 
+
+    @GetMapping("/coaches")
+    public List<UserDTO> getCoaches(){
+        List<UserEntity> userEntities = userRepository.findUserByRoles_Name("ROLE_COACH");
+
+        List<UserDTO> userDTOS = userEntities.stream().map(e -> UserTransfer.toDTO(e)).toList();
+        return userDTOS;
+    }
+
+    @GetMapping("/users")
+    public List<UserDTO> getNormalUsers(){
+        List<UserEntity> userEntities = userRepository.findUserByRoles_Name("ROLE_USER");
+
+        List<UserDTO> userDTOS = userEntities.stream().map(e -> UserTransfer.toDTO(e)).toList();
+        return userDTOS;
+    }
+
+    @GetMapping("/admins")
+    public List<UserDTO> getAdmins(){
+        List<UserEntity> userEntities = userRepository.findUserByRoles_Name("ROLE_ADMIN");
+
+        List<UserDTO> userDTOS = userEntities.stream().map(e -> UserTransfer.toDTO(e)).toList();
+        return userDTOS;
+    }
+
+
     @PostMapping("/update/avatar")
     public ResponseEntity<?> updateAvatar(@RequestParam("avatar")MultipartFile file,
                                           @RequestParam("username") String username) throws IOException {
