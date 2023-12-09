@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -68,7 +69,7 @@ public class PostController {
                               @RequestParam(name = "content") String content) throws IOException {
         UserEntity user = userRepository.findByUsername(username).get();
         PostDTO postDTO = new PostDTO();
-        postDTO.setPostDate(new Date());
+        postDTO.setPostDate(LocalDate.now());
         postDTO.setId(0);
         postDTO.setContent(content);
         postDTO.setLikeCount(0);

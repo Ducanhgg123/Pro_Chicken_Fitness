@@ -3,6 +3,7 @@ package com.prochicken.prochickenfitness.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,7 @@ public class PostEntity {
     private Byte[] thumbnail;
 
     @Column(name = "post_date")
-    private Date postDate;
+    private LocalDate postDate;
 
     @Column(name = "content")
     private String content;
