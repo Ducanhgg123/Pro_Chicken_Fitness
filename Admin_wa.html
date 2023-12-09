@@ -13,13 +13,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="sb-admin-2.min.css" rel="stylesheet">
+    <link href="Admin.css" rel="stylesheet">
 
 </head>
 
@@ -34,7 +33,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <img src="https://raw.githubusercontent.com/Ducanhgg123/Pro_Chicken_Fitness/Loc/ProChicken-PhotoRoom.png-PhotoRoom.png"
-                    style="max-width: 75px; max-height: 75px" alt="Prochicken logo">
+                    style="max-width: 75px; max-height: 75px" alt="ProChicken logo">
                 <div class="sidebar-brand-text mx-3">ProChicken Admin</div>
             </a>
 
@@ -55,7 +54,6 @@
                     <span>Users</span></a>
             </li>
 
-            
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
@@ -77,12 +75,13 @@
                     <span>Dishes</span></a>
             </li>
 
-             <!-- Nav Item - Dashboard -->
-             <li class="nav-item active">
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
                 <a class="nav-link" href="index.html">
                     <i class="bi bi-activity"></i>
                     <span>Workout activies</span></a>
             </li>
+
 
 
         </ul>
@@ -131,7 +130,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg" alt="User logo">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg" alt="User avatar">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -164,9 +163,13 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">POST LIST</h1>
+                        <h1 class="h3 mb-0 text-gray-800">WORKOUT ACTIVITY LIST</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-                            <i class="bi bi-plus-circle-fill"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                            </svg>
                             Add
                         </a>
                     </div>
@@ -178,24 +181,18 @@
 
                             <table class="table table-hover" style="width: 100%;">
                                 <tr>
-                                    <th>PostID</th>
-                                    <th>Thumbnail</th>
-                                    <th>Post date</th>
-                                    <th>Content</th>
-                                    <th>Like</th>
-                                    <th>User</th>
+                                    <th>WAID</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
                                     <th>Setting</th>
                                 </tr>
                                 <tr>
                                     <td>0001</td>
+                                    <td>Deadlifts</td>
                                     <td>
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz1Z9z7Do3kfOJxR3JsE_ua8HnUz00J-yelw&usqp=CAU"
-                                        style="max-width: 75px; max-height: 75px" alt="Post thumbnail">
+                                        <img src="https://blogscdn.thehut.net/wp-content/uploads/sites/495/2018/10/25171220/Blog-Deadlifting-Male_1800x672_1200x672_acf_cropped.jpg"
+                                            style="max-width: 75px; max-height: 75px" alt="WA image">
                                     </td>
-                                    <td>25/12/2023</td>
-                                    <td>Hello world</td>
-                                    <td>0</td>
-                                    <td>Alan</td>
                                     <td>
                                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
                                             <i class="bi bi-gear-fill"></i>
@@ -209,14 +206,11 @@
                                 </tr>
                                 <tr>
                                     <td>0002</td>
+                                    <td>Circuit Training</td>
                                     <td>
-                                        <img src="https://newhazletttheater.org/wp-content/uploads/2023/11/A-my-name-is-1080x566-1.jpg"
-                                        style="max-width: 75px; max-height: 75px" alt="Post thumbnail">
+                                        <img src="https://cdn-s3.thevarsity.ca/2017/11/Sports_Circuit-Training-Benefits_Jing-Tey.jpg"
+                                            style="max-width: 75px; max-height: 75px" alt="WA image">
                                     </td>
-                                    <td>01/01/2024</td>
-                                    <td>Hi! My name is Alice.</td>
-                                    <td>1</td>
-                                    <td>Alice</td>
                                     <td>
                                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
                                             <i class="bi bi-gear-fill"></i>
@@ -234,24 +228,6 @@
 
                     </div>
                 </div>
-
-
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin-2.min.js"></script>
-
-                <!-- Page level plugins -->
-                <script src="vendor/chart.js/Chart.min.js"></script>
-
-                <!-- Page level custom scripts -->
-                <script src="js/demo/chart-area-demo.js"></script>
-                <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 
