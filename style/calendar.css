@@ -8,7 +8,7 @@ body {
   margin-top: 20px;
 }
 .day-blog {
-  border: 2px solid #ccc;
+  border: 2px solid #222f3e;
   padding: 10px 5px;
   margin: 5px;
   border-radius: 5px;
@@ -19,24 +19,32 @@ body {
 
 .day-header {
   font-weight: bold;
-  color: #222f3e;
+  color: white;
 }
 
 .add-event-btn {
   border-radius: 10px;
   background-color: #0984e3;
+  margin: 5px 0px;
 }
 
 .day-blog-content {
   border-radius: 5px;
+  background-color: #10ac84;
+  padding: 15px;
+  margin: 20px 0px;
 }
 
-.day-blog-content > * {
+.day-blog-content > div {
   color: #0d0d0d;
   /* border: 2px solid #332b1e; */
   background-color: #f2f2f2;
   border-radius: 5px;
-  margin: 20px 0;
+  margin: 10px 0;
+}
+
+.day-blog-content > h5 {
+  color: white;
 }
 
 #auto-generate-btn button {
@@ -46,9 +54,30 @@ body {
   border-radius: 10px;
 }
 
-.total-calorie {
-  background-color: #576574;
-  border-radius: 5px;
-  color: white;
-  padding: 5px;
+.modal img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Add your custom styles here if needed */
+.custom-checkbox {
+  display: none; /* Hide the default checkbox */
+}
+
+.custom-checkbox + label {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+#addExcerciseModal .custom-checkbox:checked + label {
+  background-color: #28a745; /* Change color when checked */
+  color: #fff; /* Text color when checked */
+  border: 1px solid #218838; /* Border color when checked */
+}
+
+#addMealModal .custom-checkbox:checked + label {
+  background-color: red; /* Change color when checked */
+  color: #fff; /* Text color when checked */
+  border: 1px solid red; /* Border color when checked */
 }
