@@ -32,4 +32,11 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
 
     @Query("select r from UserEntity u join u.roles r where u.username = :username")
     List<RoleEntity> findRoleOfUserByUsername(@Param("username") String username);
+
+    @Query("select u.coach from UserEntity u where u.username = :username")
+    UserEntity findUserCoach(@Param("username") String username);
+
+    @Query("select u.userSubscribes from UserEntity u where u.username = :username")
+    List<UserEntity> findClientForCoach(@Param("username") String username);
+
 }

@@ -72,15 +72,21 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
     private List<IngredientEntity> ingredients;
 
+
+
     @Column(name = "description")
     private String description;
 
     @Column(name = "price")
     private Integer price;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.DETACH,CascadeType.MERGE,
+            CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "coach_id")
     private UserEntity coach;
+
+    @OneToMany(mappedBy = "coach")
+    private List<UserEntity> userSubscribes;
 
     @OneToMany(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "user")

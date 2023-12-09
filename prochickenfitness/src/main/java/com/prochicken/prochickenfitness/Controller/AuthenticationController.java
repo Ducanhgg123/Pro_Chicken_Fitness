@@ -6,6 +6,7 @@ import com.prochicken.prochickenfitness.DTO.RegisterDTO;
 import com.prochicken.prochickenfitness.DTO.RegisterResponseDTO;
 import com.prochicken.prochickenfitness.Service.MyUserDetailService;
 import com.prochicken.prochickenfitness.Util.JwtUtil;
+import com.prochicken.prochickenfitness.entity.CalendarEntity;
 import com.prochicken.prochickenfitness.entity.RoleEntity;
 import com.prochicken.prochickenfitness.entity.UserEntity;
 import com.prochicken.prochickenfitness.repository.RoleRepository;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -93,6 +95,8 @@ public class AuthenticationController {
 
         user.setRoles(roles);
         userRepository.save(user);
+
+
         return new ResponseEntity<>(new RegisterResponseDTO(registerDTO.getUsername(), true),HttpStatus.OK);
     }
 }

@@ -39,4 +39,15 @@ public class CoachController {
         return UserTransfer.toDTO(user);
     }
 
+    @GetMapping("/find/coach/{username}")
+    public UserDTO findCoachByUsername(@PathVariable(name = "username") String username){
+        UserEntity user = userRepository.findUserCoach(username);
+        return UserTransfer.toDTO(user);
+    }
+
+    @GetMapping("/find/client/{username}")
+    public List<UserDTO> findClientByUsername(@PathVariable(name = "username") String username){
+        List<UserEntity> user = userRepository.findClientForCoach(username);
+        return user.stream().map(e -> UserTransfer.toDTO(e)).toList();
+    }
 }
