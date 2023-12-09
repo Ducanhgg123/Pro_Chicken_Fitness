@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ProChicken Admin - Dashboard</title>
+    <title>ProChicken Admin - Users</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <!-- Custom fonts for this template-->
@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Admin_home.html">
                 <img src="https://raw.githubusercontent.com/Ducanhgg123/Pro_Chicken_Fitness/Loc/ProChicken-PhotoRoom.png-PhotoRoom.png"
                     style="max-width: 75px; max-height: 75px" alt="ProChicken logo">
                 <div class="sidebar-brand-text mx-3">ProChicken Admin</div>
@@ -42,46 +42,45 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="Admin_home.html">
                     <i class="bi bi-house-fill"></i>
                     <span>Home</span></a>
             </li>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="Admin_users.html">
                     <i class="bi bi-people-fill"></i>
                     <span>Users</span></a>
             </li>
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active">
+                <a class="nav-link" href="Admin_posts.html">
                     <i class="bi bi-postcard-heart-fill"></i>
                     <span>Posts</span></a>
             </li>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="Admin_ingredients.html">
                     <i class="bi bi-bag-heart-fill"></i>
                     <span>Ingredients</span></a>
             </li>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="Admin_dishes.html">
                     <i class="bi bi-card-checklist"></i>
                     <span>Dishes</span></a>
             </li>
 
              <!-- Nav Item - Dashboard -->
              <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="Admin_wa.html">
                     <i class="bi bi-activity"></i>
                     <span>Workout activies</span></a>
             </li>
-
 
 
         </ul>
@@ -124,13 +123,14 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
+                        </li>
 
                             <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg" alt="User avatar">
+                                <img class="img-profile rounded-circle" src="https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" alt="User avatar">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -163,7 +163,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">USER LIST</h1>
+                        <h1 class="h3 mb-0 text-gray-800">USERS</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
@@ -175,62 +175,70 @@
                     </div>
 
                     <!-- Content Row -->
-                    <div class="card border-left-primary shadow h-100 py-2">
 
-                        <div class="row no-gutters align-items-center">
-
-                            <table class="table table-hover" style="width: 100%;">
-                                <tr>
-                                    <th>UserID</th>
-                                    <th>Username</th>
-                                    <th>Fullname</th>
-                                    <th>Age</th>
-                                    <th>Workout frequency</th>
-                                    <th>Role</th>
-                                    <th>Setting</th>
-                                </tr>
-                                <tr>
-                                    <td>0001</td>
-                                    <td>Alan</td>
-                                    <td>Alan Wills</td>
-                                    <td>25</td>
-                                    <td>saturday, sunday</td>
-                                    <td>User</td>
-                                    <td>
-                                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
-                                            <i class="bi bi-gear-fill"></i>
-                                            Edit
-                                        </a>
-                                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-                                            <i class="bi bi-trash3-fill"></i>
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0001</td>
-                                    <td>Alice</td>
-                                    <td>Alice Wills</td>
-                                    <td>24</td>
-                                    <td>friday, saturday</td>
-                                    <td>User</td>
-                                    <td>
-                                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
-                                            <i class="bi bi-gear-fill"></i>
-                                            Edit
-                                        </a>
-                                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-                                            <i class="bi bi-trash3-fill"></i>
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">User list</h6>
                         </div>
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
 
+                                <table class="table table-hover" style="width: 100%;">
+                                    <tr>
+                                        <th>UserID</th>
+                                        <th>Username</th>
+                                        <th>Fullname</th>
+                                        <th>Age</th>
+                                        <th>Workout frequency</th>
+                                        <th>Role</th>
+                                        <th>Setting</th>
+                                    </tr>
+                                    <tr>
+                                        <td>0001</td>
+                                        <td>Alan</td>
+                                        <td>Alan Wills</td>
+                                        <td>25</td>
+                                        <td>saturday, sunday</td>
+                                        <td>User</td>
+                                        <td>
+                                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                                <i class="bi bi-gear-fill"></i>
+                                                Edit
+                                            </a>
+                                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                                                <i class="bi bi-trash3-fill"></i>
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>0001</td>
+                                        <td>Alice</td>
+                                        <td>Alice Wills</td>
+                                        <td>24</td>
+                                        <td>friday, saturday</td>
+                                        <td>User</td>
+                                        <td>
+                                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                                <i class="bi bi-gear-fill"></i>
+                                                Edit
+                                            </a>
+                                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                                                <i class="bi bi-trash3-fill"></i>
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+    
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
