@@ -1,92 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
     />
-    <title>Blog Item (Bootstrap 5)</title>
-
     <style>
-      #newsfeed-blog-item .card-footer button {
-        border: none;
+      .modal img {
+        width: 20px;
+        height: 20px;
       }
 
-      #newsfeed-blog-item .card-body hr {
-        height: 2px;
+      /* Add your custom styles here if needed */
+      .custom-checkbox {
+        display: none; /* Hide the default checkbox */
+      }
+
+      .custom-checkbox + label {
+        padding: 10px 20px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+      }
+
+      #addDishModal .custom-checkbox:checked + label {
+        background-color: green; /* Change color when checked */
+        color: #fff; /* Text color when checked */
+        border: 1px solid green; /* Border color when checked */
       }
     </style>
   </head>
+
   <body>
-    <!--Blog-->
-    <div class="container mt-5" id="newsfeed-blog-item">
-      <div class="card col-md-6 mx-auto">
-        <div class="card-header">
-          <div class="d-flex align-items-center">
-            <img
-              src="./image/pro-chicken-logo.jpg"
-              alt="Profile Picture"
-              class="rounded-circle me-2"
-              style="width: 40px; height: 40px"
-            />
-            <div>
-              <h6 class="mb-0">Blogger Name</h6>
-              <time class="text-muted">Posted 3 hours ago</time>
+    <header>
+      <!-- place navbar here -->
+    </header>
+    <main>
+      <button
+        type="button"
+        class="btn btn-secondary add-event-btn container-fluid"
+        data-bs-toggle="modal"
+        data-bs-target="#addDishModal"
+      >
+        <i class="bi bi-plus"></i> Add Meal
+      </button>
+      <div
+        class="modal fade"
+        id="addDishModal"
+        tabindex="-1"
+        aria-labelledby="addDishModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addDishModalLabel">Add more meal</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            Blog content goes here. This can include text, images, and other
-            media.
-          </p>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-            aliquid tenetur fugiat sunt odit cumque distinctio, doloremque illum
-            enim eum quisquam eveniet assumenda, velit ullam omnis in adipisci
-            iure id!
-          </p>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-            aliquid tenetur fugiat sunt odit cumque distinctio, doloremque illum
-            enim eum quisquam eveniet assumenda, velit ullam omnis in adipisci
-            iure id!
-          </p>
-          <hr />
-          <div class="text-center">
-            <img
-              src="./image/pro-chicken-logo.jpg"
-              alt="Blog Image"
-              style="width: 400px; height: 400px"
-            />
-          </div>
-        </div>
-        <div
-          class="card-footer d-flex justify-content-between align-items-center"
-        >
-          <div>
-            <button type="button" class="btn btn-outline-secondary">
-              <i class="bi bi-hand-thumbs-up-fill"></i>
-            </button>
-            <button type="button" class="btn btn-outline-secondary">
-              <i class="bi bi-chat-left-dots-fill"></i>
-            </button>
-          </div>
-          <div>
-            <span class="text-muted me-2">10 Likes</span>
-            <span class="text-muted">5 Comments</span>
+            <div class="modal-body">
+              <!--  -->
+              <div>
+                <!-- Name -->
+
+                <div>
+                  <label for="dish-name" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="dish-name"
+                    placeholder="dish name"
+                  />
+                </div>
+                <!-- Image -->
+                <div>
+                  <p>Add image</p>
+                  <label
+                    for="dish-image"
+                    class="form-label btn btn-outline-primary"
+                    ><i class="bi bi-image"></i
+                  ></label>
+                  <input
+                    type="file"
+                    class="form-control visually-hidden"
+                    id="dish-image"
+                    placeholder="dish image"
+                    accept="image/*"
+                  />
+                  <div>
+                    <img
+                      src="./image/AnhCorgiDeThuong.jpg"
+                      alt="Selected Image"
+                      id="selectedImage"
+                      class="img-fluid"
+                      style="width: 400px; height: 400px"
+                    />
+                  </div>
+                  <script>
+                    // Add event listener to the image input
+                    document
+                      .getElementById("dish-image")
+                      .addEventListener("change", function (e) {
+                        // Get the selected file
+                        const file = e.target.files[0];
+
+                        // Check if a file is selected
+                        if (file) {
+                          // Read the file as a data URL
+                          const reader = new FileReader();
+                          reader.onload = function (readerEvent) {
+                            // Set the source of the image to the data URL
+                            document.getElementById("selectedImage").src =
+                              readerEvent.target.result;
+                          };
+                          reader.readAsDataURL(file);
+                        }
+                      });
+                  </script>
+                </div>
+
+                <!-- Total Calories -->
+                <div>
+                  <p>Total Calories: 123</p>
+                </div>
+
+                <!-- Ingredients -->
+                <div>
+                  <p>Ingredients</p>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="custom-checkbox"
+                      type="checkbox"
+                      id="checkbox-meal-1"
+                    />
+                    <label class="btn btn-light" for="checkbox-meal-1"
+                      ><img
+                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                      />
+                      Gà</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="custom-checkbox"
+                      type="checkbox"
+                      id="checkbox-meal-2"
+                    />
+                    <label class="btn btn-light" for="checkbox-meal-2"
+                      ><img
+                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                      />
+                      Gà</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="custom-checkbox"
+                      type="checkbox"
+                      id="checkbox-meal-3"
+                    />
+                    <label class="btn btn-light" for="checkbox-meal-3">
+                      <img
+                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                      />
+                      Gà</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="custom-checkbox"
+                      type="checkbox"
+                      id="checkbox-meal-4"
+                    />
+                    <label class="btn btn-light" for="checkbox-meal-4"
+                      ><img
+                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                      />
+                      Gà</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="custom-checkbox"
+                      type="checkbox"
+                      id="checkbox-meal-5"
+                    />
+                    <label class="btn btn-light" for="checkbox-meal-5"
+                      ><img
+                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                      />
+                      Gà</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="custom-checkbox"
+                      type="checkbox"
+                      id="checkbox-meal-6"
+                    />
+                    <label class="btn btn-light" for="checkbox-meal-6"
+                      ><img
+                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                      />
+                      Gà</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="custom-checkbox"
+                      type="checkbox"
+                      id="checkbox-meal-7"
+                    />
+                    <label class="btn btn-light" for="checkbox-meal-7"
+                      ><img
+                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                      />
+                      Gà</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="custom-checkbox"
+                      type="checkbox"
+                      id="checkbox-meal-8"
+                    />
+                    <label class="btn btn-light" for="checkbox-meal-8"
+                      ><img
+                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                      />
+                      Gà</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="custom-checkbox"
+                      type="checkbox"
+                      id="checkbox-meal-9"
+                    />
+                    <label class="btn btn-light" for="checkbox-meal-9"
+                      ><img
+                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                      />
+                      Gà</label
+                    >
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                  >
+                    Submit
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Form Check -->
           </div>
         </div>
       </div>
-    </div>
+    </main>
+    <footer>
+      <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
