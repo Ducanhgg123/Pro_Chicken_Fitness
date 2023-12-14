@@ -29,7 +29,7 @@ function NewsFeeds() {
       }}
     >
       <div className="container mt-5" id="newsfeed-blog-item">
-        <WhatOnYourMind />
+        <WhatOnYourMind posts={posts} setPosts={setPosts} />
         {posts?.map((post) => (
           <NewsFeed key={post?.id} post={post} />
         ))}

@@ -14,7 +14,12 @@ function CardCoach({ coach }) {
           {coach?.description} {/* Replace with the coach's description */}
         </Card.Text>
         <div className="d-flex justify-content-center">
-          <Link to="/">
+          <Link
+            to="/payment"
+            state={{
+              coachName: coach?.username,
+            }}
+          >
             <Button variant="primary">Subscribe</Button>
           </Link>
         </div>

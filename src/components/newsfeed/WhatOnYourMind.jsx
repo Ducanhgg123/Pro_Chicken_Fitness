@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
 import PostService from "../../api/services/PostService";
 
-function WhatOnYourMind() {
+function WhatOnYourMind({ posts, setPosts }) {
   const { username } = useSelector((state) => state.user);
   const [content, setContent] = useState("");
   const [show, setShow] = useState(false);
@@ -29,6 +29,20 @@ function WhatOnYourMind() {
     try {
       const res = await PostService.createPost(formData);
       console.log(res);
+      handleClose();
+      if (res?.status == 200) {
+        setPosts([
+          ...posts,
+          {
+            id: res.data.id,
+            title: res.data.title,
+            content: res.data.content,
+            postDate: res.data.postDate,
+            likeCount: res.data.likeCount,
+            thumbnail: res.data.thumbnail,
+          },
+        ]);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -114,6 +128,7 @@ function WhatOnYourMind() {
                         onChange={handleFileChange}
                       />
                     </div>
+
                     <button
                       type="button"
                       onClick={handleSubmit}
@@ -123,6 +138,16 @@ function WhatOnYourMind() {
                     </button>
                   </div>
                 </form>
+                {selectedFile && (
+                  <div className="mt-3">
+                    <h6>Your image:</h6>
+                    <img
+                      src={URL.createObjectURL(selectedFile)}
+                      alt="Selected"
+                      style={{ width: "100%", maxHeight: "200px" }}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>

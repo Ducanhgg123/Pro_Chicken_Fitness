@@ -9,7 +9,7 @@ import persistStore from "redux-persist/es/persistStore";
 const userPersistConfig = {
   key: "user",
   storage: sessionStorage,
-  whitelist: ["username"],
+  whitelist: ["username", "user", "userRoles"],
 };
 
 const rootReducer = combineReducers({

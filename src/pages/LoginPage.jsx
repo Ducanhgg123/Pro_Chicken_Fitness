@@ -3,7 +3,12 @@ import "./LoginPage.css";
 import AuthenticationService from "../api/services/AuthenticationService";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUsername } from "../redux/userSlice";
+import {
+  setUsername,
+  setUser as setUserInfo,
+  setUserRoles,
+} from "../redux/userSlice";
+import UserService from "../api/services/UserService";
 
 function Login() {
   const [user, setUser] = useState({ username: "", password: "" });
@@ -12,14 +17,7 @@ function Login() {
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleFileChange = (e) => {
-    // Access the selected file from the input
-    const file = e.target.files[0];
-    setSelectedFile(file);
-    console.log(file);
-  };
   const handleSubmit = async () => {
     console.log("submit");
     try {
@@ -30,7 +28,16 @@ function Login() {
 
       if (res?.status == 200) {
         sessionStorage.setItem("jwt-token", res.data.jwt);
-        console.log(res.data);
+        const userInfoRes = await UserService.getUserbyUsername(user.username);
+        const userRolesRes = await UserService.getUserRoles(user.username);
+        if (userInfoRes?.status == 200 && userRolesRes?.status == 200) {
+          dispatch(setUserInfo(userInfoRes.data));
+          let userRoles = [];
+          for (const userRole of userRolesRes.data) {
+            userRoles.push(userRole.name);
+          }
+          dispatch(setUserRoles(userRoles));
+        }
         dispatch(setUsername(user.username));
         navigate("/");
       }
