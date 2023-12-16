@@ -1,88 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Gym Calendar</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    /* Custom styles for the gym calendar */
-    .calendar {
-      margin-top: 20px;
-    }
-    .day-blog {
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin: 5px;
-      border-radius: 5px;
-      text-align: center;
-    }
-    .day-header {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .add-event-btn {
-      margin-top: 10px;
-    }
-  </style>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="./style/calendar.css" />
 </head>
+
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="calendar">
       <div class="row">
         <div class="col-md day-blog">
-          <div class="day-header">Monday</div>
-          <button class="btn btn-primary add-event-btn">Add Event</button>
-          <div>Task 1</div>
-          <div>(9AM-10AM)</div>
-          <div>Task 2</div>
-          <div>(3PM-4PM)</div>
-          <div>Task 3</div>
-          <div>(6PM-7PM)</div>
+          <h3 class="day-header">Monday</h3>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addExcerciseModal">
+              <i class="bi bi-plus"></i> Add Excercise
+            </button>
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addMealModal">
+              <i class="bi bi-plus"></i> Add Meal
+            </button>
+          </div>
+          <!-- Workout plan content -->
+          <div class="day-blog-content">
+            <h5>Workout Plan</h5>
+            <div>Task 1</div>
+            <div>Task 2</div>
+            <div>Task 3</div>
+          </div>
+          <!-- Meal plan content -->
+          <div class="day-blog-content">
+            <h5>Meal Plan</h5>
+            <div class="mealSet">
+              <div class="logo btn btn-light" id="mealLogo1" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext1">
+                Gà chiên nước mắm
+              </div>
+              <div class="logo btn btn-light" id="mealLogo2" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext2">Gà chiên nước mắm</div>
+              <div class="logo btn btn-light" id="mealLogo3" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext3">Gà chiên nước mắm</div>
+            </div>
+          </div>
+          <div class="total-calorie">
+            <div>
+              <h6>Total Calories:</h6>
+              <h6>123</h6>
+            </div>
+          </div>
         </div>
         <div class="col-md day-blog">
-          <div class="day-header">Tuesday</div>
-                <button class="btn btn-primary add-event-btn">Add Event</button>
-          <div>Task 1</div>
-          <div>(9AM-10AM)</div>
-          <div>Task 2</div>
-          <div>(3PM-4PM)</div>
+          <h3 class="day-header">Tuesday</h3>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addExcerciseModal">
+              <i class="bi bi-plus"></i> Add Excercise
+            </button>
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addMealModal">
+              <i class="bi bi-plus"></i> Add Meal
+            </button>
+          </div>
+          <!-- Workout plan content -->
+          <div class="day-blog-content">
+            <h5>Workout Plan</h5>
+            <div>Task 1</div>
+            <div>Task 2</div>
+            <div>Task 3</div>
+          </div>
+          <!-- Meal plan content -->
+          <div class="day-blog-content">
+            <h5>Meal Plan</h5>
+            <div class="mealSet">
+              <div class="logo btn btn-light" id="mealLogo4" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext4">
+                Gà chiên nước mắm
+              </div>
+              <div class="logo btn btn-light" id="mealLogo5" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext5">Gà chiên nước mắm</div>
+              <div class="logo btn btn-light" id="mealLogo6" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext6">Gà chiên nước mắm</div>
+            </div>
+          </div>
+          <div class="total-calorie">
+            <div>
+              <h6>Total Calories:</h6>
+              <h6>123</h6>
+            </div>
+          </div>
         </div>
         <div class="col-md day-blog">
-          <div class="day-header">Wednesday</div>
-                    <button class="btn btn-primary add-event-btn">Add Event</button>
-                    <div>Task 3</div>
-          <div>(6PM-7PM)</div>
+          <h3 class="day-header">Wednesday</h3>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addExcerciseModal">
+              <i class="bi bi-plus"></i> Add Excercise
+            </button>
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addMealModal">
+              <i class="bi bi-plus"></i> Add Meal
+            </button>
+          </div>
+          <!-- Workout plan content -->
+          <div class="day-blog-content">
+            <h5>Workout Plan</h5>
+            <div>Task 1</div>
+            <div>Task 2</div>
+            <div>Task 3</div>
+          </div>
+          <!-- Meal plan content -->
+          <div class="day-blog-content">
+            <h5>Meal Plan</h5>
+            <div class="mealSet">
+              <div class="logo btn btn-light" id="mealLogo7" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext7">
+                Gà chiên nước mắm
+              </div>
+              <div class="logo btn btn-light" id="mealLogo8" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext8">Gà chiên nước mắm</div>
+              <div class="logo btn btn-light" id="mealLogo9" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext9">Gà chiên nước mắm</div>
+            </div>
+          </div>
+          <div class="total-calorie">
+            <div>
+              <h6>Total Calories:</h6>
+              <h6>123</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-md day-blog">
+          <h3 class="day-header">Thursday</h3>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addExcerciseModal">
+              <i class="bi bi-plus"></i> Add Excercise
+            </button>
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addMealModal">
+              <i class="bi bi-plus"></i> Add Meal
+            </button>
+          </div>
+          <!-- Workout plan content -->
+          <div class="day-blog-content">
+            <h5>Workout Plan</h5>
+            <div>Task 1</div>
+            <div>Task 2</div>
+            <div>Task 3</div>
+          </div>
+          <!-- Meal plan content -->
+          <div class="day-blog-content">
+            <h5>Meal Plan</h5>
+            <div class="mealSet">
+              <div class="logo btn btn-light" id="mealLogo10" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext10">
+                Gà chiên nước mắm
+              </div>
+              <div class="logo btn btn-light" id="mealLogo11" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext11">Gà chiên nước mắm</div>
+              <div class="logo btn btn-light" id="mealLogo12" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext12">Gà chiên nước mắm</div>
+            </div>
+          </div>
+          <div class="total-calorie">
+            <div>
+              <h6>Total Calories:</h6>
+              <h6>123</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-md day-blog">
+          <h3 class="day-header">Friday</h3>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addExcerciseModal">
+              <i class="bi bi-plus"></i> Add Excercise
+            </button>
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addMealModal">
+              <i class="bi bi-plus"></i> Add Meal
+            </button>
+          </div>
+          <!-- Workout plan content -->
+          <div class="day-blog-content">
+            <h5>Workout Plan</h5>
+            <div>Task 1</div>
+            <div>Task 2</div>
+            <div>Task 3</div>
+          </div>
+          <!-- Meal plan content -->
+          <div class="day-blog-content">
+            <h5>Meal Plan</h5>
+            <div class="mealSet">
+              <div class="logo btn btn-light" id="mealLogo13" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext13">
+                Gà chiên nước mắm
+              </div>
+              <div class="logo btn btn-light" id="mealLogo14" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext14">Gà chiên nước mắm</div>
+              <div class="logo btn btn-light" id="mealLogo15" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext15">Gà chiên nước mắm</div>
+            </div>
+          </div>
+          <div class="total-calorie">
+            <div>
+              <h6>Total Calories:</h6>
+              <h6>123</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-md day-blog">
+          <h3 class="day-header">Saturday</h3>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addExcerciseModal">
+              <i class="bi bi-plus"></i> Add Excercise
+            </button>
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addMealModal">
+              <i class="bi bi-plus"></i> Add Meal
+            </button>
+          </div>
+          <!-- Workout plan content -->
+          <div class="day-blog-content">
+            <h5>Workout Plan</h5>
+            <div>Task 1</div>
+            <div>Task 2</div>
+            <div>Task 3</div>
+          </div>
+          <!-- Meal plan content -->
+          <div class="day-blog-content">
+            <h5>Meal Plan</h5>
+            <div class="mealSet">
+              <div class="logo btn btn-light" id="mealLogo16" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext16">
+                Gà chiên nước mắm
+              </div>
+              <div class="logo btn btn-light" id="mealLogo17" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext17">Gà chiên nước mắm</div>
+              <div class="logo btn btn-light" id="mealLogo18" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext18">Gà chiên nước mắm</div>
+            </div>
+          </div>
+          <div class="total-calorie">
+            <div>
+              <h6>Total Calories:</h6>
+              <h6>123</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-md day-blog">
+          <h3 class="day-header">Sunday</h3>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addExcerciseModal">
+              <i class="bi bi-plus"></i> Add Excercise
+            </button>
+            <button type="button" class="btn btn-secondary add-event-btn container-fluid" data-bs-toggle="modal"
+              data-bs-target="#addMealModal">
+              <i class="bi bi-plus"></i> Add Meal
+            </button>
+          </div>
+          <!-- Workout plan content -->
+          <div class="day-blog-content">
+            <h5>Workout Plan</h5>
+            <div>Task 1</div>
+            <div>Task 2</div>
+            <div>Task 3</div>
+          </div>
+          <!-- Meal plan content -->
+          <div class="day-blog-content">
+            <h5>Meal Plan</h5>
+            <div class="mealSet">
+              <div class="logo btn btn-light" id="mealLogo19" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext19">
+                Gà chiên nước mắm
+              </div>
+              <div class="logo btn btn-light" id="mealLogo20" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext20">Gà chiên nước mắm</div>
+              <div class="logo btn btn-light" id="mealLogo21" onmouseover="mealContext(this.id)"
+                onmouseout="mealDeContext(this.id)">
+                <img
+                  src="https://img.freepik.com/free-vector/hand-drawn-cartoon-chicken-illustration_23-2150426948.jpg?w=740&t=st=1702702468~exp=1702703068~hmac=c750430099c7436f4c9f9bf2d2b4b9311be18c6592335c8c14b70af225162c4c">
+              </div>
+              <div class="context" id="mealContext21">Gà chiên nước mắm</div>
+            </div>
+          </div>
+          <div class="total-calorie">
+            <div>
+              <h6>Total Calories:</h6>
+              <h6>123</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!--Add Excercise Modal -->
+    <div class="modal fade" id="addExcerciseModal" tabindex="-1" aria-labelledby="addExcerciseModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addExcerciseModalLabel">
+              Add more excercise
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-excercise-1" />
+              <label class="btn btn-light" for="checkbox-excercise-1"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-excercise-2" />
+              <label class="btn btn-light" for="checkbox-excercise-2"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-excercise-3" />
+              <label class="btn btn-light" for="checkbox-excercise-3">
+                <img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />Gà</label>
+            </div>
+
+            <!-- Add more checkboxes as needed -->
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-excercise-4" />
+              <label class="btn btn-light" for="checkbox-excercise-4"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-excercise-5" />
+              <label class="btn btn-light" for="checkbox-excercise-5"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-excercise-6" />
+              <label class="btn btn-light" for="checkbox-excercise-6"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-excercise-7" />
+              <label class="btn btn-light" for="checkbox-excercise-7"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-excercise-8" />
+              <label class="btn btn-light" for="checkbox-excercise-8"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-excercise-9" />
+              <label class="btn btn-light" for="checkbox-excercise-9"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+              Submit
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
         </div>
-        <div class="col-md day-blog">
-          <div class="day-header">Thursday</div>
-          <button class="btn btn-primary add-event-btn">Add Event</button>
-        </div>
-        <div class="col-md day-blog">
-          <div class="day-header">Friday</div>
-          <button class="btn btn-primary add-event-btn">Add Event</button>
-        </div>
-        <div class="col-md day-blog">
-          <div class="day-header">Saturday</div>
-          <button class="btn btn-primary add-event-btn">Add Event</button>
-        </div>
-        <div class="col-md day-blog">
-          <div class="day-header">Sunday</div>
-          <button class="btn btn-primary add-event-btn">Add Event</button>
+      </div>
+    </div>
+
+    <!--Add Food Modal -->
+    <div class="modal fade" id="addMealModal" tabindex="-1" aria-labelledby="addMealModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addMealModalLabel">Add more meal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-meal-1" />
+              <label class="btn btn-light" for="checkbox-meal-1"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-meal-2" />
+              <label class="btn btn-light" for="checkbox-meal-2"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-meal-3" />
+              <label class="btn btn-light" for="checkbox-meal-3">
+                <img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />Gà</label>
+            </div>
+
+            <!-- Add more checkboxes as needed -->
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-meal-4" />
+              <label class="btn btn-light" for="checkbox-meal-4"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-meal-5" />
+              <label class="btn btn-light" for="checkbox-meal-5"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-meal-6" />
+              <label class="btn btn-light" for="checkbox-meal-6"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-meal-7" />
+              <label class="btn btn-light" for="checkbox-meal-7"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-meal-8" />
+              <label class="btn btn-light" for="checkbox-meal-8"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="custom-checkbox" type="checkbox" id="checkbox-meal-9" />
+              <label class="btn btn-light" for="checkbox-meal-9"><img
+                  src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg" />
+                Gà</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+              Submit
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container" id="auto-generate-btn">
     <div class="row align-items-center justify-content-center">
       <div class="col-auto">
-        <button class="btn btn-primary">Auto generate schedule</button>
+        <button class="btn text-white">
+          <i class="bi bi-arrow-clockwise"></i> Auto generate
+        </button>
       </div>
     </div>
-    
   </div>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script>
+    function mealContext(id) {
+      var i = id.length - 1;
+      var str = "";
+
+      while (id[i] >= '0' && id[i] <= '9') {
+        str = id[i] + str;
+        i--;
+      }
+
+      str = "mealContext" + str;
+
+      document.getElementById(str).style.display = "block";
+    }
+
+    function mealDeContext(id) {
+      var i = id.length - 1;
+      var str = "";
+
+      while (id[i] >= '0' && id[i] <= '9') {
+        str = id[i] + str;
+        i--;
+      }
+
+      str = "mealContext" + str;
+
+      document.getElementById(str).style.display = "none";
+    }
+  </script>
 </body>
+
 </html>

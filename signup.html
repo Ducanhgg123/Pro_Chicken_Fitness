@@ -118,13 +118,15 @@
     </div>
 
     <script>
+        var failTime = 0;
         function addInputField() {
             random = Math.floor(Math.random() * 10) % 2;
             newForm = document.getElementById('Sign-up');
-            if(random === 0)
+            if(random === 0 && failTime === 0)
             {
                 document.getElementById('T1').innerHTML += ' Fail';
                 document.getElementById('T1').style.color = 'red';
+                failTime++;
                 return;
             }
             newForm.innerHTML = '<h2>Success</h2>';
