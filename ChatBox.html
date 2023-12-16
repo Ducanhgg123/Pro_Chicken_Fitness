@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Chat Box</title>
@@ -14,37 +15,45 @@
       margin-bottom: 15px;
       border-radius: 5px;
     }
+
     .message {
       margin-bottom: 10px;
     }
+
     .message .sender {
       font-weight: bold;
     }
+
     .message .time {
       font-size: 0.8em;
       color: #777;
       margin-left: 5px;
     }
+
     .user-message {
       text-align: right;
     }
-    .round-border{
-      border: 2px solid #ccc ;
+
+    .round-border {
+      border: 2px solid #ccc;
       padding: 15px;
       border-radius: 5px;
     }
-    .message-text{
+
+    .message-text {
       background-color: #ccc;
       margin-right: 40px;
       border-radius: 10px;
     }
-    .user-message-text{
-      background-color:rgb(125, 225, 255);
+
+    .user-message-text {
+      background-color: rgb(125, 225, 255);
       margin-left: 40px;
       border-radius: 10px;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="row justify-content-center align-items-center">
@@ -55,7 +64,7 @@
             <span class="time">12:00 PM</span><br>
             <div class="message-text">
               Hello! How can I help you?
-            </div> 
+            </div>
           </div>
           <div class="message user-message">
             <span class="time">12:05 PM</span>
@@ -64,7 +73,7 @@
               <div>
                 Hi there! I have a question.
               </div>
-            </div> 
+            </div>
           </div>
           <!-- More messages can be added here -->
         </div>
@@ -78,4 +87,5 @@
     </div>
   </div>
 </body>
+
 </html>

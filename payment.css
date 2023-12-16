@@ -1,0 +1,23 @@
+body {
+  background-color: #c8d6e5;
+}
+
+#payment-form {
+  border: 2px solid #ccc;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#payment-form label {
+  font-weight: 500;
+}
+
+#BackgroundImage {
+  /* Đường dẫn đến hình ảnh bạn muốn sử dụng */
+  background-image: url('GymBackground.jpg');
+  /* Để hình ảnh bao phủ toàn bộ phần tử .content */
+  background-size: cover;
+  /* Cố định hình ảnh ở vị trí trên cùng và giữa */
+  height: 100vh;
+}
