@@ -16,6 +16,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
     />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <!-- Custom fonts for this template-->
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -130,7 +137,7 @@
                 />
                 <div class="input-group-append">
                   <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
+                    <i class="bi bi-search"></i>
                   </button>
                 </div>
               </div>
@@ -243,7 +250,6 @@
                     <th>Username</th>
                     <th>Fullname</th>
                     <th>Age</th>
-                    <th>Workout frequency</th>
                     <th>Role</th>
                     <th>Setting</th>
                   </tr>
@@ -252,12 +258,14 @@
                     <td>Alan</td>
                     <td>Alan Wills</td>
                     <td>25</td>
-                    <td>saturday, sunday</td>
                     <td>User</td>
                     <td>
+                      <!-- Edit Button -->
                       <a
                         href="#"
                         class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editUserModalAdmin"
                       >
                         <i class="bi bi-gear-fill"></i>
                         Edit
@@ -276,12 +284,14 @@
                     <td>Alice</td>
                     <td>Alice Wills</td>
                     <td>24</td>
-                    <td>friday, saturday</td>
                     <td>User</td>
                     <td>
+                      <!-- Edit Button -->
                       <a
                         href="#"
                         class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editUserModalAdmin"
                       >
                         <i class="bi bi-gear-fill"></i>
                         Edit
@@ -302,5 +312,80 @@
         </div>
       </div>
     </div>
+
+    <!-- Edit User Modal -->
+    <div
+      class="modal fade"
+      id="editUserModalAdmin"
+      tabindex="-1"
+      aria-labelledby="editUserModalAdminLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editUserModalAdminLabel">Edit User</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!--  -->
+            <div>
+              <!-- Full Name -->
+              <div>
+                <label for="edit-user-fullname" class="form-label"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="edit-user-fullname"
+                  placeholder="user fullname"
+                />
+              </div>
+              <!-- Role -->
+              <label for="edit-user-role" class="form-label">Role</label>
+              <select class="form-select" id="edit-user-role" required>
+                <option>User</option>
+                <option>Coach</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

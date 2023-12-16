@@ -16,6 +16,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
     />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <!-- Custom fonts for this template-->
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -130,7 +137,7 @@
                 />
                 <div class="input-group-append">
                   <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
+                    <i class="bi bi-search"></i>
                   </button>
                 </div>
               </div>
@@ -214,13 +221,278 @@
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
               <h1 class="h3 mb-0 text-gray-800">DISH LIST</h1>
+
+              <!-- dish Add button -->
+              <!-- Button -->
               <a
                 href="#"
                 class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#addDishModalAdmin"
               >
                 <i class="bi bi-plus-circle-fill"></i>
                 Add
               </a>
+              <!-- Add Dish Modal -->
+              <div
+                class="modal fade"
+                id="addDishModalAdmin"
+                tabindex="-1"
+                aria-labelledby="addDishModalAdminLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-md">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="addDishModalAdminLabel">
+                        Add more dish
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <!--  -->
+                      <div>
+                        <!-- Name -->
+
+                        <div>
+                          <label for="add-dish-name" class="form-label"
+                            >Name</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="add-dish-name"
+                            placeholder="dish name"
+                          />
+                        </div>
+                        <!-- Image -->
+                        <div>
+                          <p>Add image</p>
+                          <label
+                            for="add-dish-image"
+                            class="form-label btn btn-outline-primary"
+                            ><i class="bi bi-image"></i
+                          ></label>
+                          <input
+                            type="file"
+                            class="form-control visually-hidden"
+                            id="add-dish-image"
+                            placeholder="dish image"
+                            accept="image/*"
+                          />
+                          <div>
+                            <img
+                              src="./image/AnhCorgiDeThuong.jpg"
+                              alt="Selected Adding Dish Image"
+                              id="selectedAddingDishImage"
+                              class="img-fluid"
+                              style="width: 400px; height: 400px"
+                            />
+                          </div>
+                          <script>
+                            // Add event listener to the image input
+                            document
+                              .getElementById("add-dish-image")
+                              .addEventListener("change", function (e) {
+                                // Get the selected file
+                                const file = e.target.files[0];
+
+                                // Check if a file is selected
+                                if (file) {
+                                  // Read the file as a data URL
+                                  const reader = new FileReader();
+                                  reader.onload = function (readerEvent) {
+                                    // Set the source of the image to the data URL
+                                    document.getElementById(
+                                      "selectedAddingDishImage"
+                                    ).src = readerEvent.target.result;
+                                  };
+                                  reader.readAsDataURL(file);
+                                }
+                              });
+                          </script>
+                        </div>
+
+                        <!-- Total Calories -->
+                        <div>
+                          <p>Total Calories: 123</p>
+                        </div>
+
+                        <!-- Ingredients -->
+                        <div>
+                          <p>Ingredients</p>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="choose-dish-custom-checkbox d-none"
+                              type="checkbox"
+                              id="checkbox-add-dish-1"
+                            />
+                            <label
+                              class="btn btn-light"
+                              for="checkbox-add-dish-1"
+                              ><img
+                                src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                style="width: 20px; height: 20px"
+                              />
+                              Gà</label
+                            >
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="choose-dish-custom-checkbox d-none"
+                              type="checkbox"
+                              id="checkbox-add-dish-2"
+                            />
+                            <label
+                              class="btn btn-light"
+                              for="checkbox-add-dish-2"
+                              ><img
+                                src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                style="width: 20px; height: 20px"
+                              />
+                              Gà</label
+                            >
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="choose-dish-custom-checkbox d-none"
+                              type="checkbox"
+                              id="checkbox-add-dish-3"
+                            />
+                            <label
+                              class="btn btn-light"
+                              for="checkbox-add-dish-3"
+                            >
+                              <img
+                                src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                style="width: 20px; height: 20px"
+                              />
+                              Gà</label
+                            >
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="choose-dish-custom-checkbox d-none"
+                              type="checkbox"
+                              id="checkbox-add-dish-4"
+                            />
+                            <label
+                              class="btn btn-light"
+                              for="checkbox-add-dish-4"
+                              ><img
+                                src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                style="width: 20px; height: 20px"
+                              />
+                              Gà</label
+                            >
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="choose-dish-custom-checkbox d-none"
+                              type="checkbox"
+                              id="checkbox-add-dish-5"
+                            />
+                            <label
+                              class="btn btn-light"
+                              for="checkbox-add-dish-5"
+                              ><img
+                                src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                style="width: 20px; height: 20px"
+                              />
+                              Gà</label
+                            >
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="choose-dish-custom-checkbox d-none"
+                              type="checkbox"
+                              id="checkbox-add-dish-6"
+                            />
+                            <label
+                              class="btn btn-light"
+                              for="checkbox-add-dish-6"
+                              ><img
+                                src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                style="width: 20px; height: 20px"
+                              />
+                              Gà</label
+                            >
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="choose-dish-custom-checkbox d-none"
+                              type="checkbox"
+                              id="checkbox-add-dish-7"
+                            />
+                            <label
+                              class="btn btn-light"
+                              for="checkbox-add-dish-7"
+                              ><img
+                                src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                style="width: 20px; height: 20px"
+                              />
+                              Gà</label
+                            >
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="choose-dish-custom-checkbox d-none"
+                              type="checkbox"
+                              id="checkbox-add-dish-8"
+                            />
+                            <label
+                              class="btn btn-light"
+                              for="checkbox-add-dish-8"
+                              ><img
+                                src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                style="width: 20px; height: 20px"
+                              />
+                              Gà</label
+                            >
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="choose-dish-custom-checkbox d-none"
+                              type="checkbox"
+                              id="checkbox-add-dish-9"
+                            />
+                            <label
+                              class="btn btn-light"
+                              for="checkbox-add-dish-9"
+                              ><img
+                                src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                style="width: 20px; height: 20px"
+                              />
+                              Gà</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        data-bs-dismiss="modal"
+                      >
+                        Submit
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Content Row -->
@@ -246,9 +518,12 @@
                     </td>
                     <td>326</td>
                     <td>
+                      <!-- Edit Button -->
                       <a
                         href="#"
                         class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editDishModalAdmin"
                       >
                         <i class="bi bi-gear-fill"></i>
                         Edit
@@ -275,13 +550,17 @@
 
                     <td>307</td>
                     <td>
+                      <!-- Edit Button -->
                       <a
                         href="#"
                         class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editDishModalAdmin"
                       >
                         <i class="bi bi-gear-fill"></i>
                         Edit
                       </a>
+
                       <a
                         href="#"
                         class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
@@ -291,6 +570,267 @@
                       </a>
                     </td>
                   </tr>
+
+                  <!-- Edit Dish Modal -->
+                  <div
+                    class="modal fade"
+                    id="editDishModalAdmin"
+                    tabindex="-1"
+                    aria-labelledby="editDishModalAdminLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-md">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="editDishModalAdminLabel">
+                            Edit dish
+                          </h5>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">
+                          <!--  -->
+                          <div>
+                            <!-- Name -->
+
+                            <div>
+                              <label for="edit-dish-name" class="form-label"
+                                >Name</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="edit-dish-name"
+                                placeholder="dish name"
+                              />
+                            </div>
+                            <!-- Image -->
+                            <div>
+                              <p>Edit image</p>
+                              <label
+                                for="edit-dish-image"
+                                class="form-label btn btn-outline-primary"
+                                ><i class="bi bi-image"></i
+                              ></label>
+                              <input
+                                type="file"
+                                class="form-control visually-hidden"
+                                id="edit-dish-image"
+                                placeholder="dish image"
+                                accept="image/*"
+                              />
+                              <div>
+                                <img
+                                  src="./image/AnhCorgiDeThuong.jpg"
+                                  alt="Selected Editing Dish Image"
+                                  id="selectedEditingDishImage"
+                                  class="img-fluid"
+                                  style="width: 400px; height: 400px"
+                                />
+                              </div>
+                              <script>
+                                // Add event listener to the image input
+                                document
+                                  .getElementById("edit-dish-image")
+                                  .addEventListener("change", function (e) {
+                                    // Get the selected file
+                                    const file = e.target.files[0];
+
+                                    // Check if a file is selected
+                                    if (file) {
+                                      // Read the file as a data URL
+                                      const reader = new FileReader();
+                                      reader.onload = function (readerEvent) {
+                                        // Set the source of the image to the data URL
+                                        document.getElementById(
+                                          "selectedEditingDishImage"
+                                        ).src = readerEvent.target.result;
+                                      };
+                                      reader.readAsDataURL(file);
+                                    }
+                                  });
+                              </script>
+                            </div>
+
+                            <!-- Total Calories -->
+                            <div>
+                              <p>Total Calories: 123</p>
+                            </div>
+
+                            <!-- Ingredients -->
+                            <div>
+                              <p>Ingredients</p>
+                              <div class="form-check form-check-inline">
+                                <input
+                                  class="choose-dish-custom-checkbox d-none"
+                                  type="checkbox"
+                                  id="checkbox-edit-dish-1"
+                                />
+                                <label
+                                  class="btn btn-light"
+                                  for="checkbox-edit-dish-1"
+                                  ><img
+                                    src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                    style="width: 20px; height: 20px"
+                                  />
+                                  Gà</label
+                                >
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input
+                                  class="choose-dish-custom-checkbox d-none"
+                                  type="checkbox"
+                                  id="checkbox-edit-dish-2"
+                                />
+                                <label
+                                  class="btn btn-light"
+                                  for="checkbox-edit-dish-2"
+                                  ><img
+                                    src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                    style="width: 20px; height: 20px"
+                                  />
+                                  Gà</label
+                                >
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input
+                                  class="choose-dish-custom-checkbox d-none"
+                                  type="checkbox"
+                                  id="checkbox-edit-dish-3"
+                                />
+                                <label
+                                  class="btn btn-light"
+                                  for="checkbox-edit-dish-3"
+                                >
+                                  <img
+                                    src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                    style="width: 20px; height: 20px"
+                                  />
+                                  Gà</label
+                                >
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input
+                                  class="choose-dish-custom-checkbox d-none"
+                                  type="checkbox"
+                                  id="checkbox-edit-dish-4"
+                                />
+                                <label
+                                  class="btn btn-light"
+                                  for="checkbox-edit-dish-4"
+                                  ><img
+                                    src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                    style="width: 20px; height: 20px"
+                                  />
+                                  Gà</label
+                                >
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input
+                                  class="choose-dish-custom-checkbox d-none"
+                                  type="checkbox"
+                                  id="checkbox-edit-dish-5"
+                                />
+                                <label
+                                  class="btn btn-light"
+                                  for="checkbox-edit-dish-5"
+                                  ><img
+                                    src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                    style="width: 20px; height: 20px"
+                                  />
+                                  Gà</label
+                                >
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input
+                                  class="choose-dish-custom-checkbox d-none"
+                                  type="checkbox"
+                                  id="checkbox-edit-dish-6"
+                                />
+                                <label
+                                  class="btn btn-light"
+                                  for="checkbox-edit-dish-6"
+                                  ><img
+                                    src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                    style="width: 20px; height: 20px"
+                                  />
+                                  Gà</label
+                                >
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input
+                                  class="choose-dish-custom-checkbox d-none"
+                                  type="checkbox"
+                                  id="checkbox-edit-dish-7"
+                                />
+                                <label
+                                  class="btn btn-light"
+                                  for="checkbox-edit-dish-7"
+                                  ><img
+                                    src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                    style="width: 20px; height: 20px"
+                                  />
+                                  Gà</label
+                                >
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input
+                                  class="choose-dish-custom-checkbox d-none"
+                                  type="checkbox"
+                                  id="checkbox-edit-dish-8"
+                                />
+                                <label
+                                  class="btn btn-light"
+                                  for="checkbox-edit-dish-8"
+                                  ><img
+                                    src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                    style="width: 20px; height: 20px"
+                                  />
+                                  Gà</label
+                                >
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input
+                                  class="choose-dish-custom-checkbox d-none"
+                                  type="checkbox"
+                                  id="checkbox-edit-dish-9"
+                                />
+                                <label
+                                  class="btn btn-light"
+                                  for="checkbox-edit-dish-9"
+                                  ><img
+                                    src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                                    style="width: 20px; height: 20px"
+                                  />
+                                  Gà</label
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="submit"
+                            class="btn btn-primary"
+                            data-bs-dismiss="modal"
+                          >
+                            Submit
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </table>
               </div>
             </div>
@@ -298,5 +838,17 @@
         </div>
       </div>
     </div>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

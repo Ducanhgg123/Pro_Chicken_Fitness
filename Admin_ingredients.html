@@ -16,6 +16,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
     />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <!-- Custom fonts for this template-->
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -130,7 +137,7 @@
                 />
                 <div class="input-group-append">
                   <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
+                    <i class="bi bi-search"></i>
                   </button>
                 </div>
               </div>
@@ -216,9 +223,12 @@
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
               <h1 class="h3 mb-0 text-gray-800">INGREDIENT LIST</h1>
+              <!-- Add Ingredient Button -->
               <a
                 href="#"
                 class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#addIngredientModalAdmin"
               >
                 <i class="bi bi-plus-circle-fill"></i>
                 Add
@@ -246,9 +256,12 @@
                       />
                     </td>
                     <td>
+                      <!-- Edit Button -->
                       <a
                         href="#"
                         class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editIngredientModalAdmin"
                       >
                         <i class="bi bi-gear-fill"></i>
                         Edit
@@ -273,9 +286,12 @@
                       />
                     </td>
                     <td>
+                      <!-- Edit Button -->
                       <a
                         href="#"
                         class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editIngredientModalAdmin"
                       >
                         <i class="bi bi-gear-fill"></i>
                         Edit
@@ -296,5 +312,228 @@
         </div>
       </div>
     </div>
+
+    <!-- Add Ingredient Modal -->
+    <div
+      class="modal fade"
+      id="addIngredientModalAdmin"
+      tabindex="-1"
+      aria-labelledby="addIngredientModalAdminLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addIngredientModalAdminLabel">
+              Add Ingredient
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!--  -->
+            <div>
+              <!-- Name -->
+
+              <div>
+                <label for="add-ingredient-name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="add-ingredient-name"
+                  placeholder="ingredient name"
+                />
+              </div>
+              <!-- Image -->
+              <div>
+                <p>Add image</p>
+                <label
+                  for="add-ingredient-image"
+                  class="form-label btn btn-outline-primary"
+                  ><i class="bi bi-image"></i
+                ></label>
+                <input
+                  type="file"
+                  class="form-control visually-hidden"
+                  id="add-ingredient-image"
+                  placeholder="ingredient image"
+                  accept="image/*"
+                />
+                <div>
+                  <img
+                    src="./image/AnhCorgiDeThuong.jpg"
+                    alt="Selected adding ingredient image"
+                    id="selectedAddingIngredientImage"
+                    class="img-fluid"
+                    style="width: 400px; height: 400px"
+                  />
+                </div>
+                <script>
+                  // Add event listener to the image input
+                  document
+                    .getElementById("add-ingredient-image")
+                    .addEventListener("change", function (e) {
+                      // Get the selected file
+                      const file = e.target.files[0];
+
+                      // Check if a file is selected
+                      if (file) {
+                        // Read the file as a data URL
+                        const reader = new FileReader();
+                        reader.onload = function (readerEvent) {
+                          // Set the source of the image to the data URL
+                          document.getElementById(
+                            "selectedAddingIngredientImage"
+                          ).src = readerEvent.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    });
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Ingredient Modal -->
+    <div
+      class="modal fade"
+      id="editIngredientModalAdmin"
+      tabindex="-1"
+      aria-labelledby="editIngredientModalAdminLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editIngredientModalAdminLabel">
+              Edit Ingredient
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!--  -->
+            <div>
+              <!-- Name -->
+
+              <div>
+                <label for="edit-ingredient-name" class="form-label"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="edit-ingredient-name"
+                  placeholder="ingredient name"
+                />
+              </div>
+              <!-- Image -->
+              <div>
+                <p>Edit image</p>
+                <label
+                  for="edit-ingredient-image"
+                  class="form-label btn btn-outline-primary"
+                  ><i class="bi bi-image"></i
+                ></label>
+                <input
+                  type="file"
+                  class="form-control visually-hidden"
+                  id="edit-ingredient-image"
+                  placeholder="ingredient image"
+                  accept="image/*"
+                />
+                <div>
+                  <img
+                    src="./image/AnhCorgiDeThuong.jpg"
+                    alt="Selected editing ingredient image"
+                    id="selectedEditingIngredientImage"
+                    class="img-fluid"
+                    style="width: 400px; height: 400px"
+                  />
+                </div>
+                <script>
+                  // Add event listener to the image input
+                  document
+                    .getElementById("edit-ingredient-image")
+                    .addEventListener("change", function (e) {
+                      // Get the selected file
+                      const file = e.target.files[0];
+
+                      // Check if a file is selected
+                      if (file) {
+                        // Read the file as a data URL
+                        const reader = new FileReader();
+                        reader.onload = function (readerEvent) {
+                          // Set the source of the image to the data URL
+                          document.getElementById(
+                            "selectedEditingIngredientImage"
+                          ).src = readerEvent.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    });
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JavaScript Libraries (For Add and Edit button) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
