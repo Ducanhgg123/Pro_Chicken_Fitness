@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -65,20 +66,20 @@ public class DailyWorkoutController {
 
     @PutMapping("/")
     public DailyWorkoutDTO updateDailyWorkout(@RequestBody DailyWorkoutDTO dailyWorkoutDTO){
-        DailyWorkoutEntity dailyWorkoutEntity = new DailyWorkoutEntity();
+        DailyWorkoutEntity dailyWorkoutEntity = dailyWorkoutRepository.findById(dailyWorkoutDTO.getId()).get();
         if (dailyWorkoutDTO.getActivities()==null){
             dailyWorkoutEntity.setActivities(null);
         }else{
-            List<WorkoutActivityEntity> activities = dailyWorkoutDTO.getActivities().stream().
-                    map(e -> workoutActivityRepository.findById(e.getId()).get()).toList();
+            List<WorkoutActivityEntity> activities = new ArrayList<>(dailyWorkoutDTO.getActivities().stream().
+                    map(e -> workoutActivityRepository.findById(e.getId()).get()).toList());
             dailyWorkoutEntity.setActivities(activities);
         }
 
         if (dailyWorkoutDTO.getDishes()==null){
             dailyWorkoutEntity.setDishes(null);
         }else{
-            List<DishEntity> dishEntities = dailyWorkoutDTO.getDishes().stream().
-                    map(e -> dishRepository.findById(e.getId()).get()).toList();
+            List<DishEntity> dishEntities = new ArrayList<>(dailyWorkoutDTO.getDishes().stream().
+                    map(e -> dishRepository.findById(e.getId()).get()).toList());
             dailyWorkoutEntity.setDishes(dishEntities);
         }
 
