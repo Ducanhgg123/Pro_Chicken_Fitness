@@ -90,77 +90,84 @@
         background-color: #218838;
       }
 
-      body > div {
-        background-color: white;
-        border-radius: 5px;
-        margin-top: 50px;
+      #BackgroundImage {
+        /* Đường dẫn đến hình ảnh bạn muốn sử dụng */
+        background-image: url("./image/GymBackground.jpg");
+        /* Để hình ảnh bao phủ toàn bộ phần tử .content */
+        background-size: cover;
+        /* Cố định hình ảnh ở vị trí trên cùng và giữa */
+        height: 100vh;
       }
     </style>
   </head>
+
   <body>
-    <div class="container py-3">
-      <div class="row">
-        <!-- Left Column - Login Form -->
-        <div class="col-md-6">
-          <!-- Add your content for the right column here -->
-          <div class="container">
-            <div class="row justify-content-center">
-              <img
-                src="./image/AnhCorgiDeThuong.jpg"
-                id="anhCorgi"
-                width="100%"
-                class="img-flulid"
-                alt=""
-              />
+    <div id="BackgroundImage" class="container-fluid">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Left Column - Login Form -->
+          <div class="col-md-6">
+            <!-- Add your content for the right column here -->
+            <div class="container">
+              <div class="row justify-content-center">
+                <img
+                  src="./image/Logo.png"
+                  id="anhCorgi"
+                  width="100%"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Right Column - Additional Content -->
+          <!-- Right Column - Additional Content -->
 
-        <div class="col-md-6">
-          <div class="login-container form-container">
-            <h2>Login</h2>
-            <form>
-              <div class="form-group">
-                <label for="username">Username:</label>
-                <input
-                  type="text"
-                  id="username"
-                  class="form-control"
-                  placeholder="Enter your username"
-                />
-              </div>
+          <div class="col-md-6">
+            <div class="login-container form-container">
+              <h2>Login</h2>
+              <form>
+                <div class="form-group">
+                  <label for="username">Username:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    class="form-control"
+                    placeholder="Enter your username"
+                  />
+                </div>
 
-              <div class="form-group">
-                <label for="password">Password:</label>
-                <input
-                  type="password"
-                  id="password"
-                  class="form-control"
-                  placeholder="Enter your password"
-                />
-              </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                  />
+                </div>
 
-              <div id="signup" class="float-right mb-3">
-                <a href="signup.html">Sign Up</a>
-              </div>
-              <div id="forgotpassword" class="float-left mb-3">
-                <a href="passwordrecover.html">Forgot Password?</a>
-              </div>
+                <div id="signup" class="float-right mb-3">
+                  <a href="signup.html">Sign Up</a>
+                </div>
+                <div id="forgotpassword" class="float-left mb-3">
+                  <a href="passwordrecover.html">Forgot Password?</a>
+                </div>
 
-              <div class="container">
-                <button type="button" class="login-btn btn-block">Login</button>
-                <button type="button" class="gmail-btn">
-                  <i class="bi bi-google"></i> Login with Gmail
-                </button>
-              </div>
-            </form>
+                <div class="container">
+                  <button type="button" class="login-btn btn-block">
+                    Login
+                  </button>
+                  <button type="button" class="gmail-btn">
+                    <i class="bi bi-google"></i> Login with Gmail
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

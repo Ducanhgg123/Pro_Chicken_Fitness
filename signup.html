@@ -10,16 +10,11 @@
             background-color: #c8d6e5;
         }
 
-        body > div {
-            background-color: white;
-            border-radius: 10px;
-        }
-
         .row {
-            padding:10px;
+            padding: 10px;
         }
 
-        .row >div {
+        .row>div {
             border-radius: 10px;
         }
 
@@ -77,71 +72,79 @@
             margin-bottom: 2vw;
             color: #0d97ff;
         }
+
+        #BackgroundImage {
+            /* Đường dẫn đến hình ảnh bạn muốn sử dụng */
+            background-image: url('./image/GymBackground.jpg');
+            /* Để hình ảnh bao phủ toàn bộ phần tử .content */
+            background-size: cover;
+            /* Cố định hình ảnh ở vị trí trên cùng và giữa */
+        }
     </style>
     <title>Styled Forgot Password</title>
 </head>
 
 <body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <!-- Left Column - Image -->
-            <div class="col-md-6 image-column">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <img src="./image/AnhCorgiDeThuong.jpg" id="anhCorgi" width=100% class="img-flulid" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column - Sign-up Form -->
-            <div class="col-md-6 form-column my-auto" id="Sign-up">
-                <h2 id="T1">Sign-up</h2>
-
-                <div class="form-group">
-                    <div class="form-group" id="1">
-                        <label for="Email">Email address:</label>
-                        <input type="email" class="form-control" id="Email" placeholder="name@example.com">
-                    </div>
-                    <div class="form-group" id="2">
-                        <label for="Phone">Phone number:</label>
-                        <input type="text" class="form-control" id="Phone">
+    <div id="BackgroundImage" class="container-fluid">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <!-- Left Column - Image -->
+                <div class="col-md-6 image-column">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <img src="./image/Logo.png" id="anhCorgi" width=100% class="img-flulid" alt="">
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="User" class="form-label">User Name:</label>
-                    <input type="text" class="form-control" id="User"></input>
-                </div>
+                <!-- Right Column - Sign-up Form -->
+                <div class="col-md-6 form-column my-auto" id="Sign-up">
+                    <h2 id="T1">Sign-up</h2>
 
-                <div class="form-group">
-                    <label for="Pass" class="form-label">Password:</label>
-                    <input type="password" class="form-control" id="Pass"></input>
-                </div>
+                    <div class="form-group">
+                        <div class="form-group" id="1">
+                            <label for="Email">Email address:</label>
+                            <input type="email" class="form-control" id="Email" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group" id="2">
+                            <label for="Phone">Phone number:</label>
+                            <input type="text" class="form-control" id="Phone">
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="ComPass" class="form-label">Confirm Password:</label>
-                    <input type="password" class="form-control" id="ComPass"></input>
-                </div>
+                    <div class="form-group">
+                        <label for="User" class="form-label">User Name:</label>
+                        <input type="text" class="form-control" id="User"></input>
+                    </div>
 
-                <button type="submit" class="btn btn-primary " onclick="addInputField()">Signup</button>
-                </form>
+                    <div class="form-group">
+                        <label for="Pass" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="Pass"></input>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ComPass" class="form-label">Confirm Password:</label>
+                        <input type="password" class="form-control" id="ComPass"></input>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary " onclick="addInputField()">Signup</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-
     <script>
         function addInputField() {
             random = Math.floor(Math.random() * 10) % 2;
             newForm = document.getElementById('Sign-up');
-            if(random === 0)
-            {
+            if (random === 0) {
                 document.getElementById('T1').innerHTML += ' Fail';
                 document.getElementById('T1').style.color = 'red';
                 return;
             }
             newForm.innerHTML = '<h2>Success</h2>';
             newForm.innerHTML += '<div id="" class="float-left mb-3"><a href="login.html">Back to login</a></div>';
-            }
+        }
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

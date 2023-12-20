@@ -1,152 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
     <style>
-        body {
-            background-color: #c8d6e5;
-        }
+      body {
+        background-color: #c8d6e5;
+      }
 
-        .container {
-            margin-top: 5vh;
-        }
+      .container {
+        margin-top: 5vh;
+      }
 
-        .form-column {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+      .form-column {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-        .form-column h5 {
-            margin-bottom: 20px;
-        }
+      .form-column h5 {
+        margin-bottom: 20px;
+      }
 
-        .form-group {
-            margin-bottom: 2vh;
-        }
+      .form-group {
+        margin-bottom: 2vh;
+      }
 
-        .form-group label {
-            font-weight: bold;
-        }
+      .form-group label {
+        font-weight: bold;
+      }
 
-        .form-group input {
-            padding: 1.5vw;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            width: 100%;
-        }
+      .form-group input {
+        padding: 1.5vw;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        width: 100%;
+      }
 
-        .col-md-6 h2 {
-            margin-bottom: 2vw;
-            color: #0d97ff;
-            justify-content: center;
-            display: flex;
-            width: 100%;
-            grid-area: 1/ 1/ 2/ 3;
-        }
+      .col-md-6 h2 {
+        margin-bottom: 2vw;
+        color: #0d97ff;
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        grid-area: 1/ 1/ 2/ 3;
+      }
 
-        .col-md-6 {
-            display: grid;
-            grid-template-columns: 30% 70%;
-            grid-template-rows: auto auto auto;
-        }
+      .col-md-6 {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        grid-template-rows: auto auto auto;
+      }
 
-        #i2 {
-            grid-area: 2/ 2/ 3/ 3;
-            margin: 0;
-            padding: 0;
-        }
+      #i2 {
+        grid-area: 2/ 2/ 3/ 3;
+        margin: 0;
+        padding: 0;
+      }
 
-        #T1 {
-            grid-area: 1/ 1/ 2/ 3;
-        }
+      #T1 {
+        grid-area: 1/ 1/ 2/ 3;
+      }
 
-        .col-md-6 .btn-group {
-            grid-area: 3/ 1/ 4/ 3;
-            display: flex;
-            justify-content: center;
-        }
+      .col-md-6 .btn-group {
+        grid-area: 3/ 1/ 4/ 3;
+        display: flex;
+        justify-content: center;
+      }
 
-        #i1 {
-            grid-area: 2/ 1/ 3/ 2;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
+      #i1 {
+        grid-area: 2/ 1/ 3/ 2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
 
-        #avatarIcon {
-            cursor: pointer;
-            margin: 0;
-            padding: 0;
-            width: 8vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: xx-large;
-            overflow: hidden;
-            height: 8vw;
-            border-radius: 50%;
-            border-style: solid;
-            border-color: rgb(120, 120, 238);
-        }
+      #avatarIcon {
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        width: 8vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: xx-large;
+        overflow: hidden;
+        height: 8vw;
+        border-radius: 50%;
+        border-style: solid;
+        border-color: rgb(120, 120, 238);
+      }
 
-        #avatarIcon img {
-            display: none;
-            object-fit: cover;
-            width: 8vw;
-            height: 8vw;
-        }
+      #avatarIcon img {
+        display: none;
+        object-fit: cover;
+        width: 8vw;
+        height: 8vw;
+      }
 
-        #Recovery button {
-            max-width: 10vw;
-        }
+      #Recovery button {
+        max-width: 10vw;
+      }
     </style>
     <title>Styled Update Profile</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <!-- Right Column - Sign-up Form -->
-            <div class="col-md-6 form-column my-auto" id="Recovery">
-                <h2 id="T1">Update Profile</h2>
-                <div class="information" id="i1">
-                    <label for="avatarUpload" id="avatarIcon">
-                        <span aria-hidden="true" id="avatarIconIcon"><i class="bi bi-file-arrow-up"></i></span>
-                        <img id="avatarIconIMG" />
-                        <input type="file" id="avatarUpload" style="display:none" onchange="previewFile()">
-                    </label>
-                </div>
-                <div class="information" id="i2">
-                    <div class="form-group">
-                        <label for="Fullname" class="form-label">Fullname:</label>
-                        <input type="text" class="form-control" id="Fullname"></input>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="WF" class="form-label">Workout Frequency:</label>
-                        <input type="text" class="form-control" id="WF"></input>
-                    </div>
-                </div>
-
-                <div class="btn-group" role="group" aria-label="Basic example">
-
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="submit" class="btn btn-primary ">Submit</button>
-                </div>
+      <div class="row justify-content-center">
+        <!-- Right Column - Sign-up Form -->
+        <div class="col-md-6 form-column my-auto" id="Recovery">
+          <h2 id="T1">Update Profile</h2>
+          <div class="information" id="i1">
+            <label for="avatarUpload" id="avatarIcon">
+              <span aria-hidden="true" id="avatarIconIcon"
+                ><i class="bi bi-file-arrow-up"></i
+              ></span>
+              <img id="avatarIconIMG" />
+              <input
+                type="file"
+                id="avatarUpload"
+                style="display: none"
+                onchange="previewFile()"
+              />
+            </label>
+          </div>
+          <div class="information" id="i2">
+            <div class="form-group">
+              <label for="Fullname" class="form-label">Fullname:</label>
+              <input type="text" class="form-control" id="Fullname" />
             </div>
+
+            <div class="form-group">
+              <label for="WF" class="form-label">Workout Frequency:</label>
+              <input type="text" class="form-control" id="WF" />
+            </div>
+          </div>
+
+          <div class="btn-group" role="group" aria-label="Basic example"></div>
+          <div class="btn-group" role="group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
         </div>
+      </div>
     </div>
 
     <script>
-        /*function addInputField() {
+      /*function addInputField() {
             random = Math.floor(Math.random() * 10) % 2;
             newForm = document.getElementById('Sign-up');
             if (random === 0) {
@@ -157,34 +169,34 @@
             newForm.innerHTML = '<h2>Success</h2>';
             newForm.innerHTML += '<div id="" class="float-left mb-3"><a href="login.html">Back to login</a></div>';
         }*/
-        function previewFile() {
-            const preview = document.getElementById('avatarIconIMG');
-            const previewI = document.getElementById('avatarIconIcon');
-            const file = document.getElementById('avatarUpload').files[0];
-            const reader = new FileReader();
+      function previewFile() {
+        const preview = document.getElementById("avatarIconIMG");
+        const previewI = document.getElementById("avatarIconIcon");
+        const file = document.getElementById("avatarUpload").files[0];
+        const reader = new FileReader();
 
-            // listen for 'load' events on the FileReader
-            reader.addEventListener("load", function () {
-                // change the preview's src to be the "result" of reading the uploaded file (below)
-                preview.src = reader.result;
-                preview.style.display = "block";
-                previewI.style.display = "none";
-            }, false);
+        // listen for 'load' events on the FileReader
+        reader.addEventListener(
+          "load",
+          function () {
+            // change the preview's src to be the "result" of reading the uploaded file (below)
+            preview.src = reader.result;
+            preview.style.display = "block";
+            previewI.style.display = "none";
+          },
+          false
+        );
 
-            if (file) {
-                reader.readAsDataURL(file);
-            }
+        if (file) {
+          reader.readAsDataURL(file);
         }
-
+      }
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script>
-    </script>
-
-</body>
-
+    <script></script>
+  </body>
 </html>

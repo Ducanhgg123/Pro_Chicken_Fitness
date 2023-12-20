@@ -131,3 +131,12 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 10px;
   background-color: #85e6c5;
 }
+
+#BackgroundImage {
+  /* Đường dẫn đến hình ảnh bạn muốn sử dụng */
+  background-image: url("../image/GymBackground.jpg");
+  /* Để hình ảnh bao phủ toàn bộ phần tử .content */
+  background-size: cover;
+  /* Cố định hình ảnh ở vị trí trên cùng và giữa */
+  height: 100vh;
+}

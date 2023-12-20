@@ -1,57 +1,88 @@
 /* Custom styles for the gym calendar */
 
 body {
-  background-color: #c8d6e5;
+  background-color: #dfe6da;
 }
 
-.calendar {
-  margin-top: 20px;
+.mealSet .logo {
+  background-color: inherit;
+
+  border-style: none;
+  padding-left: 0;
+  padding-right: 0;
 }
+
+.mealSet .logo img {
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.mealSet .context {
+  display: none;
+}
+
 .day-blog {
-  border: 2px solid #222f3e;
-  padding: 10px 5px;
+  border: 2px solid #ccc;
+  padding: 10px;
   margin: 5px;
+  margin-top: 9vh;
+  margin-bottom: 0;
   border-radius: 5px;
   text-align: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  background-color: #55efc4;
+  background-color: #dfe6da;
+  max-height: 93vh;
+  overflow: hidden;
+  color: #758467;
+}
+
+.day-blog .btn-group {
+  max-width: 90%;
+  max-height: 10vh;
+  overflow: hidden;
+}
+
+.day-blog .btn-group button {
+  color: #758467;
+  background-color: #dfe6da;
+  font-size: 10px;
 }
 
 .day-header {
   font-weight: bold;
-  color: white;
 }
 
 .add-event-btn {
   border-radius: 10px;
-  background-color: #0984e3;
-  margin: 5px 0px;
 }
 
 .day-blog-content {
   border-radius: 5px;
-  background-color: #10ac84;
-  padding: 15px;
-  margin: 20px 0px;
+  background-color: #9caf88;
+  padding: 1vh 1vh;
+  margin: 1vh 0px;
 }
 
 .day-blog-content > div {
-  color: #0d0d0d;
+  color: #758467;
   /* border: 2px solid #332b1e; */
-  background-color: #f2f2f2;
+  background-color: #cbd5c0;
   border-radius: 5px;
   margin: 10px 0;
 }
 
 .day-blog-content > h5 {
-  color: white;
+  color: #dfe6da;
 }
 
 #auto-generate-btn button {
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: #0984e3;
+  background-color: #dfe6da;
+  color: #758467 !important;
   border-radius: 10px;
+  border-color: #758467;
 }
 
 .modal img {
@@ -80,4 +111,13 @@ body {
   background-color: red; /* Change color when checked */
   color: #fff; /* Text color when checked */
   border: 1px solid red; /* Border color when checked */
+}
+
+#BackgroundImage {
+  /* Đường dẫn đến hình ảnh bạn muốn sử dụng */
+  background-image: url("../image/GymBackground.jpg");
+  /* Để hình ảnh bao phủ toàn bộ phần tử .content */
+  background-size: cover;
+  /* Cố định hình ảnh ở vị trí trên cùng và giữa */
+  height: 100vh;
 }

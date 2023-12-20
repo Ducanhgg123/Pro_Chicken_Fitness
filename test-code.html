@@ -21,23 +21,13 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
     />
     <style>
-      .modal img {
-        width: 20px;
-        height: 20px;
-      }
-
-      /* Add your custom styles here if needed */
-      .custom-checkbox {
-        display: none; /* Hide the default checkbox */
-      }
-
-      .custom-checkbox + label {
+      #editDishModalAdmin .choose-dish-custom-checkbox + label {
         padding: 10px 20px;
         border: 1px solid #ddd;
         cursor: pointer;
       }
 
-      #addDishModal .custom-checkbox:checked + label {
+      #editDishModalAdmin .choose-dish-custom-checkbox:checked + label {
         background-color: green; /* Change color when checked */
         color: #fff; /* Text color when checked */
         border: 1px solid green; /* Border color when checked */
@@ -50,25 +40,36 @@
       <!-- place navbar here -->
     </header>
     <main>
-      <button
-        type="button"
-        class="btn btn-secondary add-event-btn container-fluid"
-        data-bs-toggle="modal"
-        data-bs-target="#addDishModal"
+      <!-- Edit Workout Activity Button -->
+      <a
+        href="#"
+        class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"
+        onclick="{
+          if (confirm('bạn có thiệt là muốn xóa hông z?') == true) {
+            console.log('Tiến hành xóa nha!!!')
+          }
+          else {
+            console.log('Thui không xóa nữa đâu')
+          }
+        }"
       >
-        <i class="bi bi-plus"></i> Add Meal
-      </button>
+        <i class="bi bi-plus-circle-fill"></i>
+        Delete
+      </a>
+      <!-- Edit Workout Activity Modal -->
       <div
         class="modal fade"
-        id="addDishModal"
+        id="editWorkoutActivityModalAdmin"
         tabindex="-1"
-        aria-labelledby="addDishModalLabel"
+        aria-labelledby="editWorkoutActivityModalAdminLabel"
         aria-hidden="true"
       >
         <div class="modal-dialog modal-md">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="addDishModalLabel">Add more meal</h5>
+              <h5 class="modal-title" id="editWorkoutActivityModalAdminLabel">
+                Edit Workout Activity
+              </h5>
               <button
                 type="button"
                 class="btn-close"
@@ -82,34 +83,36 @@
                 <!-- Name -->
 
                 <div>
-                  <label for="dish-name" class="form-label">Name</label>
+                  <label for="edit-workout-activity-name" class="form-label"
+                    >Name</label
+                  >
                   <input
                     type="text"
                     class="form-control"
-                    id="dish-name"
-                    placeholder="dish name"
+                    id="edit-workout-activity-name"
+                    placeholder="workout activity name"
                   />
                 </div>
                 <!-- Image -->
                 <div>
-                  <p>Add image</p>
+                  <p>Edit image</p>
                   <label
-                    for="dish-image"
+                    for="edit-workout-activity-image"
                     class="form-label btn btn-outline-primary"
                     ><i class="bi bi-image"></i
                   ></label>
                   <input
                     type="file"
                     class="form-control visually-hidden"
-                    id="dish-image"
-                    placeholder="dish image"
+                    id="edit-workout-activity-image"
+                    placeholder="workout activity image"
                     accept="image/*"
                   />
                   <div>
                     <img
                       src="./image/AnhCorgiDeThuong.jpg"
-                      alt="Selected Image"
-                      id="selectedImage"
+                      alt="Selected editing workout activity image"
+                      id="selectedEditingWorkoutActivityImage"
                       class="img-fluid"
                       style="width: 400px; height: 400px"
                     />
@@ -117,7 +120,7 @@
                   <script>
                     // Add event listener to the image input
                     document
-                      .getElementById("dish-image")
+                      .getElementById("edit-workout-activity-image")
                       .addEventListener("change", function (e) {
                         // Get the selected file
                         const file = e.target.files[0];
@@ -128,160 +131,33 @@
                           const reader = new FileReader();
                           reader.onload = function (readerEvent) {
                             // Set the source of the image to the data URL
-                            document.getElementById("selectedImage").src =
-                              readerEvent.target.result;
+                            document.getElementById(
+                              "selectedEditingWorkoutActivityImage"
+                            ).src = readerEvent.target.result;
                           };
                           reader.readAsDataURL(file);
                         }
                       });
                   </script>
                 </div>
-
-                <!-- Total Calories -->
-                <div>
-                  <p>Total Calories: 123</p>
-                </div>
-
-                <!-- Ingredients -->
-                <div>
-                  <p>Ingredients</p>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="custom-checkbox"
-                      type="checkbox"
-                      id="checkbox-meal-1"
-                    />
-                    <label class="btn btn-light" for="checkbox-meal-1"
-                      ><img
-                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
-                      />
-                      Gà</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="custom-checkbox"
-                      type="checkbox"
-                      id="checkbox-meal-2"
-                    />
-                    <label class="btn btn-light" for="checkbox-meal-2"
-                      ><img
-                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
-                      />
-                      Gà</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="custom-checkbox"
-                      type="checkbox"
-                      id="checkbox-meal-3"
-                    />
-                    <label class="btn btn-light" for="checkbox-meal-3">
-                      <img
-                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
-                      />
-                      Gà</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="custom-checkbox"
-                      type="checkbox"
-                      id="checkbox-meal-4"
-                    />
-                    <label class="btn btn-light" for="checkbox-meal-4"
-                      ><img
-                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
-                      />
-                      Gà</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="custom-checkbox"
-                      type="checkbox"
-                      id="checkbox-meal-5"
-                    />
-                    <label class="btn btn-light" for="checkbox-meal-5"
-                      ><img
-                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
-                      />
-                      Gà</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="custom-checkbox"
-                      type="checkbox"
-                      id="checkbox-meal-6"
-                    />
-                    <label class="btn btn-light" for="checkbox-meal-6"
-                      ><img
-                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
-                      />
-                      Gà</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="custom-checkbox"
-                      type="checkbox"
-                      id="checkbox-meal-7"
-                    />
-                    <label class="btn btn-light" for="checkbox-meal-7"
-                      ><img
-                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
-                      />
-                      Gà</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="custom-checkbox"
-                      type="checkbox"
-                      id="checkbox-meal-8"
-                    />
-                    <label class="btn btn-light" for="checkbox-meal-8"
-                      ><img
-                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
-                      />
-                      Gà</label
-                    >
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="custom-checkbox"
-                      type="checkbox"
-                      id="checkbox-meal-9"
-                    />
-                    <label class="btn btn-light" for="checkbox-meal-9"
-                      ><img
-                        src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
-                      />
-                      Gà</label
-                    >
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    data-bs-dismiss="modal"
-                  >
-                    Submit
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
               </div>
             </div>
-            <!-- Form Check -->
+            <div class="modal-footer">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Submit
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       </div>
