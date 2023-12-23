@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./LoginPage.css";
+// import "./LoginPage.css";
 import AuthenticationService from "../api/services/AuthenticationService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   setUsername,
@@ -106,7 +106,9 @@ function Login() {
 
                 <div className="d-flex justify-content-between mt-3">
                   <p className="text-gray">Dont have an account</p>
-                  <p className="">Sign up</p>
+                  <Link to="/signup">
+                    <p className="">Sign up</p>
+                  </Link>
                 </div>
               </div>
             </form>

@@ -9,7 +9,6 @@ function NewsFeeds() {
     const getPosts = async () => {
       try {
         const res = await PostService.getAllPosts();
-        console.log(res);
         if (res?.status == 200) {
           setPosts(res.data);
         } else {

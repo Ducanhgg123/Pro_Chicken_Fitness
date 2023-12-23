@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/userSlice";
 import Header from "../components/Header";
 import moment from "moment";
+import UserService from "../api/services/UserService";
 
 const ProfileUpdatePage = () => {
   const { user } = useSelector((state) => state.user);
@@ -11,29 +12,37 @@ const ProfileUpdatePage = () => {
   console.log(user);
 
   const userKeys = Object.keys(user);
-  console.log(userKeys);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Logic for form submission, including all the updated data
-    console.log("Updated Username:", username);
-    console.log("Updated Avatar URL:", avatar);
-    console.log("Days per Week:", daysPerWeek);
-    console.log("Selected Days:", selectedDays);
+    // console.log("Updated Username:", username);
+    // console.log("Updated Avatar URL:", avatar);
+    // console.log("Days per Week:", daysPerWeek);
+    // console.log("Selected Days:", selectedDays);
 
-    // Log the additional fields
-    console.log("Address:", address);
-    console.log("DOB:", dob);
-    console.log("Email:", email);
-    console.log("Full Name:", fullName);
-    console.log("Gender:", gender);
-    console.log("Height:", height);
-    console.log("Phone Number:", phoneNumber);
-    console.log("Weight:", weight);
+    // // Log the additional fields
+    // console.log("Address:", address);
+    // console.log("DOB:", dob);
+    // console.log("Email:", email);
+    // console.log("Full Name:", fullName);
+    // console.log("Gender:", gender);
+    // console.log("Height:", height);
+    // console.log("Phone Number:", phoneNumber);
+    // console.log("Weight:", weight);
+    try {
+      const res = await UserService.updateUserInfo(user);
+      if (res?.status == 200) {
+        dispatch(setUser(res.data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleUserInfoChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     dispatch(setUser({ ...user, [name]: value }));
   };
   const getTypeForInput = (userKey) => {
@@ -57,8 +66,8 @@ const ProfileUpdatePage = () => {
       >
         <h2 className="text-center">Profile Update</h2>
         <Form onSubmit={handleSubmit}>
-          {userKeys?.map((userKey) => (
-            <Form.Group key={user[userKey]} className="mb-3">
+          {userKeys?.map((userKey, idx) => (
+            <Form.Group key={idx} className="mb-3">
               <Form.Label htmlFor={userKey}>{userKey}</Form.Label>
               <Form.Control
                 id={userKey}
@@ -66,9 +75,11 @@ const ProfileUpdatePage = () => {
                 placeholder={`Enter ${userKey}`}
                 name={userKey}
                 value={`${
-                  userKey === "dateOfBirth"
-                    ? formatDateOfBirth(user[userKey])
-                    : user[userKey]
+                  user[userKey] !== null
+                    ? userKey === "dateOfBirth"
+                      ? formatDateOfBirth(user[userKey])
+                      : user[userKey]
+                    : ""
                 }`}
                 onChange={handleUserInfoChange}
               />

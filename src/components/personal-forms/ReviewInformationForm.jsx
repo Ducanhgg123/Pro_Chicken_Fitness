@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function ReviewInformationForm({ previousForm }) {
   const { userIngredients, favoriteIngredients, unfavoriteIngredients } =
     useSelector((state) => state.ingredients);
-  const { username } = useSelector((state) => state.user);
+  const { username, user } = useSelector((state) => state.user);
   const userIngredientsSet = new Set(userIngredients);
   const navigate = useNavigate();
   const handleSubmit = async () => {
@@ -18,7 +18,8 @@ function ReviewInformationForm({ previousForm }) {
         username,
         ingredients: userIngredients,
       });
-      if (res?.status == 200) {
+      const updateUserRes = await UserService.updateUserInfo(user);
+      if (res?.status == 200 && updateUserRes?.status == 200) {
         navigate("/");
       } else {
         alert("something went wrong");
@@ -78,21 +79,6 @@ function ReviewInformationForm({ previousForm }) {
       <div className="row">
         <h2>Your frequency workout</h2>
         <p className="">Number of days you can workout: {daysPerWeek}</p>
-        <p>Available date in week you can workout:</p>
-        <ul className="list-group w-50">
-          {daysInWeek.map((day) => {
-            if (day.chosen)
-              return (
-                <button
-                  className="list-group-item list-group-item-action"
-                  key={day.day}
-                >
-                  {" "}
-                  {day.day}
-                </button>
-              );
-          })}
-        </ul>
       </div>
       <div className="w-50 d-flex mt-4 ">
         <button className="btn btn-secondary" onClick={previousForm}>

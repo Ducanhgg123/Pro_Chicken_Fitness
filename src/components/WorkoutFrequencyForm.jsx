@@ -1,20 +1,22 @@
 import React from "react";
 import "../styles/WorkoutFrequency.css";
 import { useDispatch, useSelector } from "react-redux";
-import { chooseDaysPerWeek, toggleDate } from "../redux/frequencyWorkoutSlice";
+import { chooseDaysPerWeek } from "../redux/frequencyWorkoutSlice";
+import { setUser } from "../redux/userSlice";
 
 const WorkoutFrequencyForm = ({ previousForm, nextForm }) => {
-  const { daysPerWeek, daysInWeek } = useSelector(
-    (state) => state.workoutFrequency
-  );
+  const { daysPerWeek } = useSelector((state) => state.workoutFrequency);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const handleDaysPerWeekChange = (event) => {
+    dispatch(
+      setUser({
+        ...user,
+        workoutFrequency: Number.parseInt(event.target.value),
+      })
+    );
     dispatch(chooseDaysPerWeek({ daysPerWeek: event.target.value }));
-  };
-
-  const handleDaySelection = (idx) => {
-    dispatch(toggleDate({ idx }));
   };
 
   return (
@@ -36,35 +38,6 @@ const WorkoutFrequencyForm = ({ previousForm, nextForm }) => {
           <div className="range-labels">
             {[...Array(8).keys()].map((day) => (
               <div key={day}>{day}</div>
-            ))}
-          </div>
-
-          <h4 className="mb-4 text-center py-3 text-white">Days Available</h4>
-
-          <div
-            className="btn-group d-flex justify-content-around"
-            role="group"
-            aria-label="Basic checkbox toggle button group"
-          >
-            {daysInWeek.map((day, index) => (
-              <React.Fragment key={index}>
-                <input
-                  type="checkbox"
-                  className={`btn-check ${day.chosen}`}
-                  id={`btncheck-${day.day.toLowerCase()}`}
-                  onChange={() => handleDaySelection(index)}
-                />
-                <label
-                  className="btn"
-                  htmlFor={`btncheck-${day.day.toLowerCase()}`}
-                  style={{
-                    backgroundColor: `${day.chosen ? "#33bbc5" : ""}`,
-                    color: `${day.chosen ? "#fff" : "#333"}`,
-                  }}
-                >
-                  {day.day}
-                </label>
-              </React.Fragment>
             ))}
           </div>
         </div>

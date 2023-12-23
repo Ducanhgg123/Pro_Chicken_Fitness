@@ -1,5 +1,9 @@
 import { useState } from "react";
 import AuthenticationService from "../api/services/AuthenticationService";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { setUsername, setUser as setUserInfo } from "../redux/userSlice";
+import UserService from "../api/services/UserService";
 
 function SignupPage() {
   const [user, setUser] = useState({
@@ -8,6 +12,8 @@ function SignupPage() {
     confirmedPassword: "",
   });
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setError("");
@@ -28,7 +34,21 @@ function SignupPage() {
         user.password
       );
       if (res?.status == 200) {
-        // navigate to login
+        const loginRes = await AuthenticationService.login(
+          user.username,
+          user.password
+        );
+        if (loginRes?.status == 200) {
+          const userInfoRes = await UserService.getUserbyUsername(
+            user.username
+          );
+          if (userInfoRes?.status == 200) {
+            dispatch(setUserInfo(userInfoRes.data));
+          }
+          sessionStorage.setItem("jwt-token", loginRes.data.jwt);
+          dispatch(setUsername(user.username));
+          navigate("/personal-information");
+        }
       }
       return res;
     } catch (error) {
