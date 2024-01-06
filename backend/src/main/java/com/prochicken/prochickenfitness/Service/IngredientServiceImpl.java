@@ -22,16 +22,16 @@ public class IngredientServiceImpl implements IngredientService{
     public List<IngredientEntity> getFavouriteIngredient() {
         List<IngredientEntity> ingredientEntities = ingredientRepository.getIngredientEntitiesByStatus(true);
         for (IngredientEntity ingredientEntity: ingredientEntities) {
-            ingredientEntity.setImage(FileUtil.decompressFile(ingredientEntity.getImage()));
+            ingredientEntity.setImage(ingredientEntity.getImage());
         }
         return ingredientEntities;
     }
 
     @Override
     public List<IngredientEntity> getUnfavouriteIngredient() {
-        List<IngredientEntity> ingredientEntities = ingredientRepository.getIngredientEntitiesByStatus(true);
+        List<IngredientEntity> ingredientEntities = ingredientRepository.getIngredientEntitiesByStatus(false);
         for (IngredientEntity ingredientEntity: ingredientEntities) {
-            ingredientEntity.setImage(FileUtil.decompressFile(ingredientEntity.getImage()));
+            ingredientEntity.setImage(ingredientEntity.getImage());
         }
         return ingredientEntities;
     }
