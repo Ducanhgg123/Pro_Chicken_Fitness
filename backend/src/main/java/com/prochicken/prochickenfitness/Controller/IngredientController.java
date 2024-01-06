@@ -43,9 +43,13 @@ public class IngredientController {
 
     @PostMapping("/")
     public IngredientEntity addIngredient(@RequestBody(required = false) IngredientEntity ingredientEntity){
+        IngredientEntity tmp = new IngredientEntity();
         ingredientEntity.setStatus(true);
         ingredientRepository.save(ingredientEntity);
-        ingredientEntity.setStatus(false);
+        tmp.setStatus(false);
+        tmp.setName(ingredientEntity.getName());
+        tmp.setImage(ingredientEntity.getImage());
+        ingredientRepository.save(tmp);
         return ingredientRepository.save(ingredientEntity);
     }
 
