@@ -33,6 +33,10 @@ public class DishController {
         return dishDTOS;
     }
 
+    @GetMapping("/ingredients/{id}")
+    public List<IngredientEntity> getIngredients(@PathVariable(name = "id") int id){
+        return dishRepository.findAllIngredients(id);
+    }
     @GetMapping("/{id}")
     public DishDTO getDish(@PathVariable(name = "id") int id){
         return DishTransfer.toDTO(dishRepository.findById(id).get());
