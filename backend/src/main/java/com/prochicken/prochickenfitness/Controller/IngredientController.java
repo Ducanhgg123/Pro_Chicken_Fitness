@@ -1,12 +1,11 @@
 package com.prochicken.prochickenfitness.Controller;
 
 import com.prochicken.prochickenfitness.Service.IngredientService;
+import com.prochicken.prochickenfitness.Util.FileUtil;
 import com.prochicken.prochickenfitness.entity.IngredientEntity;
 import com.prochicken.prochickenfitness.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class IngredientController {
 
     @GetMapping("/")
     public List<IngredientEntity> getIngredients(){
-        return ingredientRepository.findAll();
+        return ingredientService.getFavouriteIngredient();
     }
 
     @GetMapping("/favourite")
@@ -35,5 +34,39 @@ public class IngredientController {
     @GetMapping("/unfavourite")
     public List<IngredientEntity> getUnfavouriteIngredient(){
         return ingredientService.getUnfavouriteIngredient();
+    }
+
+    @GetMapping("/{id}")
+    public IngredientEntity getIngredientById(@PathVariable(name = "id") int id){
+        return ingredientRepository.findById(id).get();
+    }
+
+    @PostMapping("/")
+    public IngredientEntity addIngredient(@RequestBody(required = false) IngredientEntity ingredientEntity){
+        ingredientEntity.setStatus(true);
+        ingredientRepository.save(ingredientEntity);
+        ingredientEntity.setStatus(false);
+        return ingredientRepository.save(ingredientEntity);
+    }
+
+    @PutMapping("/")
+    public IngredientEntity updateIngredient(@RequestBody(required = false) IngredientEntity ingredientEntity){
+        IngredientEntity ingredientEntity1 = ingredientRepository.findById(ingredientEntity.getId()).get();
+        List<IngredientEntity> ingredients = ingredientRepository.findAllByName(ingredientEntity1.getName());
+        for (IngredientEntity ingredient: ingredients) {
+            ingredient.setName(ingredientEntity.getName());
+            ingredient.setImage(ingredientEntity.getImage());
+            ingredientRepository.save(ingredient);
+        }
+        return ingredientEntity;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteIngredient(@PathVariable(name = "id") int id){
+        IngredientEntity ingredientEntity = ingredientRepository.findById(id).get();
+        List<IngredientEntity> ingredients = ingredientRepository.findAllByName(ingredientEntity.getName());
+        for (IngredientEntity ingredient: ingredients) {
+            ingredientRepository.delete(ingredient);
+        }
     }
 }

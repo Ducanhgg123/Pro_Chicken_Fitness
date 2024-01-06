@@ -1,5 +1,6 @@
 package com.prochicken.prochickenfitness.Service;
 
+import com.prochicken.prochickenfitness.Util.FileUtil;
 import com.prochicken.prochickenfitness.entity.IngredientEntity;
 import com.prochicken.prochickenfitness.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,19 @@ public class IngredientServiceImpl implements IngredientService{
 
     @Override
     public List<IngredientEntity> getFavouriteIngredient() {
-        return ingredientRepository.getIngredientEntitiesByStatus(true);
+        List<IngredientEntity> ingredientEntities = ingredientRepository.getIngredientEntitiesByStatus(true);
+        for (IngredientEntity ingredientEntity: ingredientEntities) {
+            ingredientEntity.setImage(FileUtil.decompressFile(ingredientEntity.getImage()));
+        }
+        return ingredientEntities;
     }
 
     @Override
     public List<IngredientEntity> getUnfavouriteIngredient() {
-        return ingredientRepository.getIngredientEntitiesByStatus(false);
+        List<IngredientEntity> ingredientEntities = ingredientRepository.getIngredientEntitiesByStatus(true);
+        for (IngredientEntity ingredientEntity: ingredientEntities) {
+            ingredientEntity.setImage(FileUtil.decompressFile(ingredientEntity.getImage()));
+        }
+        return ingredientEntities;
     }
 }

@@ -11,4 +11,5 @@ public interface IngredientRepository extends JpaRepository<IngredientEntity,Int
     Optional<RoleEntity> findByName(String name);
 
     List<IngredientEntity> getIngredientEntitiesByStatus(boolean status);
+    List<IngredientEntity> findAllByName(String name);
 }
