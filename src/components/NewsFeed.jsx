@@ -102,13 +102,10 @@ function NewsFeed({ post }) {
           {/* Comment button */}
           <button
             type="button"
-            className="btn"
+            className="btn btn-outline-secondary"
             style={{
-              ...buttonStyles,
-              ...(isHovered && hoverStyles), // Apply hover styles conditionally
+              transition: "all 0.3s ease ",
             }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
             onClick={toggleShowComment}
           >
             <i className="bi bi-chat-left-dots-fill"></i>

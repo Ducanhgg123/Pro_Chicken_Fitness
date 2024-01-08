@@ -9,3 +9,13 @@
 .btn-tab.active {
   background-color: var(--primary-clr) !important;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+p {
+  line-height: 20px;
+}

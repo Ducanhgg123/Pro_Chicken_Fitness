@@ -1,7 +1,8 @@
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { isCoach } from "../utilities/checkRole";
+import Button from "./button/Button";
 
 const imgUrl =
   "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
@@ -29,7 +30,16 @@ function CardCoach({ coach, subscribedCoaches }) {
     });
   };
   return (
-    <Card style={{ width: "18rem", padding: 0 }}>
+    <Card
+      className="shadow-sm"
+      style={{
+        width: "18rem",
+        padding: 0,
+        borderRadius: "25px",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        cursor: "pointer",
+      }}
+    >
       <Card.Img variant="top" src={coach?.avatar || imgUrl} />{" "}
       <Card.Body>
         <Card.Title>{coach?.username}</Card.Title>{" "}
@@ -45,9 +55,7 @@ function CardCoach({ coach, subscribedCoaches }) {
             }}
             onClick={handleSubscribeCoach}
           > */}
-          <Button variant="primary" onClick={handleSubscribeCoach}>
-            Subscribe
-          </Button>
+          <Button onClick={handleSubscribeCoach}>Subscribe</Button>
           {/* </Link> */}
         </div>
       </Card.Body>

@@ -7,19 +7,31 @@ function Message({ message }) {
 
   return (
     <div
-      className={`d-flex justify-content-${
-        isCurrentUser ? "end" : "start"
-      } mb-2`}
+      className={`d-flex justify-content-${isCurrentUser ? "end" : "start"}`}
     >
       <div
         className={`rounded ${isCurrentUser ? "text-end" : "text-start"}`}
         style={{
-          width: "10%",
+          width: "auto",
         }}
       >
         <p className="text-bold fs-3">{message.username}</p>
-        <div className={`${isCurrentUser ? "bg-white" : "bt-primary"}`}>
-          <p className="p-2">{message.text}</p>
+        <div
+          style={{
+            borderRadius: "30px",
+            color: `${isCurrentUser ? "#fff" : "#333"}`,
+            backgroundColor: `${
+              isCurrentUser ? "rgb(10, 124, 255)" : "rgb(243, 243, 243)"
+            }`,
+          }}
+        >
+          <p
+            style={{
+              padding: "10px 10px",
+            }}
+          >
+            {message.text}
+          </p>
         </div>
       </div>
     </div>

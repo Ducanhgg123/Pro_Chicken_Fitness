@@ -7,6 +7,16 @@ import Message from "../components/chat/Message";
 import CoachService from "../api/services/CoachService";
 import { generateConversationId } from "../utilities/generateConversationId";
 import { Button } from "react-bootstrap";
+import Conversation from "../components/chat/Conversation";
+
+function renderCorrectUsername(conversationId, username) {
+  const splittedConversaion = conversationId.split("-");
+  const idx = splittedConversaion.indexOf(username);
+  if (idx == -1) {
+    return "undefined";
+  }
+  return splittedConversaion[idx == 1 ? 2 : 1];
+}
 
 function ChatPage() {
   const { userRoles, username } = useSelector((state) => state.user);
@@ -37,7 +47,6 @@ function ChatPage() {
           setConversations([
             generateConversationId(coachRes.data.username, username),
           ]);
-          console.log(conversations);
         }
       }
     };
@@ -78,41 +87,35 @@ function ChatPage() {
         <div className="col-md-3 border-end vh-100">
           <h4>Conversations</h4>
           <ul className="list-group">
-            {conversations?.map((conversation, idx) => (
-              <li key={idx} className="list-group-item">
-                <Button onClick={() => handleSelect(conversation)}>
-                  {conversation}
-                </Button>
-              </li>
-            ))}
+            {conversations?.map((conversation, idx) => {
+              return (
+                <li key={idx} className="list-group-item">
+                  <Button onClick={() => handleSelect(conversation)}>
+                    {renderCorrectUsername(conversation, username)}
+                  </Button>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
         {/* Conversation content */}
+
         <div className="col-md-9">
           <div className="conversation-content p-3 d-flex flex-column h-100">
             <h4>Conversation</h4>
-
-            <div
-              className="border p-3 flex-grow-1 mb-3 overflow-auto"
-              style={{
-                maxHeight: "80vh",
-              }}
-            >
-              {selectedConversationId && messages.length === 0 && (
-                <div>You two have not chat yet</div>
-              )}
-              {messages?.map((message, idx) => (
-                <Message key={idx} message={message} />
-              ))}
-              <div ref={bottomRef}></div>
-            </div>
             {selectedConversationId && (
+              <Conversation
+                messages={messages}
+                selectedConversationId={selectedConversationId}
+              />
+            )}
+            {/* {selectedConversationId && (
               <SendMessage
                 bottomRef={bottomRef}
                 conversationId={selectedConversationId}
               />
-            )}
+            )} */}
           </div>
         </div>
       </div>

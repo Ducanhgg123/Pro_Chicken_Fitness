@@ -143,14 +143,14 @@ const WeekCalendar = () => {
           })}
         </div>
       </div>
-      {selectedDailyWorkout && (
-        <AddFoodModal show={foodShow} handleClose={handleCloseFood} />
-      )}
       {exercisesShow && (
         <AddExercisesModal
           show={exercisesShow}
           handleClose={handleCloseExcersises}
         />
+      )}
+      {selectedDailyWorkout && (
+        <AddFoodModal show={foodShow} handleClose={handleCloseFood} />
       )}
       <div
         style={{
@@ -161,8 +161,17 @@ const WeekCalendar = () => {
           margin: "20px 0",
         }}
       >
-        <Form.Group>
+        <Form.Group
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <Form.Control
+            style={{
+              width: "30%",
+              transition: "all 0.3s ease",
+            }}
             value={caloriesPerDay}
             onChange={(e) => setCaloriesPerDay(e.target.value)}
             type="number"

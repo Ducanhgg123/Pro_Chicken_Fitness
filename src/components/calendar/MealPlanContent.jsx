@@ -9,7 +9,21 @@ function MealPlanContent({ dishes }) {
       >
         <h5>Meal Plan</h5>
         {dishes?.map((dish) => (
-          <div key={dish.id}>{dish.name}</div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#fff",
+              borderRadius: "25px",
+              padding: "0 15px",
+              wordBreak: "break-word",
+              width: "100%",
+            }}
+            key={dish.id}
+          >
+            {dish.name}
+          </div>
         ))}
       </div>
       <div className="total-calorie">

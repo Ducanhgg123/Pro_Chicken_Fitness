@@ -2,6 +2,7 @@ import { Timestamp, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { db } from "../../firebase/firebase";
+import Button from "../button/Button";
 
 function SendMessage({ bottomRef, conversationId }) {
   const [message, setMessage] = useState("");
@@ -13,8 +14,7 @@ function SendMessage({ bottomRef, conversationId }) {
       return;
     }
     try {
-      console.log(conversationId);
-      console.log(message, username);
+      // console.log(message, username);
       await updateDoc(doc(db, "chats", conversationId), {
         messages: arrayUnion({
           username,
@@ -37,10 +37,14 @@ function SendMessage({ bottomRef, conversationId }) {
         aria-label="Type your message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        style={{
+          backgroundColor: "rgb(243,243,243)",
+          border: "none",
+          borderRadius: "25px",
+          transition: "all 0.3 ease",
+        }}
       />
-      <button className="btn btn-primary" type="submit">
-        Send
-      </button>
+      <Button type="submit">Send</Button>
     </form>
   );
 }

@@ -1,10 +1,11 @@
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import DishService from "../../api/services/DishService";
 import { setDishes } from "../../redux/dishSlice";
 import { useEffect } from "react";
 import CalendarService from "../../api/services/CalendarService";
+import Button from "../button/Button";
 
 const AddFoodModal = ({ show, handleClose }) => {
   const { dishes } = useSelector((state) => state.dish);
@@ -65,27 +66,44 @@ const AddFoodModal = ({ show, handleClose }) => {
         <Modal.Title id="addMealModalLabel">Add more meal</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {dishes?.map(
-          (dish, idx) =>
-            !alreadyHaveDishesId.has(dish.id) && (
-              <Form.Check key={idx}>
-                <Form.Check.Input
-                  type="checkbox"
-                  id="checkbox-meal-1"
-                  onClick={(e) => handleChangeDishes(e, dish)}
-                />
-                <Form.Check.Label htmlFor="checkbox-meal-1">
-                  <img
-                    src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
-                    alt="Food"
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", // Fix gridTemplateColumns syntax
+            gridGap: "20px", // Adjust gap between items
+          }}
+        >
+          {dishes?.map(
+            (dish, idx) =>
+              !alreadyHaveDishesId.has(dish.id) && (
+                <Form.Check key={idx}>
+                  <Form.Check.Input
+                    type="checkbox"
+                    id="checkbox-meal-1"
+                    onClick={(e) => handleChangeDishes(e, dish)}
                   />
-                  {dish?.name}
-                </Form.Check.Label>
-              </Form.Check>
-            )
-        )}
-        <Button onClick={updateDishes}>Add dishes</Button>
+                  <Form.Check.Label htmlFor="checkbox-meal-1">
+                    <img
+                      src="https://t4.ftcdn.net/jpg/00/77/46/11/360_F_77461112_WFAEbGQnlfZDUnJ984ncl44ItgtYw0gJ.jpg"
+                      alt="Food"
+                    />
+                    {dish?.name}
+                  </Form.Check.Label>
+                </Form.Check>
+              )
+          )}
+        </div>
       </Modal.Body>
+      <Modal.Footer>
+        <Button
+          styles={{
+            margin: "15px 0 5px 0",
+          }}
+          onClick={updateDishes}
+        >
+          Add dishes
+        </Button>
+      </Modal.Footer>
     </Modal>
   );
 };
