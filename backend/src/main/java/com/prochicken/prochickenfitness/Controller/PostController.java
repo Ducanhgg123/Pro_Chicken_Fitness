@@ -23,6 +23,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/post")
@@ -109,7 +110,7 @@ public class PostController {
     }
 
     @GetMapping("/comment/{id}")
-    public List<CommentWithUserDTO> getPostComments(@PathVariable(name = "id") int id){
+    public Map<String,Object> getPostComments(@PathVariable(name = "id") int id){
         List<CommentEntity> commentEntities = commentRepository.findAllByPostId(id);
         List<CommentWithUserDTO> commentDTOS = new ArrayList<>();
         for (CommentEntity commentEntity:commentEntities){
@@ -121,7 +122,8 @@ public class PostController {
             commentDTO.setAvatar(FileUtil.decompressFile(userEntity.getAvatar()));
             commentDTOS.add(commentDTO);
         }
-        return commentDTOS;
+        Map<String,Object> map = Map.of("comments",commentDTOS,"numComment",commentDTOS.size());
+        return map;
     }
 
 }
