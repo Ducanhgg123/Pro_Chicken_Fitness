@@ -7,6 +7,7 @@ import {
   setDailyWorkoutIds,
   setDailyWorkouts,
 } from "../redux/dailyWorkoutSlice";
+import Header from "../components/Header";
 function CalendarPage() {
   const { username } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function CalendarPage() {
   }, []);
   return (
     <div className="calendar-bg vh-100">
+      <Header />
       <WeekCalendar />
     </div>
   );

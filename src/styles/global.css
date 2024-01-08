@@ -1,0 +1,11 @@
+:root {
+  --primary-clr: #fdbb24;
+}
+
+.btn-tab:hover {
+  background-color: var(--primary-clr) !important;
+}
+
+.btn-tab.active {
+  background-color: var(--primary-clr) !important;
+}

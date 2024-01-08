@@ -1,15 +1,15 @@
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/userSlice";
 import Header from "../components/Header";
 import moment from "moment";
 import UserService from "../api/services/UserService";
+import { keyToTextLabel } from "../utilities/renderText";
+import Button from "../components/button/Button";
 
 const ProfileUpdatePage = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
-  console.log(user);
 
   const userKeys = Object.keys(user);
 
@@ -68,7 +68,9 @@ const ProfileUpdatePage = () => {
         <Form onSubmit={handleSubmit}>
           {userKeys?.map((userKey, idx) => (
             <Form.Group key={idx} className="mb-3">
-              <Form.Label htmlFor={userKey}>{userKey}</Form.Label>
+              <Form.Label htmlFor={userKey}>
+                {userKey in keyToTextLabel ? keyToTextLabel[userKey] : userKey}
+              </Form.Label>
               <Form.Control
                 id={userKey}
                 type={getTypeForInput(userKey)}
@@ -97,10 +99,17 @@ const ProfileUpdatePage = () => {
               <option value="other">Other</option>
             </Form.Control>
           </Form.Group>
-
-          <Button className="w-100" variant="primary" type="submit">
-            Update Profile
-          </Button>
+          <div className="d-flex justify-content-center my-5">
+            <Button
+              style={{
+                padding: "10px 40px",
+                borderRadius: "40px",
+              }}
+              type="submit"
+            >
+              Update Profile
+            </Button>
+          </div>
         </Form>
       </div>
     </div>

@@ -1,10 +1,12 @@
 function MealPlanContent({ dishes }) {
   const totalCaloriesSum =
     dishes?.reduce((acc, dish) => acc + dish.totalCalories, 0) || 0;
-
   return (
     <>
-      <div className="day-blog-content">
+      <div
+        className="day-blog-content"
+        style={{ height: "300px", overflow: "auto" }}
+      >
         <h5>Meal Plan</h5>
         {dishes?.map((dish) => (
           <div key={dish.id}>{dish.name}</div>

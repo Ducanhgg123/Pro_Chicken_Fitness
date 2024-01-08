@@ -10,6 +10,15 @@ class PostService {
     }
   };
 
+  deletePost = async (postId) => {
+    try {
+      const response = await AxiosInstance.delete(`/post/${postId}`);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  };
+
   likePost = async (postId) => {
     try {
       const response = await AxiosInstance.put(`/post/like/${postId}`);
@@ -22,6 +31,15 @@ class PostService {
   createPost = async (formData) => {
     try {
       const response = await AxiosInstance.post("/post/", formData);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  };
+
+  updatePost = async (formData) => {
+    try {
+      const response = await AxiosInstance.put("/post/", formData);
       return response;
     } catch (error) {
       return error;

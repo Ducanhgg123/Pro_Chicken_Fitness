@@ -1,8 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/Header.css";
 import { Dropdown } from "react-bootstrap";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { setUpNotificationRequestCoach } from "../firebase/notification/request-coach";
+import { useCountNotifications } from "../hooks/useNotificationsHook";
 
 const tabs = [
   {
@@ -18,40 +20,47 @@ const tabs = [
 ];
 function Header() {
   const navigate = useNavigate();
-  const { userRoles } = useSelector((state) => state.user);
+  const { pathname } = useLocation();
+  const { user, userRoles } = useSelector((state) => state.user);
+  const countNotifications = useCountNotifications();
   const isCoach = userRoles.includes("ROLE_COACH");
+
+  useEffect(() => {
+    setUpNotificationRequestCoach();
+  }, [user]);
 
   const handleLogout = () => {
     sessionStorage.clear();
     navigate("/login");
   };
 
-  const [currentTab, setCurrentTab] = useState(1);
   return (
     <header className="fixed-top">
       <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light justify-content-center mt-0 mb-0">
         <Link to="/" id="navbar-brand">
-          <img
-            src="./image/pro-chicken-logo.jpg"
-            alt="anh-ga-con-de-thuong-xiu"
-            border="0"
-          />
+          <img src="./Logo.png" alt="anh-ga-con-de-thuong-xiu" border="0" />
         </Link>
 
         <div
           className="collapse navbar-collapse justify-content-center"
           id="navbarNav"
         >
-          <ul className="navbar-nav nav-tabs" id="myTab" role="tablist">
+          <ul className="navbar-nav d-flex gap-4" id="myTab" role="tablist">
             {tabs.map((tab) => (
               <li key={tab.id} className="nav-item" role="presentation">
                 <Link to={tab.path}>
                   <button
-                    className={`nav-link ${
-                      tab.id === currentTab ? "active" : ""
+                    className={`btn-tab ${
+                      tab.path === pathname ? "active" : ""
                     }`}
                     type="button"
-                    onClick={() => setCurrentTab(tab.id)}
+                    style={{
+                      padding: "10px 20px",
+                      borderRadius: "20px",
+                      border: "1px solid #fff",
+                      backgroundColor: "#fff",
+                      transition: "all 0.3s ease",
+                    }}
                   >
                     {tab.text}
                   </button>
@@ -62,8 +71,8 @@ function Header() {
         </div>
 
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147140.png" />
+          <Dropdown.Toggle id="dropdown-basic">
+            <img src="./Logo.png" />
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item as={Link} to="/profile">
@@ -72,7 +81,21 @@ function Header() {
             <Dropdown.Item as={Link} to="/calendar">
               Calendar
             </Dropdown.Item>
-            {isCoach && (
+            <Dropdown.Item as={Link} to="/fitness-chat">
+              Chat
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/notification">
+              <li className="nav-item mr-3 d-flex gap-2">
+                <div>Notification</div>
+                <div>
+                  <i className="fas fa-bell danger"></i>
+                  <span className="badge badge-danger">
+                    {countNotifications}
+                  </span>
+                </div>
+              </li>
+            </Dropdown.Item>
+            {!isCoach && (
               <Dropdown.Item as={Link} to="/become-coach">
                 Become coach
               </Dropdown.Item>

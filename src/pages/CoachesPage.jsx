@@ -3,10 +3,18 @@ import CardCoach from "../components/CardCoach";
 import Header from "../components/Header";
 import CoachService from "../api/services/CoachService";
 import { useSelector } from "react-redux";
+import { useQuery } from "react-query";
 
 function CoachesPage() {
   const [coaches, setCoaches] = useState([]);
-  const { username } = useSelector((state) => state.user);
+  const { user, username } = useSelector((state) => state.user);
+  const { data } = useQuery({
+    queryKey: ["user-coaches", user?.username],
+    queryFn: () => CoachService.getUserCoach(user?.username),
+  });
+
+  const subscribedCoaches = data?.data;
+
   useEffect(() => {
     const getCoaches = async () => {
       try {
@@ -36,7 +44,11 @@ function CoachesPage() {
           <div className="row gap-3">
             {coaches?.map((coach, index) =>
               coach?.username !== username ? (
-                <CardCoach key={index} coach={coach} />
+                <CardCoach
+                  key={index}
+                  coach={coach}
+                  subscribedCoaches={subscribedCoaches}
+                />
               ) : null
             )}
           </div>

@@ -1,6 +1,23 @@
 import AxiosInstance from "../../config/AxiosInstance";
 
 class UserService {
+  getAllUsers = async () => {
+    try {
+      const response = await AxiosInstance.get(`/user/`);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  };
+
+  getUserRole = async (username) => {
+    try {
+      const response = await AxiosInstance.get(`/user/roles/${username}`);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  };
   updateUserIngredient = async (payload) => {
     try {
       const response = await AxiosInstance.put(

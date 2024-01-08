@@ -10,6 +10,8 @@ import BecomeCoachPage from "../pages/BecomeCoachPage";
 import CalendarPage from "../pages/CalendarPage";
 import PaymentPage from "../pages/PaymentPage";
 import ChatPage from "../pages/ChatPage";
+import adminRouters from "./routers/AdminRouters";
+import NotificationPage from "../pages/NotificationPage";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,10 @@ const router = createBrowserRouter([
     element: <CoachDetailsPage />,
   },
   {
+    path: "/notification",
+    element: <NotificationPage />,
+  },
+  {
     path: "/fitness-chat",
     element: <ChatPage />,
     children: [
@@ -62,6 +68,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  ...adminRouters,
 ]);
 
 export default router;

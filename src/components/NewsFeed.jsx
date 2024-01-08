@@ -1,13 +1,25 @@
 import { useState } from "react";
 import CommentSection from "./newsfeed/CommentSection";
-import moment from "moment/moment";
 import PostService from "../api/services/PostService";
+import { formattedDate } from "../utilities/formatDate";
+import { byteArrayToDataURL } from "../utilities/processImageArray";
+
+const buttonStyles = {
+  transition: "background-color 0.3s ease",
+  backgroundColor: "initial",
+  borderRadius: "5px",
+};
+
+const hoverStyles = {
+  backgroundColor: "#3fer", // Change to your desired hover color
+};
 
 function NewsFeed({ post }) {
   const [showComment, setShowComment] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
   const [comments, setComments] = useState([]);
   const [likeCount, setLikeCount] = useState(post?.likeCount || 0);
-  const [thumbnail, setThumbnail] = useState(null);
 
   const toggleShowComment = async () => {
     setShowComment((showComment) => !showComment);
@@ -24,16 +36,6 @@ function NewsFeed({ post }) {
       }
   };
 
-  const formattedDate = (dateString) => {
-    // Parse the given date string using Moment.js
-    const date = moment(dateString || moment.now());
-
-    // Calculate the difference between the date and the current time
-    const timeAgo = date.fromNow();
-
-    return `Posted ${timeAgo}`;
-  };
-
   const handleLikePost = async () => {
     setLikeCount((likeCount) => likeCount + 1);
     try {
@@ -47,24 +49,6 @@ function NewsFeed({ post }) {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const renderThumbnail = () => {
-    if (post?.thumbnail) {
-      const uint8Array = new Uint8Array(post.thumbnail);
-
-      // Convert Uint8Array to Blob
-      const blob = new Blob([uint8Array], { type: "image/jpeg" });
-
-      // Read Blob as Data URL
-      const reader = new FileReader();
-      reader.onload = () => {
-        setThumbnail(reader.result);
-      };
-      reader.readAsDataURL(blob);
-      return thumbnail;
-    }
-    return "./image/pro-chicken-logo.jpg";
   };
 
   return (
@@ -90,13 +74,17 @@ function NewsFeed({ post }) {
         <p className="card-text">{post?.content || "Empty content"}</p>
         <hr />
         <div className="text-center">
-          <img
-            src={renderThumbnail()}
-            alt="Blog Image"
-            style={{
-              height: "200px",
-            }}
-          />
+          {post?.thumbnail && (
+            <img
+              src={byteArrayToDataURL(post.thumbnail)}
+              alt="Blog Image"
+              style={{
+                height: "150px",
+                width: "100%",
+                objectFit: "contain",
+              }}
+            />
+          )}
         </div>
       </div>
       <div className="card-footer d-flex justify-content-between align-items-center">
@@ -104,6 +92,9 @@ function NewsFeed({ post }) {
           <button
             type="button"
             className="btn btn-outline-secondary"
+            style={{
+              transition: "all 0.3s ease",
+            }}
             onClick={handleLikePost}
           >
             <i className="bi bi-hand-thumbs-up-fill"></i>
@@ -111,7 +102,13 @@ function NewsFeed({ post }) {
           {/* Comment button */}
           <button
             type="button"
-            className="btn btn-outline-secondary"
+            className="btn"
+            style={{
+              ...buttonStyles,
+              ...(isHovered && hoverStyles), // Apply hover styles conditionally
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             onClick={toggleShowComment}
           >
             <i className="bi bi-chat-left-dots-fill"></i>
@@ -119,7 +116,7 @@ function NewsFeed({ post }) {
         </div>
         <div className="d-flex gap-2">
           <div className="text-muted me-2">{likeCount} Likes</div>
-          <div className="text-muted">5 Comments</div>
+          <div className="text-muted">{post?.commentCount || 0} Comments</div>
         </div>
       </div>
       {showComment && (

@@ -2,9 +2,10 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
 import PostService from "../../api/services/PostService";
+import Button from "../button/Button";
 
 function WhatOnYourMind({ posts, setPosts }) {
-  const { username } = useSelector((state) => state.user);
+  const { username, user } = useSelector((state) => state.user);
   const [content, setContent] = useState("");
   const [show, setShow] = useState(false);
   const [selectedFile, setSelectedFile] = useState("");
@@ -56,7 +57,7 @@ function WhatOnYourMind({ posts, setPosts }) {
             <div className="row align-items-center">
               <div className="col-auto me-0 ms-0 text-center pr">
                 <img
-                  src="./image/pro-chicken-logo.jpg"
+                  src={user?.avatar || "./image/pro-chicken-logo.jpg"}
                   alt="Profile Picture"
                   className="rounded-circle"
                   style={{
@@ -68,7 +69,10 @@ function WhatOnYourMind({ posts, setPosts }) {
               <div className="col">
                 <button
                   type="button"
-                  className="btn btn-primary w-100 text-start opacity-75 btn-secondary"
+                  className="btn w-100 text-start opacity-50 btn-secondary"
+                  style={{
+                    transition: "all 0.3s ease",
+                  }}
                   onClick={handleShow}
                 >
                   What's on your mind, {username || ""}?
@@ -89,7 +93,7 @@ function WhatOnYourMind({ posts, setPosts }) {
               <div className="card-header">
                 <div className="d-flex align-items-center">
                   <img
-                    src="./image/pro-chicken-logo.jpg"
+                    src={user?.avatar || "./image/pro-chicken-logo.jpg"}
                     alt="Profile Picture"
                     className="rounded-circle"
                     style={{
@@ -117,7 +121,7 @@ function WhatOnYourMind({ posts, setPosts }) {
                     <div>
                       <label
                         htmlFor="imageInput"
-                        className="btn btn-outline-primary"
+                        className="btn btn-primary text-white"
                       >
                         <i className="bi bi-image"></i> Add Image
                       </label>
@@ -129,13 +133,14 @@ function WhatOnYourMind({ posts, setPosts }) {
                       />
                     </div>
 
-                    <button
-                      type="button"
+                    <Button
+                      style={{
+                        padding: "0 30px",
+                      }}
                       onClick={handleSubmit}
-                      className="btn btn-primary"
                     >
                       Post
-                    </button>
+                    </Button>
                   </div>
                 </form>
                 {selectedFile && (
@@ -144,7 +149,12 @@ function WhatOnYourMind({ posts, setPosts }) {
                     <img
                       src={URL.createObjectURL(selectedFile)}
                       alt="Selected"
-                      style={{ width: "100%", maxHeight: "200px" }}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        minHeight: "200px",
+                        objectFit: "contain",
+                      }}
                     />
                   </div>
                 )}

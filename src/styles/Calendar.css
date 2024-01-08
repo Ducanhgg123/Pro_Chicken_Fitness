@@ -1,25 +1,22 @@
 /* Custom styles for the gym calendar */
 
-.calendar-bg {
-  background-color: #c8d6e5;
-}
-
 .calendar {
   margin-top: 20px;
 }
 .day-blog {
-  border: 2px solid #222f3e;
+  border: 2px solid rgb(240, 241, 240);
   padding: 10px 5px;
   margin: 5px;
   border-radius: 5px;
   text-align: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  background-color: #55efc4;
+  background-color: rgb(243, 243, 243);
 }
 
 .day-header {
   font-weight: bold;
-  color: white;
+  font-size: 20px;
+  color: #333;
 }
 
 .add-event-btn {
@@ -30,7 +27,7 @@
 
 .day-blog-content {
   border-radius: 5px;
-  background-color: #10ac84;
+  background-color: #e2eb98;
   padding: 15px;
   margin: 20px 0px;
 }
@@ -38,20 +35,12 @@
 .day-blog-content > div {
   color: #0d0d0d;
   /* border: 2px solid #332b1e; */
-  background-color: #f2f2f2;
   border-radius: 5px;
   margin: 10px 0;
 }
 
 .day-blog-content > h5 {
-  color: white;
-}
-
-.auto-generate-btn button {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: #0984e3;
-  border-radius: 10px;
+  color: rgb(72, 91, 71);
 }
 
 .modal img {

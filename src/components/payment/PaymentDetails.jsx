@@ -3,13 +3,17 @@ import { Button, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import UserService from "../../api/services/UserService";
 import { useSelector } from "react-redux";
+import { isCoach } from "../../utilities/checkRole";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import { setUpNotificationRequestCoach } from "../../firebase/notification/request-coach";
 
 function PaymentDetails() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const {
     state: { coachName },
   } = useLocation();
-  const { username } = useSelector((state) => state.user);
+  const { user, userRoles } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const handlePaymentMethodChange = (e) => {
@@ -17,15 +21,20 @@ function PaymentDetails() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await UserService.subcribeCoach(username, coachName);
-      if (res?.status == 200) {
-        alert(`Congratulation !!! ${coachName} is now your coach`);
-        navigate("/");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    const requestCollection = collection(
+      db,
+      "notification",
+      "request-coach",
+      "requests"
+    );
+    await addDoc(requestCollection, {
+      sender: user.username,
+      receiver: coachName,
+      message: `${user.username} want to become your trainee`,
+      status: 0,
+    });
+    alert("Wait for coach to accept you ?");
+    navigate("/");
   };
   return (
     <div className="col-md-6">

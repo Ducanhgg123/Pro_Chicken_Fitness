@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { setUsername, setUser as setUserInfo } from "../redux/userSlice";
 import UserService from "../api/services/UserService";
+import Button from "../components/button/Button";
 
 function SignupPage() {
   const [user, setUser] = useState({
@@ -62,7 +63,7 @@ function SignupPage() {
           <div className="container">
             <div className="row justify-content-center">
               <img
-                src="AnhCorgiDeThuong.svg"
+                src="./Logo.png"
                 id="anhCorgi"
                 width="100%"
                 className="img-flulid"
@@ -111,9 +112,9 @@ function SignupPage() {
             ></input>
           </div>
 
-          <button className="btn btn-primary w-100" onClick={handleSubmit}>
+          <Button width={100} onClick={handleSubmit}>
             Signup
-          </button>
+          </Button>
         </div>
       </div>
     </div>

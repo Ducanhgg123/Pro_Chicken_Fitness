@@ -9,6 +9,7 @@ import {
   setUserRoles,
 } from "../redux/userSlice";
 import UserService from "../api/services/UserService";
+import Button from "../components/button/Button";
 
 function Login() {
   const [user, setUser] = useState({ username: "", password: "" });
@@ -25,7 +26,6 @@ function Login() {
         user.username,
         user.password
       );
-
       if (res?.status == 200) {
         sessionStorage.setItem("jwt-token", res.data.jwt);
         const userInfoRes = await UserService.getUserbyUsername(user.username);
@@ -52,7 +52,7 @@ function Login() {
           <div className="container">
             <div className="row justify-content-center">
               <img
-                src="AnhCorgiDeThuong.svg"
+                src="./Logo.png"
                 id="anhCorgi"
                 width="100%"
                 className="img-flulid"
@@ -62,7 +62,7 @@ function Login() {
           </div>
         </div>
 
-        <div className="col-md-6">
+        <div className="col-md-6 my-auto">
           <div className="login-container form-container">
             <h2>Login</h2>
             <form>
@@ -77,16 +77,11 @@ function Login() {
                   onChange={(e) => handleChange("username", e)}
                 />
               </div>
-              {/* <input
-                type="file"
-                accept="image/*" // Limit accepted file types to images
-                onChange={handleFileChange}
-              /> */}
               <div className="form-group">
                 <label>Password:</label>
                 <input
                   type="password"
-                  name=""
+                  name="password"
                   id="password"
                   className="form-control"
                   placeholder="Enter your password"
@@ -96,18 +91,13 @@ function Login() {
               </div>
 
               <div className="">
-                <button
-                  type="button"
-                  className="btn btn-primary w-100"
-                  onClick={handleSubmit}
-                >
+                <Button width={100} onClick={handleSubmit}>
                   Login
-                </button>
-
-                <div className="d-flex justify-content-between mt-3">
-                  <p className="text-gray">Dont have an account</p>
-                  <Link to="/signup">
-                    <p className="">Sign up</p>
+                </Button>
+                <div className="d-flex justify-content-center mt-3">
+                  <p className="text-gray mr-2">Dont have an account?</p>
+                  <Link to="/signup" className="text-primary">
+                    Sign up
                   </Link>
                 </div>
               </div>

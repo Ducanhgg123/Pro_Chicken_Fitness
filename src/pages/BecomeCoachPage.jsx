@@ -10,9 +10,8 @@ import { setUser } from "../redux/userSlice";
 function BecomeCoachPage() {
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const { user: coach } = useSelector((state) => state.user);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   // call api to become a coach
   const handleSubmit = async (e) => {
     e.preventDefault();

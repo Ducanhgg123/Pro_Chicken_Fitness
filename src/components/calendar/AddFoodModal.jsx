@@ -68,7 +68,7 @@ const AddFoodModal = ({ show, handleClose }) => {
         {dishes?.map(
           (dish, idx) =>
             !alreadyHaveDishesId.has(dish.id) && (
-              <Form.Check key={idx} inline>
+              <Form.Check key={idx}>
                 <Form.Check.Input
                   type="checkbox"
                   id="checkbox-meal-1"

@@ -65,7 +65,7 @@ const AddExercisesModal = ({ show, handleClose }) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <div className="form-check form-check-inline">
+          <div className="form-check form-check">
             {activities?.map(
               (activity, index) =>
                 !alreadyHaveActivities.has(activity.id) && (
@@ -92,7 +92,7 @@ const AddExercisesModal = ({ show, handleClose }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" type="submit" onClick={updateActivities}>
+        <Button variant="primary" onClick={updateActivities}>
           Submit
         </Button>
         <Button variant="secondary" onClick={handleClose}>
